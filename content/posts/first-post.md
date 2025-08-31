@@ -4,3 +4,7 @@ draft: true
 title: First Post
 ---
 Ciao Cristina
+
+
+
+![](/images/uploads/20250818_201352.jpg)
