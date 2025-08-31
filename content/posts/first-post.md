@@ -5,4 +5,4 @@ title: "First Post+ + + "
 ---
 Ciao Cristina.
 
-![](/images/uploads/20250818_201352.jpg)
+![](/itcorner/images/uploads/20250822_164146.jpg)
