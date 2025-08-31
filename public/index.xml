@@ -13,7 +13,7 @@
       <link>http://localhost:1313/posts/first-post/</link>
       <pubDate>Sun, 31 Aug 2025 18:38:28 +0200</pubDate>
       <guid>http://localhost:1313/posts/first-post/</guid>
-      <description></description>
+      <description>&lt;p&gt;Ciao Cristina&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/uploads/20250818_201352.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

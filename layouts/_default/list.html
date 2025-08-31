@@ -1,0 +1,8 @@
+<h1>Tutti i post</h1>
+
+{{ range .Pages }}
+<div class="post-preview">
+    <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
+    <p>{{ .Summary }}</p>
+</div>
+{{ end }}
