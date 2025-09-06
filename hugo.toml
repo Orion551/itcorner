@@ -1,7 +1,32 @@
 baseURL = 'https://orion551.github.io/itcorner/'
 languageCode = 'it-IT'
 title = 'My New Hugo Site'
-theme = 'ananke'
+theme = 'cisf26-theme'
 [caches]
   [caches.images]
     dir = ':cacheDir/images'
+
+[[menus.main]]
+  name = "Home"
+  url = "/"
+  weight = 10
+[[menus.main]]
+  name = "Chi Siamo"
+  url = "/chi-siamo/"
+  weight = 20
+[[menus.main]]
+  name = "Strutture"
+  url = "/strutture/"
+  weight = 30
+[[menus.main]]
+  name = "Ospiti"
+  url = "/ospiti/"
+  weight = 40
+[[menus.main]]
+  name = "Programma"
+  url = "/programma/"
+  weight = 50
+[[menus.main]]
+  name = "Partners"
+  url = "/partners/"
+  weight = 60

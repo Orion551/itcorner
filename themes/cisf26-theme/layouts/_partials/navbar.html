@@ -1,0 +1,20 @@
+<nav class="navbar">
+    <div class="nav-container">
+        <a href="{{ .Site.BaseURL }}" class="nav-logo">{{ .Site.Title }}</a>
+        <div class="nav-menu-toggle" id="nav-toggle">
+            &#9776; </div>
+        <ul class="nav-menu" id="nav-menu">
+            {{ range .Site.Menus.main }}
+            <li class="nav-item">
+                <a href="{{ .URL }}" class="nav-link">{{ .Name }}</a>
+            </li>
+            {{ end }}
+        </ul>
+    </div>
+</nav>
+
+<script>
+    document.getElementById('nav-toggle').addEventListener('click', function() {
+        document.getElementById('nav-menu').classList.toggle('active');
+    });
+</script>
