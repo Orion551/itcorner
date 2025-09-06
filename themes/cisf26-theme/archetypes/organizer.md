@@ -4,7 +4,7 @@
     draft: true
     name: "{{ replace .Name "-" " " | title }}"
     role: "Ruolo dell'organizzatore"
-    description: "Organizzatori."
+    description: "{{ replace .Name "-" " " | title }} - Organizzatrice"
     image: "/images/organizers/default-organizer.jpg"
     weight: 10
 ---
