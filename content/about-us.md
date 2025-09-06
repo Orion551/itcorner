@@ -4,7 +4,7 @@ date: 2023-10-27T10:00:00+02:00
 draft: false
 layout: "/about-us/single"
 
-title_highlight: "AISF Roma Tre" # La parte del titolo da evidenziare
+title_highlight: "AISF Roma Tre"
 subtitle: "AISF - Associazione Italiana Studenti di Fisica"
 header_images:
   - src: "images/about/globe.png"

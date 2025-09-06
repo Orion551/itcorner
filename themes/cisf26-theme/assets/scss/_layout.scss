@@ -132,54 +132,146 @@
 
 
 // --- "Chi Siamo" Specific Styles ---
-.about-us-header {
-  display: flex;
-  flex-wrap: wrap; // Allows wrapping on smaller screens
-  gap: 40px;
-  align-items: flex-start; // Align items to the top
-  margin-bottom: 60px;
-}
+//.about-us-header {
+//  display: flex;
+//  flex-wrap: wrap; // Allows wrapping on smaller screens
+//  gap: 40px;
+//  align-items: flex-start; // Align items to the top
+//  margin-bottom: 60px;
+//}
 
 .about-us-text {
   flex: 2; // Takes more space
   min-width: 300px; // Minimum width before wrapping
 }
 
-.about-us-images {
-  flex: 1; // Takes less space
-  min-width: 280px; // Minimum width before wrapping
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10px; // Gap between images
-  align-items: center; // Vertically center items in the grid
+//.about-us-images {
+//  flex: 1; // Takes less space
+//  min-width: 280px; // Minimum width before wrapping
+//  display: grid;
+//  grid-template-columns: repeat(2, 1fr);
+//  gap: 10px; // Gap between images
+//  align-items: center; // Vertically center items in the grid
+//}
+
+//.about-us-images img {
+//  width: 100%;
+//  height: auto;
+//  display: block; // Remove extra space below images
+//  border-radius: 8px; // Slightly rounded corners
+//  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+//  object-fit: cover; // Ensure images cover their area
+//
+//  &:nth-child(1) { // Globe image
+//    grid-column: 1 / 2;
+//    grid-row: 1 / 2;
+//  }
+//  &:nth-child(2) { // Building image
+//    grid-column: 2 / 3;
+//    grid-row: 1 / 3; // Spans two rows
+//  }
+//  &:nth-child(3) { // Students image
+//    grid-column: 1 / 2;
+//    grid-row: 2 / 3;
+//  }
+//}
+
+
+/* NEW */
+.about-us-header {
+  display: flex;
+  flex-direction: row; // O in colonna su schermi piccoli
+  align-items: flex-start; // Allinea l'inizio degli elementi flex
+  gap: 20px; // Spazio tra testo e immagini
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
-.about-us-images img {
-  width: 100%;
-  height: auto;
-  display: block; // Remove extra space below images
-  border-radius: 8px; // Slightly rounded corners
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  object-fit: cover; // Ensure images cover their area
+.about-us-text {
+  flex: 1; // Prende lo spazio disponibile
+  max-width: 60%; // Limita la larghezza del testo, puoi aggiustare
+  padding-right: 20px; // Spazio a destra del testo
+  z-index: 2; // Assicura che il testo sia sopra le immagini se si sovrappongono troppo
+  @media (max-width: 768px) {
+    max-width: 100%;
+    padding-right: 0;
+  }
+}
 
-  &:nth-child(1) { // Globe image
-    grid-column: 1 / 2;
-    grid-row: 1 / 2;
+.about-us-images {
+  position: relative; // Permette il posizionamento assoluto delle immagini interne
+  width: 500px; // Larghezza fissa per il contenitore delle immagini
+  height: 500px; // Altezza fissa per il contenitore
+  flex-shrink: 0; // Impedisce che si rimpicciolisca
+  margin-right: -100px; // Fa sporgere il contenitore a destra
+  z-index: 1; // Le immagini saranno dietro al testo se si sovrappongono
+  //overflow: hidden; // Potrebbe essere necessario se le immagini escono troppo
+
+  @media (max-width: 768px) {
+    width: 100%;
+    height: 400px; // Regola altezza per mobile
+    margin-right: 0; // Nessun margine negativo su mobile
   }
-  &:nth-child(2) { // Building image
-    grid-column: 2 / 3;
-    grid-row: 1 / 3; // Spans two rows
-  }
-  &:nth-child(3) { // Students image
-    grid-column: 1 / 2;
-    grid-row: 2 / 3;
+
+  img {
+    position: absolute; // Permette il posizionamento libero
+    border-radius: 12px; // Angoli più arrotondati
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); // Ombra più marcata
+    object-fit: cover;
+    max-width: none; // Permette all'immagine di uscire dal contenitore se necessario
+    transition: transform 0.3s ease; // Animazione per hover
+
+    &:hover {
+      transform: scale(1.03); // Zoom leggero all'hover
+      z-index: 10; // Porta l'immagine in primo piano all'hover
+    }
+
+    &:nth-child(1) { // Immagine del globo
+      width: 280px;
+      height: 280px;
+      top: 0px;
+      left: 0px;
+      z-index: 3;
+    }
+
+    &:nth-child(2) { // Immagine dell'edificio (quella che sporge)
+      width: 450px; // Larghezza maggiore per sporgere
+      height: 250px;
+      top: 80px; // Spostata un po' più in basso
+      right: -150px; // Sporge molto a destra del contenitore about-us-images
+      z-index: 2; // Dietro al globo
+      @media (max-width: 768px) {
+        width: 100%; // Adatta su mobile
+        right: 0;
+        top: 0;
+        height: 200px;
+      }
+    }
+
+    &:nth-child(3) { // Immagine degli studenti
+      width: 380px;
+      height: 260px;
+      bottom: 0px;
+      left: 50px; // Spostata un po' a destra
+      z-index: 4; // Sopra le altre due
+      @media (max-width: 768px) {
+        width: 80%;
+        left: 10%;
+        bottom: 0;
+        height: 220px;
+      }
+    }
   }
 }
 
 .about-us-title {
   font-size: 3.5rem; // Large title
+  font-weight: 600;
   line-height: 1.1;
-  color: $dark-grey;
+  color: $secondary-color;
   margin-bottom: 1rem;
 
   span {
@@ -199,7 +291,7 @@
   color: $dark-grey;
 }
 
-// Organizers Section
+ //Organizers Section
 .organizers-section {
   background-color: $organizers-bg-color;
   padding: 60px 0;
@@ -221,17 +313,24 @@
   padding: 0 20px;
 }
 
-.organizer-card {
-  background-color: $light-grey;
-  border-radius: 12px;
-  padding: 25px;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+//.organizers-grid {
+//  display: flex;
+//  justify-content: center;
+//  align-items: center;
+//  padding: 20px;
+//  background-color: #f0f0f0;
+//}
 
+.organizer-card {
+  user-select: none;
+  background-color: $light-grey;
+  border-radius: 20px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+  width: 300px;
+  text-align: left;
+  padding: 20px;
+  box-sizing: border-box;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   &:hover {
     transform: translateY(-8px);
     box-shadow: 0 10px 25px rgba(0,0,0,0.25);
@@ -239,29 +338,88 @@
 }
 
 .organizer-photo {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  object-fit: cover;
+  width: 100%;
+  height: auto;
+  border-radius: 20px;
   margin-bottom: 20px;
-  border: 4px solid $primary-color;
+  object-fit: cover;
+  max-height: 400px;
 }
 
 .organizer-name {
-  font-size: 1.6rem;
+  font-size: 1.5rem;
+  font-weight: 500;
   color: $secondary-color;
+  margin-top: -10px;
   margin-bottom: 5px;
 }
 
 .organizer-role {
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: $accent-color-1;
-  font-weight: 600;
-  margin-bottom: 10px;
+  margin: 0;
+  font-weight: 500;
 }
 
 .organizer-description {
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   color: $dark-grey;
-  line-height: 1.5;
+  line-height: 1.4;
+  margin-top: 15px;
 }
+
+/* Media query per dispositivi più piccoli */
+@media (max-width: 768px) {
+  .organizer-card {
+    width: 100%;
+    max-width: 350px;
+  }
+}
+
+
+/* OLD */
+
+//.organizer-card {
+//  background-color: $light-grey;
+//  border-radius: 12px;
+//  padding: 25px;
+//  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+//  display: flex;
+//  flex-direction: column;
+//  align-items: center;
+//  text-align: center;
+//  transition: transform 0.3s ease, box-shadow 0.3s ease;
+//
+//  &:hover {
+//    transform: translateY(-8px);
+//    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+//  }
+//}
+
+//.organizer-photo {
+//  width: 150px;
+//  height: 150px;
+//  border-radius: 50%;
+//  object-fit: cover;
+//  margin-bottom: 20px;
+//  border: 4px solid $primary-color;
+//}
+
+//.organizer-name {
+//  font-size: 1.6rem;
+//  color: $secondary-color;
+//  margin-bottom: 5px;
+//}
+
+//.organizer-role {
+//  font-size: 1.1rem;
+//  color: $accent-color-1;
+//  font-weight: 600;
+//  margin-bottom: 10px;
+//}
+
+//.organizer-description {
+//  font-size: 0.95rem;
+//  color: $dark-grey;
+//  line-height: 1.5;
+//}
