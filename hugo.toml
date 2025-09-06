@@ -12,19 +12,19 @@ theme = 'cisf26-theme'
   weight = 10
 [[menus.main]]
   name = "Chi Siamo"
-  url = "/chi-siamo/"
+  url = "/about-us/"
   weight = 20
 [[menus.main]]
   name = "Strutture"
-  url = "/strutture/"
+  url = "/locations/"
   weight = 30
 [[menus.main]]
   name = "Ospiti"
-  url = "/ospiti/"
+  url = "/guests/"
   weight = 40
 [[menus.main]]
   name = "Programma"
-  url = "/programma/"
+  url = "/schedule/"
   weight = 50
 [[menus.main]]
   name = "Partners"

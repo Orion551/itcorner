@@ -1,0 +1,32 @@
+{{ define "main" }}
+<div class="container page-content">
+    <div class="about-us-header">
+        <div class="about-us-text">
+            <h1 class="about-us-title">Ciao, siamo il comitato locale <span>{{ .Params.title_highlight }}</span></h1>
+            <h2 class="about-us-subtitle">{{ .Params.subtitle }}</h2>
+            <div class="about-us-description">
+                {{ .Content }}
+            </div>
+        </div>
+        <div class="about-us-images">
+            {{ range .Params.header_images }}
+            <img src="{{ .src | relURL }}" alt="{{ .alt }}">
+            {{ end }}
+        </div>
+    </div>
+</div>
+
+<section class="organizers-section">
+    <h2>Organizzatori</h2>
+    <div class="organizers-grid">
+        {{ range sort (.Site.GetPage "section" "organizer").RegularPages "Params.weight" }}
+        <div class="organizer-card">
+            <img src="{{ .Params.image | relURL }}" alt="{{ .Params.name }}" class="organizer-photo">
+            <h3 class="organizer-name">{{ .Params.name }}</h3>
+            <p class="organizer-role">{{ .Params.role }}</p>
+            <p class="organizer-description">{{ .Params.description }}</p>
+        </div>
+        {{ end }}
+    </div>
+</section>
+{{ end }}

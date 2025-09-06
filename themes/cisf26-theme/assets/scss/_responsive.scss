@@ -30,3 +30,40 @@
     display: block;
   }
 }
+
+@media (max-width: $breakpoint-md) {
+  // ... (existing navbar styles) ...
+
+  .about-us-header {
+    flex-direction: column; // Stack elements vertically
+    gap: 30px;
+    text-align: center; // Center text on small screens
+  }
+
+  .about-us-text {
+    min-width: unset; // Remove min-width restriction
+  }
+
+  .about-us-images {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); // Smaller images on mobile
+    min-width: unset;
+    width: 100%; // Ensure it takes full width
+  }
+
+  .about-us-images img:nth-child(2) { // Building image
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .about-us-title {
+    font-size: 2.5rem; // Smaller title on mobile
+  }
+
+  .about-us-subtitle {
+    font-size: 1.2rem;
+  }
+
+  .organizers-grid {
+    grid-template-columns: 1fr; // Stack organizers on mobile
+  }
+}
