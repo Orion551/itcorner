@@ -7,11 +7,11 @@ layout: "/about-us/single"
 title_highlight: "AISF Roma Tre" # La parte del titolo da evidenziare
 subtitle: "AISF - Associazione Italiana Studenti di Fisica"
 header_images:
-  - src: "/images/about/globe.jpg"
+  - src: "images/about/globe.png"
     alt: "Globo terrestre"
   - src: "images/about/building.png"
     alt: "Università degli Studi Roma Tre"
-  - src: "/images/about/students.jpg"
+  - src: "images/about/classroom-people.png"
     alt: "Studenti universitari in aula"
 ---
 
