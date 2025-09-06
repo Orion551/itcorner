@@ -1,6 +1,6 @@
 baseURL = 'https://orion551.github.io/itcorner/'
 languageCode = 'it-IT'
-title = 'My New Hugo Site'
+title = 'CISF26'
 theme = 'cisf26-theme'
 [caches]
   [caches.images]
