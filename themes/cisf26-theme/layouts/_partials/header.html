@@ -1,2 +1,45 @@
-<h1>{{ site.Title }}</h1>
-{{ partial "menu.html" (dict "menuID" "main" "page" .) }}
+<div class="container">
+    <div class="site-logo">
+        <img src="{{ .Site.Params.image | relURL }}" alt="{{ .Site.Params.alt }}">
+    </div>
+    <nav class="main-nav">
+        <ul class="nav-menu">
+            {{ $currentPage := . }}
+            {{- range .Site.Menus.main }}
+            <li class="nav-item">
+                <a href="{{ .URL }}" class="nav-link {{ if $currentPage.IsMenuCurrent "main" . }}active{{ end }}">{{ .Name }}</a>
+            </li>
+            {{- end }}
+        </ul>
+    </nav>
+
+    <div class="mobile-nav-toggle">
+        <button class="menu-toggle-button">
+            <span class="hamburger-icon"></span>
+        </button>
+    </div>
+</div>
+<aside class="mobile-sidebar">
+    <div class="sidebar-header">
+        <button class="close-sidebar-button">&times;</button>
+    </div>
+    <nav class="sidebar-nav">
+        <ul class="sidebar-menu">
+            {{- range .Site.Menus.main }}
+            <li class="nav-item {{ if .HasChildren }}has-children{{ end }}">
+                <a href="{{ .URL }}" class="nav-link">{{ .Name }}</a>
+                {{- if .HasChildren }}
+                <ul class="submenu">
+                    {{- range .Children }}
+                    <li class="nav-item">
+                        <a href="{{ .URL }}" class="nav-link">{{ .Name }}</a>
+                    </li>
+                    {{- end }}
+                </ul>
+                {{- end }}
+            </li>
+            {{- end }}
+        </ul>
+    </nav>
+</aside>
+<div class="sidebar-overlay"></div>

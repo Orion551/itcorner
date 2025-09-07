@@ -7,26 +7,37 @@ theme = 'cisf26-theme'
     dir = ':cacheDir/images'
 
 [[menus.main]]
+  identifier = "home"
   name = "Home"
-  url = "/"
+  pageRef = "/"
   weight = 10
 [[menus.main]]
+  identifier = "about-us"
   name = "Chi Siamo"
-  url = "/about-us/"
+  pageRef = "/about-us/"
   weight = 20
 [[menus.main]]
+  identifier = "locations"
   name = "Strutture"
-  url = "/locations/"
+  pageRef = "/locations/"
   weight = 30
 [[menus.main]]
+  identifier = "guests"
   name = "Ospiti"
-  url = "/guests/"
+  pageRef = "/guests/"
   weight = 40
 [[menus.main]]
+  identifier = "schedule"
   name = "Programma"
-  url = "/schedule/"
+  pageRef = "/schedule/"
   weight = 50
 [[menus.main]]
+  identifier = "partners"
   name = "Partners"
-  url = "/partners/"
+  pageRef = "/partners/"
   weight = 60
+
+[params]
+  siteTitle = "CISF26"
+  image = "images/cisf26-logo.png"
+  alt = 'CISF26 Logo'
