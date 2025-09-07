@@ -19,27 +19,62 @@
         </button>
     </div>
 </div>
-<aside class="mobile-sidebar">
-    <div class="sidebar-header">
-        <button class="close-sidebar-button">&times;</button>
-    </div>
-    <nav class="sidebar-nav">
-        <ul class="sidebar-menu">
-            {{- range .Site.Menus.main }}
-            <li class="nav-item {{ if .HasChildren }}has-children{{ end }}">
-                <a href="{{ .URL }}" class="nav-link">{{ .Name }}</a>
-                {{- if .HasChildren }}
-                <ul class="submenu">
-                    {{- range .Children }}
-                    <li class="nav-item">
-                        <a href="{{ .URL }}" class="nav-link">{{ .Name }}</a>
-                    </li>
-                    {{- end }}
-                </ul>
-                {{- end }}
-            </li>
-            {{- end }}
-        </ul>
-    </nav>
+<nav class="mobile-bottom-bar">
+    <ul class="bottom-menu">
+        {{ $currentPage := . }}
+        {{ range sort (where .Site.Menus.main "Params.bottombar" true) "Params.mobile_sort" "asc" }}
+        <li class="bottom-item">
+            <a href="{{ .URL }}" class="bottom-link {{ if $currentPage.IsMenuCurrent "main" . }}active{{ end }}">
+                <svg class="bottom-icon">
+                    <use xlink:href='{{ "images/icons.svg" | relURL }}#{{ .Identifier }}'></use>
+                </svg>
+                <span class="bottom-text">{{ .Name }}</span>
+            </a>
+        </li>
+        {{ end }}
+
+        <li class="more-menu-icon more-menu-toggle">
+            <svg>
+                <use xlink:href='{{ "images/icons.svg" | relURL }}#{{ "more-dots-vertical-solid" }}'></use>
+            </svg>
+        </li>
+    </ul>
+</nav>
+
+<aside class="mobile-popup-menu">
+<!--    <div class="popup-header">-->
+<!--        <button class="popup-close-btn">&times;</button>-->
+<!--    </div>-->
+    <ul class="popup-menu">
+        {{- range (where .Site.Menus.main "Params.bottombar" false).ByWeight }}
+        <li class="popup-item">
+            <svg>
+                <use xlink:href='{{ "images/icons.svg" | relURL }}#{{ .Identifier }}'></use>
+            </svg>
+            <a href="{{ .URL }}" class="popup-link">{{ .Name }}</a>
+        </li>
+        {{- end }}
+    </ul>
 </aside>
-<div class="sidebar-overlay"></div>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const toggleBtn = document.querySelector('.more-menu-toggle');
+        const popupMenu = document.querySelector('.mobile-popup-menu');
+        const closeBtn = document.querySelector('.popup-close-btn');
+        const body = document.body;
+
+        toggleBtn.addEventListener('click', () => {
+            body.classList.toggle('popup-open');
+        });
+
+        closeBtn.addEventListener('click', () => {
+            body.classList.remove('popup-open');
+        });
+
+        document.addEventListener('click', (event) => {
+            if (!popupMenu.contains(event.target) && !toggleBtn.contains(event.target) && body.classList.contains('popup-open')) {
+                body.classList.remove('popup-open');
+            }
+        });
+    });
+</script>

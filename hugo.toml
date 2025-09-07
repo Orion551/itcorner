@@ -11,31 +11,69 @@ theme = 'cisf26-theme'
   name = "Home"
   pageRef = "/"
   weight = 10
+  icon = ""
+  [menus.main.params]
+    bottombar = false
 [[menus.main]]
-  identifier = "about-us"
+  identifier = "users-solid"
   name = "Chi Siamo"
   pageRef = "/about-us/"
   weight = 20
+  icon = "users-solid"
+  [menus.main.params]
+    bottombar = false
 [[menus.main]]
-  identifier = "locations"
+  identifier = "building-solid"
   name = "Strutture"
   pageRef = "/locations/"
   weight = 30
+  icon = "building-solid"
+  [menus.main.params]
+    bottombar = false
 [[menus.main]]
-  identifier = "guests"
+  identifier = "clipboard-user-solid"
   name = "Ospiti"
   pageRef = "/guests/"
   weight = 40
+  icon = "clipboard-user-solid"
+  [menus.main.params]
+    bottombar = false
 [[menus.main]]
-  identifier = "schedule"
+  identifier = "calendar-solid"
   name = "Programma"
   pageRef = "/schedule/"
   weight = 50
+  icon = "calendar-solid"
+  [menus.main.params]
+    bottombar = true
+    mobile_sort = 2
 [[menus.main]]
-  identifier = "partners"
+  identifier = "handshake-solid"
   name = "Partners"
   pageRef = "/partners/"
   weight = 60
+  icon = "handshake-solid"
+  [menus.main.params]
+    bottombar = true
+    mobile_sort = 1
+[[menus.main]]
+  identifier = "signature-solid"
+  name = "Iscriviti"
+  pageRef = "/subscribe/"
+  weight = 70
+  icon = "signature-solid"
+  [menus.main.params]
+    bottombar = true
+    mobile_sort = 3
+[[menus.main]]
+  identifier = "support-solid"
+  name = "Sostienici"
+  pageRef = "/support-us/"
+  weight = 80
+  icon = "support-solid"
+  [menus.main.params]
+    bottombar = true
+    mobile_sort = 4
 
 [params]
   siteTitle = "CISF26"
