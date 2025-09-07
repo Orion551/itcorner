@@ -1,0 +1,23 @@
+{{ define "main" }}
+<div class="">
+    {{ .Params.title }}
+    <div>
+        {{ .Content }}
+    </div>
+</div>
+<section>
+    <div>
+        {{ range sort (.Site.GetPage "section" "scheduled-event").RegularPages "Params.weight" }}
+        <div class="round-table-card">
+            <div class="card-content">
+                {{ with .Params.image }}
+                <img class="card-image-container" src="{{ . | relURL }}" alt="{{ $.Params.title }}">
+                {{ end }}
+                <h3>{{ .Params.name }}</h3>
+                <p>{{ .Params.address }}</p>
+            </div>
+        </div>
+        {{ end }}
+    </div>
+</section>
+{{ end }}
