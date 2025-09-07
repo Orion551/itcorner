@@ -1,0 +1,161 @@
+.round-table-card {
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  width: 380px;
+  margin: 20px auto;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+
+  .card-image-container {
+    position: relative;
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .overlay-elements {
+      position: absolute;
+      bottom: 15px;
+      left: 15px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      .microphone-icon, .profile-pics {
+        display: flex;
+        align-items: center;
+      }
+
+      .microphone-icon {
+        // Stile per l'icona del microfono se necessario, qui è solo un placeholder
+        // background-color: rgba(0,0,0,0.4); // Esempio di sfondo per l'icona
+        // border-radius: 50%;
+        // padding: 5px;
+        // color: white;
+      }
+
+      .profile-pics {
+        .profile-pic {
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          border: 2px solid #ffffff;
+          box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+          margin-left: -10px;
+          &:first-child {
+            margin-left: 0;
+          }
+        }
+      }
+    }
+  }
+
+  .card-content {
+    padding: 20px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .title {
+      font-size: 1.6rem;
+      font-weight: bold;
+      color: #2c3e50;
+      margin-bottom: 5px;
+    }
+
+    .subtitle {
+      font-size: 1.1rem;
+      color: #3498db;
+      margin-bottom: 15px;
+    }
+
+    .location {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: auto;
+
+      .location-icon {
+        width: 24px;
+        height: 24px;
+        background-color: #f1c40f;
+        border-radius: 50% 50% 50% 0;
+        transform: rotate(-45deg);
+        margin-top: 8px;
+        &::after {
+          content: '';
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%) rotate(45deg);
+          width: 10px;
+          height: 10px;
+          background-color: #ffffff;
+          border-radius: 50%;
+        }
+      }
+
+      .location-text {
+        font-size: 0.95rem;
+        color: #7f8c8d;
+      }
+    }
+  }
+}
+
+// --- Responsiveness ---
+
+@media (max-width: 600px) {
+  .round-table-card {
+    width: 90%;
+    margin: 15px auto;
+
+    .card-image-container {
+      height: 200px;
+    }
+
+    .card-content {
+      padding: 15px;
+
+      .title {
+        font-size: 1.4rem;
+      }
+
+      .subtitle {
+        font-size: 1rem;
+      }
+
+      .location {
+        .location-icon {
+          width: 20px;
+          height: 20px;
+          &::after {
+            width: 8px;
+            height: 8px;
+          }
+        }
+        .location-text {
+          font-size: 0.9rem;
+        }
+      }
+
+      .overlay-elements {
+        bottom: 10px;
+        left: 10px;
+        .profile-pic {
+          width: 35px;
+          height: 35px;
+        }
+      }
+    }
+  }
+}
