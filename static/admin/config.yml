@@ -38,11 +38,11 @@ collections:
     create: true
     slug: "{{slug}}"
     fields:
-      - { label: "Event Name", name: "name", widget: "string" }
-      - { label: "Address", name: "address", widget: "string" }
-      - label: "Picture"
-        name: "image"
-        choose_url: false
-        media_library:
-          config:
-            multiple: false
+        - { label: "Event Name", name: "name", widget: "string" }
+        - { label: "Address", name: "address", widget: "string" }
+        - label: "Picture"
+          name: "image"
+          choose_url: false
+          media_library:
+            config:
+              multiple: false
