@@ -33,16 +33,35 @@ collections:
             config:
               multiple: false
   - name: "event"
-    label: "Event"
+    label: "Events"
     folder: "content/scheduled-event"
     create: true
     slug: "{{slug}}"
     fields:
-        - { label: "Event Name", name: "name", widget: "string" }
-        - { label: "Address", name: "address", widget: "string" }
-        - label: "Picture"
-          name: "image"
-          choose_url: false
-          media_library:
-            config:
-              multiple: false
+      - { label: "Event Name", name: "name", widget: "string" }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Address", name: "address", widget: "string" }
+      - { label: "Event Date & Time", name: "event_date", widget: "datetime", format: "YYYY-MM-DDTHH:mm:ss" }
+      - label: "Day"
+        name: "day"
+        widget: "select"
+        options: ["monday", "tuesday", "wenesday", "thursday", "friday", "saturday", "sunday"]
+      - { label: "Weight", name: "weight", widget: "number", default: 10, value_type: "int" }
+      - label: "Picture"
+        name: "coverImage"
+        widget: "image"
+        choose_url: false
+        media_library:
+          config:
+            multiple: false
+      - { label: "Description", name: "description", widget: "markdown", required: false }
+      - { label: "Speaker", name: "speaker", widget: "string", required: false }
+      - { label: "Draft", name: "draft", widget: "boolean", default: true }
+      - label: "Speakers"
+        name: "speakers"
+        widget: "relation"
+        collection: "guests"
+        search_fields: [ "title" ]
+        value_field: "{{slug}}"
+        display_fields: [ "title" ]
+        multiple: true
