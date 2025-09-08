@@ -1,6 +1,6 @@
 ---
 title: "{{ replace .Name "-" " " | title }}"
-draft: false
+draft: true
 name: "{{ replace .Name "-" " " | title }}"
 role: ""
 bio: ""
