@@ -37,10 +37,14 @@
                 {{ end }}
 
                 <h3>{{ .Params.name }}</h3>
-                <p><strong>📍</strong> {{ .Params.address }}</p>
+                <a href="https://www.google.com/maps/search/?api=1&query={{ .Params.address | urlize }}" target="_blank" rel="noopener noreferrer" class="card-location">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <span>{{ .Params.address }}</span>
+                </a>
 
                 {{ with .Params.speakers }}
                 <div class="speakers-list">
+                    <i class="fa-solid fa-microphone mic"></i>
                     {{ range . }}
                     {{ $speaker := site.GetPage (printf "/guests/%s" .) }}
                     {{ with $speaker }}
@@ -54,7 +58,9 @@
                             <h3>{{ .Title }}</h3>
                             <p><strong>{{ .Params.role }}</strong></p>
                             <div class="bio">{{ .Params.bio | markdownify }}</div>
-                            <button class="close-modal">Close</button>
+                            <button class="close-modal">
+                                <i class="fa-solid fa-circle-xmark"></i>
+                            </button>
                         </div>
                     </div>
                     {{ end }}
