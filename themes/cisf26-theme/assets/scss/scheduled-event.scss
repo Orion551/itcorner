@@ -78,31 +78,42 @@
       margin-bottom: 15px;
     }
 
-    .location {
+    .card-location {
       display: flex;
       align-items: center;
       gap: 10px;
-      margin-top: auto;
+      margin: auto 0 0;
+      padding: 8px;
+      border-radius: 10px;
+      color: $accent-color-2;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.4s ease-in-out;
 
-      .location-icon {
-        width: 24px;
-        height: 24px;
-        background-color: #f1c40f;
-        border-radius: 50% 50% 50% 0;
-        transform: rotate(-45deg);
-        margin-top: 8px;
-        &::after {
-          content: '';
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%) rotate(45deg);
-          width: 10px;
-          height: 10px;
-          background-color: #ffffff;
-          border-radius: 50%;
-        }
+      &:hover {
+        background-color: rgba(221, 148, 38, 0.2);
+        //border-radius: 10px;
       }
+
+      //.location-icon {
+      //  width: 24px;
+      //  height: 24px;
+      //  fill: $accent-color-2;
+      //  border-radius: 50% 50% 50% 0;
+      //  transform: rotate(-45deg);
+      //  margin-top: 8px;
+      //  &::after {
+      //    content: '';
+      //    position: absolute;
+      //    top: 50%;
+      //    left: 50%;
+      //    transform: translate(-50%, -50%) rotate(45deg);
+      //    width: 10px;
+      //    height: 10px;
+      //    background-color: #ffffff;
+      //    border-radius: 50%;
+      //  }
+      //}
 
       .location-text {
         font-size: 0.95rem;
