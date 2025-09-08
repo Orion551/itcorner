@@ -45,7 +45,14 @@ collections:
       - label: "Day"
         name: "day"
         widget: "select"
-        options: ["monday", "tuesday", "wenesday", "thursday", "friday", "saturday", "sunday"]
+        options:
+          - { label: "Monday", value: "monday" }
+          - { label: "Tuesday", value: "tuesday" }
+          - { label: "Wednesday", value: "wednesday" }
+          - { label: "Thursday", value: "thursday" }
+          - { label: "Friday", value: "friday" }
+          - { label: "Saturday", value: "saturday" }
+          - { label: "Sunday", value: "sunday" }
       - { label: "Weight", name: "weight", widget: "number", default: 10, value_type: "int" }
       - label: "Picture"
         name: "coverImage"
