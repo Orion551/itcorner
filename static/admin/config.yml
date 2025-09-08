@@ -63,7 +63,7 @@ collections:
         collection: "guests"
         search_fields: ["title"]
         value_field: "{{slug}}"
-        display_fields: ["name"]
+        display_fields: ["title"]
         multiple: true
   - name: "guests"
     label: "Guests"
