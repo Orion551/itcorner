@@ -61,7 +61,7 @@ collections:
         name: "speakers"
         widget: "relation"
         collection: "guests"
-        search_fields: ["name"]
+        search_fields: ["title"]
         value_field: "{{slug}}"
         display_fields: ["name"]
         multiple: true
@@ -71,7 +71,7 @@ collections:
     create: true
     slug: "{{slug}}"
     fields:
-      - { label: "Full Name", name: "name", widget: "string" }
+      - { label: "Full Name", name: "title", widget: "string" }
       - { label: "Role", name: "role", widget: "string" }
       - { label: "Biography", name: "bio", widget: "text" }
       - label: "Picture"
