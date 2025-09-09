@@ -10,4 +10,6 @@ weight: 10
 coverImage: ""
 speakers: []
 # description: ""
+start_time: "09:00"
+end_time: "10:30"
 ---
