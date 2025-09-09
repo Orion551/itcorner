@@ -7,6 +7,7 @@ day: "monday"
 weight: 1
 start_time: "09:00"
 end_time: "10:30"
+context: "all"
 speakers:
   - "mario-rossi"
   - "guest-1"
