@@ -1,15 +1,14 @@
 ---
-name: Evento Apertura
-title: Evento Apertura
-address: Sala Conferenze
-event_date: 2025-09-09T11:27:00
+name: Cerimonia di apertura
+title: Cerimonia di apertura
+address: Aula Magna del Rettorato
+event_date: 2026-04-13T15:00:00
 day: monday
 weight: 1
 coverImage: images/events/roma-tre-rettorato.png
+draft: false
 start_time: 09:00
 end_time: 11:00
-draft: false
 speakers:
-  - mario-rossi
-  - guest-1
+  - elena-pettinelli
 ---
