@@ -10,7 +10,7 @@ start_time: 09:00
 end_time: 15:00
 description: "**Accoglienza** e **registrazione** dei partecipanti, 9:00 -
   15:00. Parallelamente apertura **EXPO** e stand espositivi."
-draft: true
+draft: false
 speakers:
   - elena-pettinelli
 ---
