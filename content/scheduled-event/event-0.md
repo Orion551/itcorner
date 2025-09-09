@@ -1,7 +1,7 @@
 ---
 name: Cerimonia di apertura
 title: Cerimonia di apertura
-address: Aula Magna del Rettorato
+address: Via Ostiense, 133B, 00154 Roma RM
 event_date: 2026-04-13T15:00:00
 day: monday
 weight: 1
