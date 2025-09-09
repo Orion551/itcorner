@@ -8,7 +8,7 @@ weight: 3
 coverImage: /itcorner/images/uploads/rettorato_5-2048x1152-1.webp
 start_time: 17:00
 end_time: 18:00
-draft: true
+draft: false
 speakers:
   - elena-pettinelli
 ---
