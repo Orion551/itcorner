@@ -108,4 +108,5 @@ collections:
     create: true
     slug: "{{slug}}"
     fields:
-      - { label: "Context Name", name: "title", widget: "string" }
+      - { label: "Context Name", name: "label", widget: "string", hint: "Un nome riconoscibile per te -- verrá mostrato sul sito" }
+      - { label: "Variable Name", name: "name", widget: "string", hint: "Il nome della variabile, prediligerei roba lowercase e con i trattini e ti prego in inglese :)" }
