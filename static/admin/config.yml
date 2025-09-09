@@ -80,9 +80,9 @@ collections:
         name: "context"
         widget: "relation"
         collection: "event_contexts"
-        search_fields: [ "title" ]
-        value_field: "title"
-        display_fields: [ "title" ]
+        search_fields: [ "label" ]
+        value_field: "name"
+        display_fields: [ "label" ]
         required: false
         default: "all"
   - name: "guests"
