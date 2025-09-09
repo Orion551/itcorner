@@ -25,9 +25,10 @@
         {{ range sort (where .Site.Menus.main "Params.bottombar" true) "Params.mobile_sort" "asc" }}
         <li class="bottom-item">
             <a href="{{ .URL }}" class="bottom-link {{ if $currentPage.IsMenuCurrent "main" . }}active{{ end }}">
-                <svg class="bottom-icon">
-                    <use xlink:href='{{ "images/icons.svg" | relURL }}#{{ .Identifier }}'></use>
-                </svg>
+                    <i class="fa-solid {{ .Params.icon }}"></i>
+<!--                <svg class="bottom-icon">-->
+<!--                    <use xlink:href='{{ "images/icons.svg" | relURL }}#{{ .Identifier }}'></use>-->
+<!--                </svg>-->
                 <span class="bottom-text">{{ .Name }}</span>
             </a>
         </li>
@@ -48,9 +49,11 @@
     <ul class="popup-menu">
         {{- range (where .Site.Menus.main "Params.bottombar" false).ByWeight }}
         <li class="popup-item">
-            <svg>
-                <use xlink:href='{{ "images/icons.svg" | relURL }}#{{ .Identifier }}'></use>
-            </svg>
+            <i class="fa-solid {{ .Params.icon }}"></i>
+<!--            <i class="{{ .Params.icon }}"></i>-->
+<!--            <svg>-->
+<!--                <use xlink:href='{{ "images/icons.svg" | relURL }}#{{ .Identifier }}'></use>-->
+<!--            </svg>-->
             <a href="{{ .URL }}" class="popup-link">{{ .Name }}</a>
         </li>
         {{- end }}

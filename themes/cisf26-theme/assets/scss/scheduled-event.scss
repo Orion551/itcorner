@@ -1,161 +1,312 @@
-.round-table-card {
-  background-color: #ffffff;
+//.round-table-card {
+//  background-color: #ffffff;
+//  border-radius: 20px;
+//  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+//  width: 380px;
+//  margin: 20px auto;
+//  overflow: hidden;
+//  display: flex;
+//  flex-direction: column;
+//
+//  .card-image-container {
+//    position: relative;
+//    width: 100%;
+//    height: 250px;
+//    overflow: hidden;
+//
+//    img {
+//      width: 100%;
+//      height: 100%;
+//      object-fit: cover;
+//      display: block;
+//    }
+//
+//    .overlay-elements {
+//      position: absolute;
+//      bottom: 15px;
+//      left: 15px;
+//      display: flex;
+//      align-items: center;
+//      gap: 10px;
+//
+//      .microphone-icon, .profile-pics {
+//        display: flex;
+//        align-items: center;
+//      }
+//
+//      .microphone-icon {
+//        // Stile per l'icona del microfono se necessario, qui è solo un placeholder
+//        // background-color: rgba(0,0,0,0.4); // Esempio di sfondo per l'icona
+//        // border-radius: 50%;
+//        // padding: 5px;
+//        // color: white;
+//      }
+//
+//      .profile-pics {
+//        .profile-pic {
+//          width: 40px;
+//          height: 40px;
+//          border-radius: 50%;
+//          border: 2px solid #ffffff;
+//          box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+//          margin-left: -10px;
+//          &:first-child {
+//            margin-left: 0;
+//          }
+//        }
+//      }
+//    }
+//  }
+//
+//  .card-content {
+//    padding: 20px;
+//    flex-grow: 1;
+//    display: flex;
+//    flex-direction: column;
+//    justify-content: space-between;
+//
+//    .title {
+//      font-size: 1.6rem;
+//      font-weight: bold;
+//      color: #2c3e50;
+//      margin-bottom: 5px;
+//    }
+//
+//    .subtitle {
+//      font-size: 1.1rem;
+//      color: #3498db;
+//      margin-bottom: 15px;
+//    }
+//
+//    .card-location {
+//      display: flex;
+//      align-items: center;
+//      gap: 10px;
+//      margin: auto 0 0;
+//      padding: 8px;
+//      border-radius: 10px;
+//      color: $accent-color-2;
+//      font-weight: 600;
+//      cursor: pointer;
+//      transition: background-color 0.4s ease-in-out;
+//
+//      &:hover {
+//        background-color: rgba(221, 148, 38, 0.2);
+//        //border-radius: 10px;
+//      }
+//
+//      //.location-icon {
+//      //  width: 24px;
+//      //  height: 24px;
+//      //  fill: $accent-color-2;
+//      //  border-radius: 50% 50% 50% 0;
+//      //  transform: rotate(-45deg);
+//      //  margin-top: 8px;
+//      //  &::after {
+//      //    content: '';
+//      //    position: absolute;
+//      //    top: 50%;
+//      //    left: 50%;
+//      //    transform: translate(-50%, -50%) rotate(45deg);
+//      //    width: 10px;
+//      //    height: 10px;
+//      //    background-color: #ffffff;
+//      //    border-radius: 50%;
+//      //  }
+//      //}
+//
+//      .location-text {
+//        font-size: 0.95rem;
+//        color: #7f8c8d;
+//      }
+//    }
+//  }
+//}
+//
+//// --- Responsiveness ---
+//
+//@media (max-width: 600px) {
+//  .round-table-card {
+//    width: 90%;
+//    margin: 15px auto;
+//
+//    .card-image-container {
+//      height: 200px;
+//    }
+//
+//    .card-content {
+//      padding: 15px;
+//
+//      .title {
+//        font-size: 1.4rem;
+//      }
+//
+//      .subtitle {
+//        font-size: 1rem;
+//      }
+//
+//      .location {
+//        .location-icon {
+//          width: 20px;
+//          height: 20px;
+//          &::after {
+//            width: 8px;
+//            height: 8px;
+//          }
+//        }
+//        .location-text {
+//          font-size: 0.9rem;
+//        }
+//      }
+//
+//      .overlay-elements {
+//        bottom: 10px;
+//        left: 10px;
+//        .profile-pic {
+//          width: 35px;
+//          height: 35px;
+//        }
+//      }
+//    }
+//  }
+//}
+
+.scheduled-event-card {
+  position: relative;
+  background: $light-grey;
   border-radius: 20px;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-  width: 380px;
-  margin: 20px auto;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
   overflow: hidden;
-  display: flex;
-  flex-direction: column;
-
-  .card-image-container {
-    position: relative;
-    width: 100%;
-    height: 250px;
-    overflow: hidden;
-
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    .overlay-elements {
-      position: absolute;
-      bottom: 15px;
-      left: 15px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-
-      .microphone-icon, .profile-pics {
-        display: flex;
-        align-items: center;
-      }
-
-      .microphone-icon {
-        // Stile per l'icona del microfono se necessario, qui è solo un placeholder
-        // background-color: rgba(0,0,0,0.4); // Esempio di sfondo per l'icona
-        // border-radius: 50%;
-        // padding: 5px;
-        // color: white;
-      }
-
-      .profile-pics {
-        .profile-pic {
-          width: 40px;
-          height: 40px;
-          border-radius: 50%;
-          border: 2px solid #ffffff;
-          box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-          margin-left: -10px;
-          &:first-child {
-            margin-left: 0;
-          }
-        }
-      }
-    }
-  }
-
-  .card-content {
-    padding: 20px;
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-
-    .title {
-      font-size: 1.6rem;
-      font-weight: bold;
-      color: #2c3e50;
-      margin-bottom: 5px;
-    }
-
-    .subtitle {
-      font-size: 1.1rem;
-      color: #3498db;
-      margin-bottom: 15px;
-    }
-
-    .location {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-top: auto;
-
-      .location-icon {
-        width: 24px;
-        height: 24px;
-        background-color: #f1c40f;
-        border-radius: 50% 50% 50% 0;
-        transform: rotate(-45deg);
-        margin-top: 8px;
-        &::after {
-          content: '';
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%) rotate(45deg);
-          width: 10px;
-          height: 10px;
-          background-color: #ffffff;
-          border-radius: 50%;
-        }
-      }
-
-      .location-text {
-        font-size: 0.95rem;
-        color: #7f8c8d;
-      }
-    }
-  }
+  margin: 1rem;
+  flex: 1;
+  max-width: 350px;
 }
 
-// --- Responsiveness ---
+.card-content {
+  padding: 0.5rem;
+}
 
-@media (max-width: 600px) {
-  .round-table-card {
-    width: 90%;
-    margin: 15px auto;
+.scheduled-event-card-body {
+  margin-top: -1rem;
+  padding: 0.5rem;
+}
 
-    .card-image-container {
-      height: 200px;
-    }
+.card-image-container {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 20px;
+  margin-bottom: 0;
+  //margin-bottom: 0.8rem;
+}
 
-    .card-content {
-      padding: 15px;
+.event-time {
+  background: $light-grey;
+  color: $accent-color-1;
+  font-weight: bold;
+  padding: 0.25rem .8rem;
+  font-size: 1.1rem;
+  border-radius: 25px;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+  width: fit-content;
+  user-select: none;
+  transition: font-size 0.25s ease, padding 0.25s ease;
+}
 
-      .title {
-        font-size: 1.4rem;
-      }
+.event-title {
+  font-size: clamp(0.95rem, 2vw, 1.2rem);
+  //font-size: 1.1rem;
+  margin: 0.5rem 0;
+  transition: font-size 0.25s ease;
+}
 
-      .subtitle {
-        font-size: 1rem;
-      }
+.speakers-list {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding-left: .2rem;
+  padding-right: .3rem;
+  padding-top: .5rem;
+}
 
-      .location {
-        .location-icon {
-          width: 20px;
-          height: 20px;
-          &::after {
-            width: 8px;
-            height: 8px;
-          }
-        }
-        .location-text {
-          font-size: 0.9rem;
-        }
-      }
+.speakers-list .mic {
+  color: $accent-color-1;
+  margin-right: 0.4rem;
+  flex-shrink: 0;
+  transition: font-size 0.25s ease;
+}
 
-      .overlay-elements {
-        bottom: 10px;
-        left: 10px;
-        .profile-pic {
-          width: 35px;
-          height: 35px;
-        }
-      }
+.avatar-scroll {
+  display: flex;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  transition: all 0.25s ease;
+}
+
+.avatars-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.speaker-avatar {
+  background: none;
+  border: none;
+  margin-right: 0.4rem;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: transform 0.25s ease, margin 0.25s ease;
+}
+
+.speaker-avatar img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  transition: width 0.25s ease, height 0.25s ease;
+}
+
+.card-location {
+  display: flex;
+  align-items: center;
+  color: $accent-color-2;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+
+.card-location i {
+  margin-right: 0.4rem;
+}
+
+@media (max-width: $breakpoint-md) {
+  .event-title {
+    font-size: 0.95rem;
+  }
+  .event-time {
+    font-size: .9rem;
+    top: 20px;
+    left: 20px;
+    //padding: 0.4rem 0.8rem;
+    padding: .2rem .8rem;
+  }
+  .speaker-avatar img {
+    width: 28px;
+    height: 28px;
+  }
+  .card-location {
+    font-size: 0.8rem;
+  }
+
+  .speakers-list {
+    padding-top: .2rem;
+    padding-left: .2rem;
+    padding-right: .3rem;
+
+    i {
+      font-size: .9rem;
     }
   }
 }

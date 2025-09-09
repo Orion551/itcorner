@@ -1,20 +1,4 @@
 {{ define "main" }}
-<script>
-    document.addEventListener("DOMContentLoaded", () => {
-        document.querySelectorAll(".speaker-avatar").forEach(btn => {
-            btn.addEventListener("click", () => {
-                const id = "modal-" + btn.dataset.speaker;
-                document.getElementById(id).classList.remove("hidden");
-            });
-        });
-
-        document.querySelectorAll(".close-modal").forEach(btn => {
-            btn.addEventListener("click", () => {
-                btn.closest(".speaker-modal").classList.add("hidden");
-            });
-        });
-    });
-</script>
 <section class="schedule-grid">
     {{ $events := (where (site.GetPage "section" "scheduled-event").RegularPages "Draft" false) }}
     {{ $byDay := dict }}
@@ -29,41 +13,7 @@
     <div class="day-column">
         <h2>{{ $day }}</h2>
         {{ range sort . "Params.weight" }}
-        <div class="round-table-card">
-            <div class="card-content">
-
-                {{ with .Params.coverImage }}
-                <img class="card-image-container" src="{{ . | relURL }}" alt="{{ $.Params.title }}">
-                {{ end }}
-
-                <h3>{{ .Params.name }}</h3>
-                <p><strong>📍</strong> {{ .Params.address }}</p>
-
-                {{ with .Params.speakers }}
-                <div class="speakers-list">
-                    {{ range . }}
-                    {{ $speaker := site.GetPage (printf "/guests/%s" .) }}
-                    {{ with $speaker }}
-                    <button class="speaker-avatar" data-speaker="{{ .File.BaseFileName }}">
-                        <img src="{{ .Params.image | relURL }}" alt="{{ .Title }}">
-                    </button>
-
-                    <div id="modal-{{ .File.BaseFileName }}" class="speaker-modal hidden">
-                        <div class="modal-content">
-                            <img src="{{ .Params.image | relURL }}" alt="{{ .Title }}">
-                            <h3>{{ .Title }}</h3>
-                            <p><strong>{{ .Params.role }}</strong></p>
-                            <div class="bio">{{ .Params.bio | markdownify }}</div>
-                            <button class="close-modal">Close</button>
-                        </div>
-                    </div>
-                    {{ end }}
-                    {{ end }}
-                </div>
-                {{ end }}
-
-            </div>
-        </div>
+            {{ partial "event-card.html" . }}
         {{ end }}
     </div>
     {{ end }}

@@ -61,6 +61,8 @@ collections:
         media_library:
           config:
             multiple: false
+      - { label: "Start Time", name: "start_time", widget: "datetime", format: "HH:mm", time_format: "HH:mm", date_format: false }
+      - { label: "End Time", name: "end_time", widget: "datetime", format: "HH:mm", time_format: "HH:mm", date_format: false }
       - { label: "Description", name: "description", widget: "markdown", required: false }
       - { label: "Speaker", name: "speaker", widget: "string", required: false }
       - { label: "Draft", name: "draft", widget: "boolean", default: true }

@@ -19,32 +19,33 @@ theme = 'cisf26-theme'
   name = "Chi Siamo"
   pageRef = "/about-us/"
   weight = 20
-  icon = "users-solid"
   [menus.main.params]
+    icon = "fa-users"
     bottombar = false
 [[menus.main]]
   identifier = "building-solid"
   name = "Strutture"
   pageRef = "/locations/"
   weight = 30
-  icon = "building-solid"
   [menus.main.params]
+    icon = "fa-building-columns"
     bottombar = false
 [[menus.main]]
   identifier = "clipboard-user-solid"
   name = "Ospiti"
   pageRef = "/guests/"
   weight = 40
-  icon = "clipboard-user-solid"
+#  icon = "fa-clipboard-user"
   [menus.main.params]
+    icon = "fa-clipboard-user"
     bottombar = false
 [[menus.main]]
   identifier = "calendar-solid"
   name = "Programma"
   pageRef = "/schedule/"
   weight = 50
-  icon = "calendar-solid"
   [menus.main.params]
+    icon = "fa-calendar-days"
     bottombar = true
     mobile_sort = 2
 [[menus.main]]
@@ -52,8 +53,8 @@ theme = 'cisf26-theme'
   name = "Partners"
   pageRef = "/partners/"
   weight = 60
-  icon = "handshake-solid"
   [menus.main.params]
+    icon = "fa-handshake"
     bottombar = true
     mobile_sort = 1
 [[menus.main]]
@@ -61,8 +62,8 @@ theme = 'cisf26-theme'
   name = "Iscriviti"
   pageRef = "/subscribe/"
   weight = 70
-  icon = "signature-solid"
   [menus.main.params]
+    icon = "fa-file-signature"
     bottombar = true
     mobile_sort = 3
 [[menus.main]]
@@ -70,8 +71,8 @@ theme = 'cisf26-theme'
   name = "Sostienici"
   pageRef = "/support-us/"
   weight = 80
-  icon = "support-solid"
   [menus.main.params]
+    icon = "fa-hand-holding-heart"
     bottombar = true
     mobile_sort = 4
 
