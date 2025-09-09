@@ -15,56 +15,47 @@
         });
     });
 </script>
-
-<div class="scheduled-event-card">
+<div class="scheduled-event-card" data-context="{{ .Params.context }}">
     <div class="card-content">
-         <!-- Time -->
         <div class="event-time">
             <span>{{ with .Params.start_time }}{{ . }}{{ end }}
             {{ if .Params.end_time }} - {{ .Params.end_time }}{{ end }}</span>
         </div>
 
-        <!-- Cover image -->
         {{ with .Params.coverImage }}
         <img class="card-image-container" src="{{ . | relURL }}" alt="{{ $.Params.title }}">
         {{ end }}
 
-
         <div class="scheduled-event-card-body">
-            <!-- Title -->
             <h3 class="event-title">{{ .Params.name }}</h3>
 
-            <!-- Speakers -->
             {{ with .Params.speakers }}
             <div class="speakers-list">
                 <i class="fa-solid fa-microphone mic"></i>
                 <div class="avatar-scroll">
                     {{ range . }}
-                        {{ $speaker := site.GetPage (printf "/guests/%s" .) }}
-                            {{ with $speaker }}
-                                <!-- Avatar -->
-                                <button class="speaker-avatar" data-speaker="{{ .File.BaseFileName }}">
-                                    <img src="{{ .Params.image | relURL }}" alt="{{ .Title }}">
-                                </button>
-                                <!-- Speaker info modal -->
-                                <div id="modal-{{ .File.BaseFileName }}" class="speaker-modal hidden">
-                                    <div class="modal-content">
-                                        <img src="{{ .Params.image | relURL }}" alt="{{ .Title }}">
-                                        <h3>{{ .Title }}</h3>
-                                        <p><strong>{{ .Params.role }}</strong></p>
-                                        <div class="bio">{{ .Params.bio | markdownify }}</div>
-                                        <button class="close-modal">
-                                            <i class="fa-solid fa-circle-xmark"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            {{ end }}
-                        {{ end }}
+                    {{ $speaker := site.GetPage (printf "/guests/%s" .) }}
+                    {{ with $speaker }}
+                    <button class="speaker-avatar" data-speaker="{{ .File.BaseFileName }}">
+                        <img src="{{ .Params.image | relURL }}" alt="{{ .Title }}">
+                    </button>
+                    <div id="modal-{{ .File.BaseFileName }}" class="speaker-modal hidden">
+                        <div class="modal-content">
+                            <img src="{{ .Params.image | relURL }}" alt="{{ .Title }}">
+                            <h3>{{ .Title }}</h3>
+                            <p><strong>{{ .Params.role }}</strong></p>
+                            <div class="bio">{{ .Params.bio | markdownify }}</div>
+                            <button class="close-modal">
+                                <i class="fa-solid fa-circle-xmark"></i>
+                            </button>
+                        </div>
+                    </div>
+                    {{ end }}
+                    {{ end }}
                 </div>
             </div>
             {{ end }}
 
-            <!-- Address -->
             {{ with .Params.address }}
             <a href="https://www.google.com/maps/search/?api=1&query={{ . | urlize }}"
                target="_blank"
@@ -75,7 +66,5 @@
             </a>
             {{ end }}
         </div>
-
-
     </div>
 </div>

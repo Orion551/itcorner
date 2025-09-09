@@ -1,5 +1,17 @@
 {{ define "main" }}
 <section class="schedule-grid">
+    <section class="schedule-intro">
+        {{ .Content }}
+    </section>
+    <div class="filters-container">
+<!--        <button class="filter-button active" data-filter="all">Tutto</button>-->
+        {{ $contextPages := site.GetPage "section" "contexts" }}
+        {{ range $contextPages.RegularPages }}
+        <button class="filter-button" data-filter="{{ .Params.name | urlize }}">
+            {{ .Params.label }}
+        </button>
+        {{ end }}
+    </div>
     {{ $events := (where (site.GetPage "section" "scheduled-event").RegularPages "Draft" false) }}
     {{ $byDay := dict }}
     {{ range $events }}
@@ -19,5 +31,41 @@
     {{ end }}
     {{ end }}
 </section>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const filterButtons = document.querySelectorAll(".filter-button");
+        const eventCards = document.querySelectorAll(".scheduled-event-card");
+        const dayColumns = document.querySelectorAll(".day-column");
+
+        filterButtons.forEach(button => {
+            button.addEventListener("click", () => {
+                const filter = button.dataset.filter;
+
+                // Removes 'active' class from all buttons and adds it to the one the user clicked
+                filterButtons.forEach(btn => btn.classList.remove("active"));
+                button.classList.add("active");
+
+                // Show/Hide cards and columns based on filter
+                eventCards.forEach(card => {
+                    const cardContext = card.dataset.context;
+                    if (filter === "all" || cardContext === filter) {
+                        card.style.display = "block";
+                    } else {
+                        card.style.display = "none";
+                    }
+                });
+
+                dayColumns.forEach(column => {
+                    const visibleCards = column.querySelectorAll(".scheduled-event-card[style='display: block;']").length;
+                    if (visibleCards > 0) {
+                        column.style.display = "block";
+                    } else {
+                        column.style.display = "none";
+                    }
+                });
+            });
+        });
+    });
+</script>
 
 {{ end }}

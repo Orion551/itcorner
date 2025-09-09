@@ -41,7 +41,6 @@ collections:
       - { label: "Event Name", name: "name", widget: "string" }
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Address", name: "address", widget: "string" }
-      - { label: "Event Date & Time", name: "event_date", widget: "datetime", format: "YYYY-MM-DDTHH:mm:ss" }
       - label: "Day"
         name: "day"
         widget: "select"
@@ -61,19 +60,31 @@ collections:
         media_library:
           config:
             multiple: false
+        required: false
       - { label: "Start Time", name: "start_time", widget: "datetime", format: "HH:mm", time_format: "HH:mm", date_format: false }
       - { label: "End Time", name: "end_time", widget: "datetime", format: "HH:mm", time_format: "HH:mm", date_format: false }
       - { label: "Description", name: "description", widget: "markdown", required: false }
-      - { label: "Speaker", name: "speaker", widget: "string", required: false }
+      # - { label: "Speaker", name: "speaker", widget: "string", required: false }
       - { label: "Draft", name: "draft", widget: "boolean", default: true }
       - label: "Speakers"
         name: "speakers"
         widget: "relation"
         collection: "guests"
-        search_fields: ["title"]
+        search_fields: [ "title" ]
         value_field: "{{slug}}"
-        display_fields: ["title"]
+        display_fields: [ "title" ]
         multiple: true
+        required: false
+      # Aggiungi il nuovo campo per selezionare il contesto
+      - label: "Event Context"
+        name: "context"
+        widget: "relation"
+        collection: "event_contexts"
+        search_fields: [ "title" ]
+        value_field: "title"
+        display_fields: [ "title" ]
+        required: false
+        default: "all"
   - name: "guests"
     label: "Guests"
     folder: "content/guests"
@@ -91,3 +102,10 @@ collections:
         media_library:
           config:
             multiple: false
+  - name: "event_contexts"
+    label: "Event Contexts"
+    folder: "content/contexts"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Context Name", name: "title", widget: "string" }

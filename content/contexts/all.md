@@ -1,0 +1,4 @@
+---
+label: "Tutto"
+name: "all"
+---
