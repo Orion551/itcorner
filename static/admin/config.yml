@@ -80,7 +80,6 @@ collections:
         display_fields: [ "title" ]
         multiple: true
         required: false
-      # Aggiungi il nuovo campo per selezionare il contesto
       - label: "Event Context"
         name: "context"
         widget: "relation"

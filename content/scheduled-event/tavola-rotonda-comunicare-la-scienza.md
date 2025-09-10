@@ -1,7 +1,9 @@
 ---
 name: Tavola Rotonda "Comunicare la Scienza"
 title: Tavola Rotonda "Comunicare la Scienza"
-address: Università degli Studi di Roma Tre, Via Ostiense, 133B, 00154 Roma RM
+address:
+  display_name: "Rettorato Universitá Roma Tre"
+  location_url: "https://maps.app.goo.gl/qdPH4RkPfAp46mv87"
 event_date: 2026-04-13T18:00:00
 day: monday
 weight: 4
