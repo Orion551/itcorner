@@ -1,7 +1,9 @@
 ---
 name: Cerimonia di apertura
 title: Cerimonia di apertura
-address: Università degli Studi Roma Tre, Rettorato
+address:
+  display_name: "Rettorato Universitá Roma Tre"
+  location_url: "https://maps.app.goo.gl/qdPH4RkPfAp46mv87"
 event_date: 2026-04-13T15:00:00
 day: monday
 weight: 2
