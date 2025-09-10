@@ -40,7 +40,12 @@ collections:
     fields:
       - { label: "Event Name", name: "name", widget: "string" }
       - { label: "Title", name: "title", widget: "string" }
-      - { label: "Address", name: "address", widget: "string" }
+      - label: "Address"
+        name: "address"
+        widget: "object"
+        fields:
+          - { label: "Display Name", name: "display_name", widget: "string", required: false }
+          - { label: "Location URL", name: "location_url", widget: "string", required: false, hint: "https://maps.app.goo.gl/TWg5j1DyAdd5CvCH6" }
       - label: "Day"
         name: "day"
         widget: "select"

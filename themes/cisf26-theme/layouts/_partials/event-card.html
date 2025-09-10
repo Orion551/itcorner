@@ -57,12 +57,12 @@
             {{ end }}
 
             {{ with .Params.address }}
-            <a href="https://www.google.com/maps/search/?api=1&query={{ . | urlize }}"
+            <a href="{{ .location_url }}"
                target="_blank"
                rel="noopener noreferrer"
                class="card-location">
                 <i class="fa-solid fa-location-dot"></i>
-                <span>{{ . }}</span>
+                <span>{{ .display_name }}</span>
             </a>
             {{ end }}
         </div>
