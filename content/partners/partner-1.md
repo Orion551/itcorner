@@ -1,7 +1,7 @@
 ---
-title: "Partner 1"
+title: "INFN"
 website: ""
-description: ""
-logo: ""
+description: "Description"
+logo: "images/partners/infn.webp"
 category: "Partners"
 ---
