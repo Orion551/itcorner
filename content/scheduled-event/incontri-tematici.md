@@ -2,7 +2,7 @@
 name: Incontri tematici
 title: Incontri tematici
 day: wednesday
-weight: 5
+weight: 2
 start_time: 10:30
 end_time: 13:30
 description: |-
