@@ -1,6 +1,6 @@
 ---
-name: Evento di chiusura
-title: Evento di chiusura
+name: Cerimonia di chiusura
+title: Cerimonia di chiusura
 address:
   display_name: Rettorato Universitá Roma Tre
   location_url: https://maps.app.goo.gl/qdPH4RkPfAp46mv87
