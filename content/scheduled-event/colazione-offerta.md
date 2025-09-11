@@ -5,6 +5,6 @@ day: friday
 weight: 1
 start_time: 10:00
 end_time: 11:00
-draft: true
+draft: false
 context: social-events
 ---
