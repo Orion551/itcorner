@@ -6,7 +6,7 @@ address:
   location_url: https://maps.app.goo.gl/qdPH4RkPfAp46mv87
 day: monday
 weight: 3
-coverImage: ""
+coverImage: /itcorner/images/uploads/business-business-people-businessman-busy-cafe-coffee-1433385-pxhere.com.webp
 start_time: 17:00
 end_time: 18:00
 draft: false
