@@ -1,0 +1,73 @@
+{{ define "main" }}
+<style>
+    .partners-page {
+        padding: 2rem;
+    }
+
+    .partner-category {
+        margin-bottom: 3rem;
+    }
+
+    .partner-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 1.5rem;
+    }
+
+    .partner-card {
+        background: #fff;
+        border-radius: 12px;
+        padding: 1rem;
+        text-align: center;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+
+    .partner-logo {
+        max-width: 120px;
+        margin: 0 auto 1rem;
+    }
+
+    .partner-link {
+        display: inline-block;
+        margin-top: 0.5rem;
+        font-weight: bold;
+        color: #0066cc;
+    }
+</style>
+<section class="partners-page">
+
+    <h1 class="page-title">{{ .Title }}</h1>
+    <div class="page-description">{{ .Content }}</div>
+
+    {{/* Recuperiamo tutte le categorie */}}
+    {{ $categories := where .Site.RegularPages "Section" "partner-categories" }}
+
+    {{ range $categories }}
+    <section class="partner-category">
+        <h2>{{ .Title }}</h2>
+        {{ with .Params.description }}
+        <p>{{ . }}</p>
+        {{ end }}
+
+        <div class="partner-grid">
+            {{ $catPartners := where (where $.Site.RegularPages "Section" "partners") "Params.category" .Title }}
+            {{ range $catPartners }}
+            <div class="partner-card">
+                {{ with .Params.logo }}
+                <img src="{{ . | relURL }}" alt="{{ $.Title }} logo" class="partner-logo"/>
+                {{ end }}
+                <h3>{{ .Title }}</h3>
+                {{ with .Params.description }}
+                <p>{{ . }}</p>
+                {{ end }}
+                {{ with .Params.website }}
+                <a href="{{ . }}" target="_blank" rel="noopener" class="partner-link">Visita sito</a>
+                {{ end }}
+            </div>
+            {{ end }}
+        </div>
+    </section>
+    {{ end }}
+
+</section>
+{{ end }}
