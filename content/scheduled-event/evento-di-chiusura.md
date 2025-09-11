@@ -1,17 +1,17 @@
 ---
-name: "Evento di chiusura"
-title: "Evento di chiusura"
+name: Evento di chiusura
+title: Evento di chiusura
 address:
-  display_name: "Rettorato Universitá Roma Tre"
-  location_url: "https://maps.app.goo.gl/qdPH4RkPfAp46mv87"
-event_date: 2026-04-07T11:21:00
-day: "tuesday"
+  display_name: Rettorato Universitá Roma Tre
+  location_url: https://maps.app.goo.gl/qdPH4RkPfAp46mv87
+day: friday
 weight: 10
-coverImage: "/itcorner/images/uploads/20250822_164146.jpg"
-context: "round-table"
-start_time: "09:00"
-end_time: "10:30"
+coverImage: /itcorner/images/uploads/rettorato_5-2048x1152-1.webp
+start_time: 14:30
+end_time: 16:30
 draft: false
 speakers:
   - carlo-conti
+context: " Institutional-moments"
+event_date: 2026-04-07T11:21:00
 ---
