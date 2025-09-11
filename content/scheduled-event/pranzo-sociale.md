@@ -1,5 +1,5 @@
 ---
-name: "Martedì - Pranzo sociale "
+name: "Pranzo sociale "
 title: Pranzo sociale
 day: tuesday
 weight: 2
