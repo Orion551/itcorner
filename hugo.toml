@@ -35,7 +35,6 @@ theme = 'cisf26-theme'
   name = "Ospiti"
   pageRef = "/guests/"
   weight = 40
-#  icon = "fa-clipboard-user"
   [menus.main.params]
     icon = "fa-clipboard-user"
     bottombar = false
