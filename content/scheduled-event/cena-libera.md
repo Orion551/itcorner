@@ -1,5 +1,5 @@
 ---
-name: Cena libera
+name: Cena libera - martedì
 title: Cena libera
 day: tuesday
 weight: 2
