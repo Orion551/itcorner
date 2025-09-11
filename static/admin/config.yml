@@ -114,3 +114,34 @@ collections:
     fields:
       - { label: "Context Name", name: "label", widget: "string", hint: "Un nome riconoscibile per te -- verrá mostrato sul sito" }
       - { label: "Variable Name", name: "name", widget: "string", hint: "Il nome della variabile, prediligerei roba lowercase e con i trattini e ti prego in inglese :)" }
+  - name: "partner-category"
+    label: "Partner Categories"
+    folder: "content/partner-categories"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Category Name", name: "title", widget: "string" }
+      - { label: "Description", name: "description", widget: "text", required: false }
+  - name: "partner"
+    label: "Partners & Sponsors"
+    folder: "content/partners"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Name", name: "title", widget: "string" }
+      - { label: "Website", name: "website", widget: "string", required: false }
+      - { label: "Description", name: "description", widget: "text", required: false }
+      - label: "Logo"
+        name: "logo"
+        widget: "image"
+        choose_url: false
+        media_library:
+          config:
+            multiple: false
+      - label: "Category"
+        name: "category"
+        widget: "relation"
+        collection: "partner-category"
+        search_fields: [ "title" ]
+        value_field: "title"
+        display_fields: [ "title" ]
