@@ -1,0 +1,4 @@
+---
+label: Panel
+name: panel
+---
