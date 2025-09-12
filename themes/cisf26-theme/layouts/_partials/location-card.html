@@ -1,0 +1,46 @@
+<style>
+    .structure-card {
+        padding: 1rem;
+        background: #fff;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: box-shadow 0.2s;
+    }
+
+    .structure-card:hover {
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .navigate-btn {
+        margin-top: 0.5rem;
+        padding: 0.4rem 0.8rem;
+        border: none;
+        border-radius: 6px;
+        background: #007bff;
+        color: #fff;
+        cursor: pointer;
+    }
+</style>
+{{ $type := .Params.type }}
+{{ $typePage := index (where (where .Site.RegularPages "Section" "location-types") "Title" $type) 0 }}
+<div class="structure-card"
+    data-type="{{ .Params.type }}"
+     data-title="{{ .Title }}"
+     data-address="{{ .Params.address }}"
+     data-description="{{ .Params.description }}"
+     data-website="{{ .Params.website }}"
+     data-lat="{{ .Params.lat }}"
+     data-lng="{{ .Params.lng }}"
+     data-color="{{ $typePage.Params.color }}"
+>
+    <div style="display: flex; flex-direction: row; justify-content: space-between">
+        <h3>{{ .Title }}</h3>
+        <button id="location-card-info-btn">
+            <i class="fa-solid fa-info"></i>
+        </button>
+    </div>
+
+    <p>{{ .Params.address }}</p>
+    <button class="navigate-btn">Indicazioni</button>
+</div>
