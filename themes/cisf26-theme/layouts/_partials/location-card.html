@@ -31,7 +31,13 @@
      data-lat="{{ .Params.lat }}"
      data-lng="{{ .Params.lng }}"
 >
-    <h3>{{ .Title }}</h3>
+    <div style="display: flex; flex-direction: row; justify-content: space-between">
+        <h3>{{ .Title }}</h3>
+        <button id="location-card-info-btn">
+            <i class="fa-solid fa-info"></i>
+        </button>
+    </div>
+
     <p>{{ .Params.address }}</p>
-    <button class="navigate-btn">Naviga</button>
+    <button class="navigate-btn">Indicazioni</button>
 </div>
