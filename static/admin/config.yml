@@ -146,3 +146,25 @@ collections:
         search_fields: [ "title" ]
         value_field: "title"
         display_fields: [ "title" ]
+  - name: "location-types"
+    label: "Types of Structure"
+    folder: "content/location-types"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { name: "title", label: "Title", widget: "string" }
+      - { name: "color", label: "Color", widget: "color" }
+
+  - name: "locations"
+    label: "Structures"
+    folder: "content/locations"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { name: "title", label: "Nome", widget: "string" }
+      - { name: "address", label: "Address", widget: "string" }
+      - { name: "lat", label: "Latitude", widget: "number" }
+      - { name: "lng", label: "Longitude", widget: "number" }
+      - { name: "type", label: "Type", widget: "relation", collection: "location-types", searchFields: ["title"], valueField: "title" }
+      - { name: "image", label: "Image", widget: "image" }
+      - { name: "website", label: "Website", widget: "string", required: false }
