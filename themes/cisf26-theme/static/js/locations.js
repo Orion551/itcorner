@@ -1,4 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
+    const locationPinColors = {
+        "Laboratorio": "#ff6600",
+        "Universitá": "#214b72",
+    }
     const filterButtons = document.querySelectorAll(".filter-btn");
     const cards = document.querySelectorAll(".structure-card");
     const modal = document.getElementById("structure-modal");
@@ -16,23 +20,13 @@ document.addEventListener("DOMContentLoaded", () => {
         attribution: "&copy; OpenStreetMap contributors"
     }).addTo(map);
 
-    // const faIcon = L.ExtraMarkers.icon({
-    //     icon: 'fa-house', // Qui indichi direttamente il nome dell'icona
-    //     markerColor: 'red',
-    //     shape: 'circle'
-    // });
-
     const locationDot = L.divIcon({
-        html: '<i class="fa-solid fa-location-dot fa-2x"></i>',
-        iconSize: [38, 95],
-        // iconSize: [128, 128],
+        html: '<i class="fa-solid fa-location-pin fa-xl" style="color: #007aff; filter: drop-shadow(0px 0px 5px #2b2b2b); -webkit-text-stroke: 2px white;"></i>',
         className: 'myDivIcon'
     });
 
     const youAreHereIcon = L.divIcon({
-        html: '<i class="fa-solid fa-location-crosshairs fa-2x"></i>',
-        iconSize: [38, 95],
-        // iconSize: [64, 64],
+        html: '<i class="fa-solid fa-circle fa-lg" style="color: #007aff; filter: drop-shadow(0px 0px 5px #2b2b2b); -webkit-text-stroke: 2px white;"></i>',
         className: 'myDivIcon'
     })
 
@@ -40,12 +34,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Add markers from cards
     cards.forEach(card => {
+        console.log('card.dataset', card.dataset);
         const lat = parseFloat(card.dataset.lat);
         const lng = parseFloat(card.dataset.lng);
         if (!isNaN(lat) && !isNaN(lng)) {
-            const marker = L.marker([lat, lng], { icon: locationDot })
+            const marker = L.marker([lat, lng], {
+                icon: L.divIcon({
+                    html: `<i class="fa-solid fa-location-pin fa-xl" style='color: ${locationPinColors[card.dataset.type]}; filter: drop-shadow(0px 0px 5px #2b2b2b); -webkit-text-stroke: 2px white;'></i>`,
+                    className: 'myDivIcon'
+                })
+            })
                 .addTo(map)
-                .bindPopup(`<strong>${card.dataset.title}</strong><br>${card.dataset.address}`);
+                .bindPopup(`<strong>${card.dataset.title}</strong><br>${card.dataset.description}`);
+            // const marker = L.marker([lat, lng], { icon: locationDot, style: { color: 'red' } })
+            //     .addTo(map)
+            //     .bindPopup(`<strong>${card.dataset.title}</strong><br>${card.dataset.address}`);
             markers.push({ marker, category: card.dataset.category });
         }
 
