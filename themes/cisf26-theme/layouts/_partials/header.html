@@ -26,34 +26,22 @@
         <li class="bottom-item">
             <a href="{{ .URL }}" class="bottom-link {{ if $currentPage.IsMenuCurrent "main" . }}active{{ end }}">
                     <i class="fa-solid {{ .Params.icon }}"></i>
-<!--                <svg class="bottom-icon">-->
-<!--                    <use xlink:href='{{ "images/icons.svg" | relURL }}#{{ .Identifier }}'></use>-->
-<!--                </svg>-->
                 <span class="bottom-text">{{ .Name }}</span>
             </a>
         </li>
         {{ end }}
 
         <li class="more-menu-icon more-menu-toggle">
-            <svg>
-                <use xlink:href='{{ "images/icons.svg" | relURL }}#{{ "more-dots-vertical-solid" }}'></use>
-            </svg>
+            <i class="fa-solid fa-ellipsis-vertical"></i>
         </li>
     </ul>
 </nav>
 
 <aside class="mobile-popup-menu">
-<!--    <div class="popup-header">-->
-<!--        <button class="popup-close-btn">&times;</button>-->
-<!--    </div>-->
     <ul class="popup-menu">
         {{- range (where .Site.Menus.main "Params.bottombar" false).ByWeight }}
         <li class="popup-item">
             <i class="fa-solid {{ .Params.icon }}"></i>
-<!--            <i class="{{ .Params.icon }}"></i>-->
-<!--            <svg>-->
-<!--                <use xlink:href='{{ "images/icons.svg" | relURL }}#{{ .Identifier }}'></use>-->
-<!--            </svg>-->
             <a href="{{ .URL }}" class="popup-link">{{ .Name }}</a>
         </li>
         {{- end }}
