@@ -1,8 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const locationPinColors = {
-        "Laboratorio": "#ff6600",
-        "Universitá": "#214b72",
-    }
     const filterButtons = document.querySelectorAll(".filter-btn");
     const cards = document.querySelectorAll(".structure-card");
     const modal = document.getElementById("structure-modal");
@@ -33,9 +29,12 @@ document.addEventListener("DOMContentLoaded", () => {
         const lng = parseFloat(card.dataset.lng);
 
         if (!isNaN(lat) && !isNaN(lng)) {
+            const color = card.dataset.color || "#007aff";
             const marker = L.marker([lat, lng], {
                 icon: L.divIcon({
-                    html: `<i class="fa-solid fa-location-pin fa-xl" style='color: ${locationPinColors[card.dataset.type]}; filter: drop-shadow(0px 0px 5px #2b2b2b); -webkit-text-stroke: 2px white;'></i>`,
+                    html: `<i class="fa-solid fa-location-pin fa-xl" style='color: ${color}; 
+                                 filter: drop-shadow(0px 0px 5px #2b2b2b); 
+                                 -webkit-text-stroke: 2px white;'></i>`,
                     className: 'myDivIcon'
                 })
             }).addTo(map);

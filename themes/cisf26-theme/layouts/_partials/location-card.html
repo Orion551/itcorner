@@ -22,6 +22,8 @@
         cursor: pointer;
     }
 </style>
+{{ $type := .Params.type }}
+{{ $typePage := index (where (where .Site.RegularPages "Section" "location-types") "Title" $type) 0 }}
 <div class="structure-card"
     data-type="{{ .Params.type }}"
      data-title="{{ .Title }}"
@@ -30,6 +32,7 @@
      data-website="{{ .Params.website }}"
      data-lat="{{ .Params.lat }}"
      data-lng="{{ .Params.lng }}"
+     data-color="{{ $typePage.Params.color }}"
 >
     <div style="display: flex; flex-direction: row; justify-content: space-between">
         <h3>{{ .Title }}</h3>
