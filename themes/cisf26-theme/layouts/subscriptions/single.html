@@ -1,0 +1,103 @@
+{{ define "main" }}
+<style>
+    #custom-google-form {
+        max-width: 600px;
+        margin: 2rem auto;
+        padding: 1.5rem;
+        border-radius: 10px;
+        background: #fff;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    #custom-google-form label {
+        display: block;
+        margin-bottom: 1rem;
+        font-weight: bold;
+    }
+
+    #custom-google-form input,
+    #custom-google-form textarea {
+        width: 100%;
+        padding: 0.6rem;
+        margin-top: 0.3rem;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+    }
+
+    #custom-google-form button {
+        margin-top: 1rem;
+        padding: 0.7rem 1.2rem;
+        border: none;
+        border-radius: 6px;
+        background: #007bff;
+        color: white;
+        font-size: 1rem;
+        cursor: pointer;
+    }
+
+    #custom-google-form button:hover {
+        background: #0056b3;
+    }
+</style>
+<section class="iscrizioni-page">
+    <h1>{{ .Title }}</h1>
+
+    <div class="page-content">
+        {{ .Content }}
+    </div>
+
+    {{/* Date di apertura/chiusura prese dal frontmatter */}}
+    {{ $now := now }}
+    {{ $start := time .Params.start_date }}
+    {{ $end := time .Params.end_date }}
+
+    {{ if and (ge $now $start) (le $now $end) }}
+    <form id="custom-google-form"
+          action="https://docs.google.com/forms/d/e/1FAIpQLScOq262CVT2xSc6iassduh_AbQY75nYZZv9BRd8tn0U0TR0Eg/formResponse"
+          method="POST"
+          target="hidden_iframe"
+          onsubmit="formSubmitted()">
+
+        <label>
+            Nome:
+            <input type="text" name="entry.2109614896" required>
+        </label>
+
+        <!-- Email -->
+        <label>
+            Email:
+            <input type="email" name="entry.648108435" required>
+        </label>
+
+<!--        <fieldset>-->
+<!--            <legend>Studente...*</legend>-->
+<!--            <label><input type="radio" name="entry.690018632_sentinel" value="triennale"> Triennale </label>-->
+<!--            <label><input type="radio" name="entry.690018632_sentinel" value="magistrale"> Magistrale </label>-->
+<!--        </fieldset>-->
+
+<!--        <fieldset>-->
+<!--            <legend>Iscritto ad AISF?</legend>-->
+<!--            <label><input type="radio" name="entry.1770412292_sentinel" value="true"> Si</label>-->
+<!--            <label><input type="radio" name="entry.1770412292_sentinel" value="false"> No</label>-->
+<!--        </fieldset>-->
+
+        <!-- Submit -->
+        <button type="submit">Invia iscrizione</button>
+    </form>
+
+    <iframe name="hidden_iframe" style="display:none;"></iframe>
+    <p id="form-success" style="display:none; color:green;">✅ Iscrizione inviata con successo!</p>
+
+    {{ else if lt $now $start }}
+    <p class="iscrizioni-msg">⚠️ Le iscrizioni non sono ancora aperte. Torna a partire dal {{ $start.Format "02/01/2006" }}.</p>
+    {{ else }}
+    <p class="iscrizioni-msg">❌ Le iscrizioni si sono chiuse il {{ $end.Format "02/01/2006" }}.</p>
+    {{ end }}
+</section>
+<script>
+    function formSubmitted() {
+        document.getElementById("form-success").style.display = "block";
+        document.getElementById("custom-google-form").reset();
+    }
+</script>
+{{ end }}

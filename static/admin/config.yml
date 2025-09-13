@@ -168,3 +168,14 @@ collections:
       - { name: "type", label: "Type", widget: "relation", collection: "location-types", searchFields: ["title"], valueField: "title" }
       - { name: "image", label: "Image", widget: "image" }
       - { name: "website", label: "Website", widget: "string", required: false }
+  - name: "pages"
+    label: "Pagine"
+    files:
+      - file: "content/iscrizioni.md"
+        label: "Iscrizioni"
+        name: "iscrizioni"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Subscriptions Opening Date", name: "start_date", widget: "datetime" }
+          - { label: "Subscriptions Closure Date", name: "end_date", widget: "datetime" }
+          - { label: "Content", name: "body", widget: "markdown" }
