@@ -1,81 +1,106 @@
+/* Hero */
 .homepage-hero {
+  display: flex;
   justify-content: center;
   align-items: center;
-  padding: 6rem 1rem;
+  padding: 4rem 1rem;
   text-align: center;
   color: #fff;
 }
+
 .hero-content {
-  max-width: 100%;
   width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
 }
+
 .hero-logo {
   width: 100%;
-  max-width: 600px; /* desktop */
-  //margin: 0 auto 1rem;
-  //display: block;
+  max-width: 480px;
+  margin: 0 auto 1rem;
 }
+
+.hero-logo svg,
+.hero-logo img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
 .hero-subtitle {
-  font-size: 1.25rem;
+  font-size: 1.2rem;
   opacity: 0.9;
 }
 
-/* Sponsors scroll */
+/* Sponsors */
 .homepage-sponsors {
-  margin: 3rem 0;
+  margin: 2rem 0;
   padding: 1rem;
 }
+
 .homepage-sponsors h2 {
   text-align: center;
   margin-bottom: 1rem;
 }
+
 .sponsor-scroll {
   display: flex;
-  overflow-x: auto;
   gap: 1rem;
+  overflow-x: auto;
   padding-bottom: 0.5rem;
   scroll-snap-type: x mandatory;
 }
+
 .sponsor-card {
   flex: 0 0 auto;
-  width: 140px;
-  height: 100px;
+  width: 120px;
+  height: 90px;
   display: flex;
   justify-content: center;
   align-items: center;
   background: #fff;
-  border-radius: 12px;
+  border-radius: 10px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.08);
   scroll-snap-align: start;
 }
+
 .sponsor-card img {
-  max-width: 100px;
+  max-width: 90px;
   max-height: 60px;
 }
 
-/* About section */
+/* About */
 .homepage-about {
-  padding: 3rem 1rem;
+  padding: 2rem 1rem;
   background: #f9fafc;
 }
+
 .about-container {
   max-width: 1100px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-  align-items: center;
+  gap: 1.5rem;
 }
+
+@media (min-width: 768px) {
+  .about-container {
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+  }
+}
+
 .about-text h2 {
-  font-size: 2rem;
+  font-size: 1.8rem;
   margin-bottom: 1rem;
 }
+
 .about-text p {
-  font-size: 1.125rem;
+  font-size: 1.1rem;
   line-height: 1.6;
 }
+
 .about-image img {
   width: 100%;
-  border-radius: 12px;
+  border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 }

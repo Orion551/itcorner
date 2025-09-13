@@ -1,5 +1,5 @@
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
 {{ $style := resources.Get "scss/main.scss" | toCSS | minify | fingerprint }}
 <link href="https://fonts.cdnfonts.com/css/tbj-endgraph-mini" rel="stylesheet">
