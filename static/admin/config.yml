@@ -171,7 +171,7 @@ collections:
   - name: "pages"
     label: "Pagine"
     files:
-      - file: "content/iscrizioni.md"
+      - file: "content/subscriptions.md"
         label: "Iscrizioni"
         name: "iscrizioni"
         fields:
