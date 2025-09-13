@@ -1,0 +1,195 @@
+// about-us specific styles
+.about-us-text {
+  flex: 2; // Takes more space
+  min-width: 300px; // Minimum width before wrapping
+}
+
+.about-us-header {
+  display: flex;
+  flex-direction: row; // O in colonna su schermi piccoli
+  align-items: flex-start; // Allinea l'inizio degli elementi flex
+  gap: 20px; // Spazio tra testo e immagini
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.about-us-text {
+  flex: 1; // Prende lo spazio disponibile
+  max-width: 60%; // Limita la larghezza del testo, puoi aggiustare
+  padding-right: 20px; // Spazio a destra del testo
+  z-index: 2; // Assicura che il testo sia sopra le immagini se si sovrappongono troppo
+  @media (max-width: 768px) {
+    max-width: 100%;
+    padding-right: 0;
+  }
+}
+
+.about-us-images {
+  position: relative; // Permette il posizionamento assoluto delle immagini interne
+  width: 500px; // Larghezza fissa per il contenitore delle immagini
+  height: 500px; // Altezza fissa per il contenitore
+  flex-shrink: 0; // Impedisce che si rimpicciolisca
+  margin-right: -100px; // Fa sporgere il contenitore a destra
+  z-index: 1; // Le immagini saranno dietro al testo se si sovrappongono
+  //overflow: hidden; // Potrebbe essere necessario se le immagini escono troppo
+
+  @media (max-width: 768px) {
+    width: 100%;
+    height: 400px; // Regola altezza per mobile
+    margin-right: 0; // Nessun margine negativo su mobile
+  }
+
+  img {
+    position: absolute; // Permette il posizionamento libero
+    border-radius: 12px; // Angoli più arrotondati
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); // Ombra più marcata
+    object-fit: cover;
+    max-width: none; // Permette all'immagine di uscire dal contenitore se necessario
+    transition: transform 0.3s ease; // Animazione per hover
+
+    &:hover {
+      transform: scale(1.03); // Zoom leggero all'hover
+      z-index: 10; // Porta l'immagine in primo piano all'hover
+    }
+
+    &:nth-child(1) { // Immagine del globo
+      width: 280px;
+      height: 280px;
+      top: 0px;
+      left: 0px;
+      z-index: 3;
+    }
+
+    &:nth-child(2) { // Immagine dell'edificio (quella che sporge)
+      width: 450px; // Larghezza maggiore per sporgere
+      height: 250px;
+      top: 80px; // Spostata un po' più in basso
+      right: -150px; // Sporge molto a destra del contenitore about-us-images
+      z-index: 2; // Dietro al globo
+      @media (max-width: 768px) {
+        width: 100%; // Adatta su mobile
+        right: 0;
+        top: 0;
+        height: 200px;
+      }
+    }
+
+    &:nth-child(3) { // Immagine degli studenti
+      width: 380px;
+      height: 260px;
+      bottom: 0px;
+      left: 50px; // Spostata un po' a destra
+      z-index: 4; // Sopra le altre due
+      @media (max-width: 768px) {
+        width: 80%;
+        left: 10%;
+        bottom: 0;
+        height: 220px;
+      }
+    }
+  }
+}
+
+.about-us-title {
+  font-size: 3.5rem; // Large title
+  font-weight: 600;
+  line-height: 1.1;
+  color: $secondary-color;
+  margin-bottom: 1rem;
+
+  span {
+    color: $accent-color-1; // Highlight part of the title
+  }
+}
+
+.about-us-subtitle {
+  font-size: 1.5rem;
+  color: $secondary-color;
+  margin-bottom: 2rem;
+}
+
+.about-us-description p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: $dark-grey;
+}
+
+//Organizers Section
+.organizers-section {
+  background-color: $organizers-bg-color;
+  padding: 60px 0;
+  text-align: center;
+}
+
+.organizers-section h2 {
+  color: $light-grey;
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+}
+
+.organizers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.organizer-card {
+  user-select: none;
+  background-color: $light-grey;
+  border-radius: 20px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+  width: 300px;
+  text-align: left;
+  padding: 20px;
+  box-sizing: border-box;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+  }
+}
+
+.organizer-photo {
+  width: 100%;
+  height: auto;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  object-fit: cover;
+  max-height: 400px;
+}
+
+.organizer-name {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: $secondary-color;
+  margin-top: -10px;
+  margin-bottom: 5px;
+}
+
+.organizer-role {
+  font-size: 1rem;
+  color: $accent-color-1;
+  margin: 0;
+  font-weight: 500;
+}
+
+.organizer-description {
+  font-size: 0.9rem;
+  color: $dark-grey;
+  line-height: 1.4;
+  margin-top: 15px;
+}
+
+/* Media query per dispositivi più piccoli */
+@media (max-width: 768px) {
+  .organizer-card {
+    width: 100%;
+    max-width: 350px;
+  }
+}

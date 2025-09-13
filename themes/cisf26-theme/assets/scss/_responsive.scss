@@ -1,35 +1,4 @@
 // Media Queries
-@media (max-width: $breakpoint-md) {
-  .nav-menu {
-    display: none;
-    flex-direction: column;
-    width: 100%;
-    position: absolute;
-    top: 60px;
-    left: 0;
-    background-color: $secondary-color;
-
-    &.active {
-      display: flex;
-    }
-  }
-
-  .nav-item {
-    margin: 0;
-    width: 100%;
-    text-align: center;
-  }
-
-  .nav-link {
-    display: block;
-    padding: 1rem;
-    border-bottom: 1px solid lighten($secondary-color, 5%);
-  }
-
-  .nav-menu-toggle {
-    display: block;
-  }
-}
 
 @media (max-width: $breakpoint-md) {
   // ... (existing navbar styles) ...

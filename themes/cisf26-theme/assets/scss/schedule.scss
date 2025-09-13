@@ -1,0 +1,301 @@
+// schedule specific style
+
+.schedule-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.schedule-day {
+  background: #fff8f0;
+  padding: 1rem;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+}
+
+.day-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.round-table-card {
+  background: #f7f7f7;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.card-image-container {
+  max-width: 100%;
+  border-radius: 6px;
+  margin-bottom: 0.5rem;
+}
+
+.speaker-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Nascondi di default */
+.speaker-modal.hidden {
+  display: none;
+}
+
+/* Contenitore della modale */
+.speaker-modal .modal-content {
+  background: #fff;
+  max-width: 600px;
+  width: 90%;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+  text-align: center;
+  position: relative;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Avatar speaker dentro la modale */
+.speaker-modal .modal-content img {
+  max-width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+}
+
+/* Titolo (nome) */
+.speaker-modal .modal-content h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Ruolo/lavoro */
+.speaker-modal .modal-content p strong {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  color: #555;
+}
+
+/* Bio */
+.speaker-modal .modal-content .bio {
+  margin-top: 1rem;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #333;
+  text-align: left;
+}
+
+/* Close btn */
+.speaker-modal .close-modal {
+  background: none;
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  //background: #eee;
+  border: none;
+  //border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  line-height: 32px;
+  text-align: center;
+  //transition: background 0.2s;
+}
+
+.speaker-modal .close-modal:hover {
+  //background: #ddd;
+}
+
+.speakers-list {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  margin-top: 1rem;
+  justify-content: flex-start;
+  align-items: center;
+  overflow-x: auto;
+
+  & i {
+    color: $accent-color-1;
+    font-size: 1.25rem;
+  }
+}
+
+.speaker-avatar {
+  //border: 2px solid $accent-color-2;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+}
+
+.speaker-avatar img {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+  //border: 2px solid #ccc;
+  transition: transform 0.2s, border-color 0.2s;
+  border: 3px solid rgba($accent-color-2, 0.5);
+}
+
+.speaker-avatar img:hover {
+  transform: scale(1.1);
+  //border-color: #999;
+}
+
+/* Animazione fade-in */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.scheduled-event-card {
+  position: relative;
+  background: $light-grey;
+  border-radius: 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  overflow: hidden;
+  margin: 1rem;
+  flex: 1;
+  max-width: 350px;
+}
+
+.card-content {
+  padding: 0.5rem;
+}
+
+.scheduled-event-card-body {
+  margin-top: -1rem;
+  padding: 0.5rem;
+}
+
+.card-image-container {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 20px;
+  margin-bottom: 0;
+  //margin-bottom: 0.8rem;
+}
+
+.event-time {
+  background: $light-grey;
+  color: $accent-color-1;
+  font-weight: bold;
+  padding: 0.25rem .8rem;
+  font-size: 1.1rem;
+  border-radius: 25px;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+  width: fit-content;
+  user-select: none;
+  transition: font-size 0.25s ease, padding 0.25s ease;
+}
+
+.event-title {
+  font-size: clamp(0.95rem, 2vw, 1.2rem);
+  //font-size: 1.1rem;
+  margin: 0.5rem 0;
+  transition: font-size 0.25s ease;
+}
+
+.speakers-list {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding-left: .2rem;
+  padding-right: .3rem;
+  padding-top: .5rem;
+}
+
+.speakers-list .mic {
+  color: $accent-color-1;
+  margin-right: 0.4rem;
+  flex-shrink: 0;
+  transition: font-size 0.25s ease;
+}
+
+.avatar-scroll {
+  display: flex;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  transition: all 0.25s ease;
+}
+
+.avatars-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.speaker-avatar {
+  background: none;
+  border: none;
+  margin-right: 0.4rem;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: transform 0.25s ease, margin 0.25s ease;
+}
+
+.speaker-avatar img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  transition: width 0.25s ease, height 0.25s ease;
+}
+
+.card-location {
+  display: flex;
+  align-items: center;
+  color: $accent-color-2;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+
+.card-location i {
+  margin-right: 0.4rem;
+}
+
+@media (max-width: $breakpoint-md) {
+  .event-title {
+    font-size: 0.95rem;
+  }
+  .event-time {
+    font-size: .9rem;
+    top: 20px;
+    left: 20px;
+    //padding: 0.4rem 0.8rem;
+    padding: .2rem .8rem;
+  }
+  .speaker-avatar img {
+    width: 28px;
+    height: 28px;
+  }
+  .card-location {
+    font-size: 0.8rem;
+  }
+
+  .speakers-list {
+    padding-top: .2rem;
+    padding-left: .2rem;
+    padding-right: .3rem;
+
+    i {
+      font-size: .9rem;
+    }
+  }
+}

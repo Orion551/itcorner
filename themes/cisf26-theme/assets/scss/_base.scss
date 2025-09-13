@@ -5,7 +5,13 @@ body {
   color: $dark-grey;
   background-color: $light-grey;
   margin: 0;
-  padding: 0;
+  //padding: 0;
+  flex: 1;
+}
+
+.page-content {
+  padding-top: 40px;
+  padding-bottom: 40px;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -40,6 +46,7 @@ a {
 * {
   scrollbar-width: thin;
   scrollbar-color: rgba(#295763, 0.5) #ffffff;
+  margin: 0 auto;
 }
 
 /* Chrome, Edge, and Safari */
@@ -55,4 +62,17 @@ a {
   background-color: #295763;
   border-radius: 10px;
   border: 1px solid #ffffff;
+}
+
+// Footer
+.footer {
+  background-color: $dark-grey;
+  color: $light-grey;
+  text-align: center;
+  padding: 20px 0;
+  width: 100%;
+}
+
+.footer-content {
+
 }
