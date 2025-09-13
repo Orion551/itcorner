@@ -59,7 +59,7 @@ theme = 'cisf26-theme'
 [[menus.main]]
   identifier = "signature-solid"
   name = "Iscriviti"
-  pageRef = "/subscribe/"
+  pageRef = "/subscriptions/"
   weight = 70
   [menus.main.params]
     icon = "fa-file-signature"
