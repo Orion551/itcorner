@@ -60,13 +60,13 @@
 
         <label>
             Nome:
-            <input type="text" name="entry.2109614896" required>
+            <input type="text" id="nome" name="entry.2109614896" required>
         </label>
 
         <!-- Email -->
         <label>
             Email:
-            <input type="email" name="entry.648108435" required>
+            <input type="email" id="email" name="entry.648108435" required>
         </label>
 
 <!--        <fieldset>-->
@@ -95,9 +95,26 @@
     {{ end }}
 </section>
 <script>
-    function formSubmitted() {
-        document.getElementById("form-success").style.display = "block";
-        document.getElementById("custom-google-form").reset();
-    }
+    document.addEventListener("DOMContentLoaded", function() {
+        const form = document.getElementById('gform');
+        const successMessage = document.getElementById('gform-success');
+        const iframe = document.querySelector('iframe[name="hidden_iframe"]');
+        let formSubmitted = false;
+
+        form.addEventListener('submit', function() {
+            formSubmitted = true;
+        });
+
+        iframe.addEventListener('load', function() {
+            if (formSubmitted) {
+                successMessage.style.display = 'block';
+                form.reset();
+                setTimeout(() => {
+                    successMessage.style.display = 'none';
+                }, 5000);
+                formSubmitted = false;
+            }
+        });
+    });
 </script>
 {{ end }}
