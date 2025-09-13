@@ -179,3 +179,14 @@ collections:
           - { label: "Subscriptions Opening Date", name: "start_date", widget: "datetime" }
           - { label: "Subscriptions Closure Date", name: "end_date", widget: "datetime" }
           - { label: "Content", name: "body", widget: "markdown" }
+
+      - file: "content/support-us.md"
+        label: "Sostienici"
+        name: "sostienici"
+        fields:
+        - { label: "Title", name: "title", widget: "string" }
+        - { label: "Description", name: "description", widget: "text" }
+        - { label: "Introductive Text", name: "intro", widget: "markdown" }
+        - { label: "Info Sponsor", name: "sponsor_info", widget: "markdown" }
+        - { label: "Btn Etiquette", name: "button_label", widget: "string", hint: "L'etichetta del tasto che rimanda a gofundme" }
+        - { label: "Link GoFundMe", name: "gofundme_url", widget: "string" }
