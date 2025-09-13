@@ -1,5 +1,20 @@
 // Media Queries
 
+@media (min-width: $breakpoint-md) {
+  .mobile-bottom-bar {
+    display: none;
+  }
+  .mobile-popup-menu {
+    display: none;
+  }
+  .container {
+    display: none;
+  }
+  .top-nav-container {
+    display: none;
+  }
+}
+
 @media (max-width: $breakpoint-md) {
   // ... (existing navbar styles) ...
 
@@ -34,5 +49,199 @@
 
   .organizers-grid {
     grid-template-columns: 1fr; // Stack organizers on mobile
+  }
+
+  // --- Navbar Top (Mobile) ---
+  .site-header {
+    //background-color: transparent;
+    //box-shadow: none;
+    //position: relative;
+    //padding: 10px 0;
+    //.top-nav-container {
+    //  display: flex;
+    //  justify-content: center;
+    //  padding: 10px;
+    //}
+    //.site-logo {
+    //  img {
+    //    height: 60px;
+    //    width: auto;
+    //  }
+    //}
+    //.main-nav-desktop {
+    //  display: none;
+    //}
+  }
+
+  // --- Butterfly Bar ---
+  .mobile-bottom-bar {
+    display: block;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: $light-grey;
+    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+
+    .bottom-menu {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      height: 65px;
+    }
+
+    .more-button {
+      border: none;
+    }
+
+    .bottom-item {
+      .bottom-link {
+        border: none;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-decoration: none;
+        color: $secondary-color;
+        fill: $secondary-color;
+        font-size: 0.8rem;
+        padding: 5px;
+        transition: color 0.2s;
+
+        svg {
+          width: 20px;
+          height: 20px;
+        }
+
+        &.active, &:hover {
+          color: $active-color;
+          font-weight: bold;
+
+          svg {
+            fill: $active-color;
+          }
+        }
+      }
+      .bottom-icon {
+        font-size: 12px;
+        margin-bottom: 5px;
+      }
+    }
+  }
+  .more-menu-icon {
+    svg {
+      width: 20px;
+      height: 20px;
+      fill: $secondary-color;
+    }
+  }
+
+  // --- Pop-up Menu ---
+  .mobile-popup-menu {
+    display: block;
+    position: fixed;
+    bottom: -100vh;
+    right: 20px;
+    width: 200px;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    z-index: 101;
+    transition: bottom 0.3s ease-in-out;
+  }
+
+  .popup-menu {
+    list-style: none;
+    padding: 10px 0;
+    margin: 0;
+  }
+
+  .popup-item {
+    display: flex;
+    flex-direction: row;
+    //align-items: center;
+    justify-content: flex-start;
+    padding: 8px 8px 8px 16px;
+
+    svg {
+      width: 20px;
+      height: 20px;
+      fill: $secondary-color;
+      margin-right: 16px;
+    }
+
+    a.popup-link {
+      display: block;
+      //padding: 12px 20px;
+      color: $secondary-color;
+      text-decoration: none;
+      &:hover {
+        background-color: #f0f0f0;
+      }
+    }
+  }
+
+  .popup-header {
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px;
+    .popup-close-btn {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+  }
+
+  .about-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .hero-logo {
+    max-width: 320px; /* mobile */
+  }
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+
+  .event-title {
+    font-size: 0.95rem;
+  }
+  .event-time {
+    font-size: .9rem;
+    top: 20px;
+    left: 20px;
+    //padding: 0.4rem 0.8rem;
+    padding: .2rem .8rem;
+  }
+  .speaker-avatar img {
+    width: 28px;
+    height: 28px;
+  }
+  .card-location {
+    font-size: 0.8rem;
+  }
+
+  .speakers-list {
+    padding-top: .2rem;
+    padding-left: .2rem;
+    padding-right: .3rem;
+
+    i {
+      font-size: .9rem;
+    }
+  }
+  .organizer-card {
+    width: 100%;
+    max-width: 350px;
+  }
+}
+
+@media (max-width: $breakpoint-lg) {
+  .hero-logo {
+    max-width: 400px;
   }
 }

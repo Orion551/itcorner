@@ -79,22 +79,3 @@
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 }
-
-/* Responsiveness */
-@media (max-width: 992px) {
-  .hero-logo {
-    max-width: 400px; /* tablet */
-  }
-}
-@media (max-width: 768px) {
-  .about-container {
-    grid-template-columns: 1fr;
-    text-align: center;
-  }
-  .hero-logo {
-    max-width: 320px; /* mobile */
-  }
-  .hero-subtitle {
-    font-size: 1rem;
-  }
-}

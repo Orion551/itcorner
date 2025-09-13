@@ -269,33 +269,3 @@
 .card-location i {
   margin-right: 0.4rem;
 }
-
-@media (max-width: $breakpoint-md) {
-  .event-title {
-    font-size: 0.95rem;
-  }
-  .event-time {
-    font-size: .9rem;
-    top: 20px;
-    left: 20px;
-    //padding: 0.4rem 0.8rem;
-    padding: .2rem .8rem;
-  }
-  .speaker-avatar img {
-    width: 28px;
-    height: 28px;
-  }
-  .card-location {
-    font-size: 0.8rem;
-  }
-
-  .speakers-list {
-    padding-top: .2rem;
-    padding-left: .2rem;
-    padding-right: .3rem;
-
-    i {
-      font-size: .9rem;
-    }
-  }
-}
