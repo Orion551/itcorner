@@ -13,6 +13,7 @@ theme = 'cisf26-theme'
   weight = 10
   icon = ""
   [menus.main.params]
+    show_desktop = false
     bottombar = false
 [[menus.main]]
   identifier = "users-solid"
@@ -20,6 +21,8 @@ theme = 'cisf26-theme'
   pageRef = "/about-us/"
   weight = 20
   [menus.main.params]
+    show_desktop = true
+    desktop_sort = 7
     icon = "fa-users"
     bottombar = false
 [[menus.main]]
@@ -28,6 +31,8 @@ theme = 'cisf26-theme'
   pageRef = "/locations/"
   weight = 30
   [menus.main.params]
+    show_desktop = true
+    desktop_sort = 6
     icon = "fa-building-columns"
     bottombar = false
 [[menus.main]]
@@ -36,6 +41,8 @@ theme = 'cisf26-theme'
   pageRef = "/guests/"
   weight = 40
   [menus.main.params]
+    show_desktop = true
+    desktop_sort = 5
     icon = "fa-clipboard-user"
     bottombar = false
 [[menus.main]]
@@ -44,6 +51,8 @@ theme = 'cisf26-theme'
   pageRef = "/schedule/"
   weight = 50
   [menus.main.params]
+    show_desktop = true
+    desktop_sort = 2
     icon = "fa-calendar-days"
     bottombar = true
     mobile_sort = 2
@@ -53,6 +62,8 @@ theme = 'cisf26-theme'
   pageRef = "/partners/"
   weight = 60
   [menus.main.params]
+    show_desktop = true
+    desktop_sort = 1
     icon = "fa-handshake"
     bottombar = true
     mobile_sort = 1
@@ -62,6 +73,8 @@ theme = 'cisf26-theme'
   pageRef = "/subscriptions/"
   weight = 70
   [menus.main.params]
+    show_desktop = true
+    desktop_sort = 3
     icon = "fa-file-signature"
     bottombar = true
     mobile_sort = 3
@@ -71,11 +84,13 @@ theme = 'cisf26-theme'
   pageRef = "/support-us/"
   weight = 80
   [menus.main.params]
+    show_desktop = true
+    desktop_sort = 4
     icon = "fa-hand-holding-heart"
     bottombar = true
     mobile_sort = 4
 
 [params]
   siteTitle = "CISF26"
-  image = "images/cisf26-logo.png"
+  image = "images/cisf.svg"
   alt = 'CISF26 Logo'

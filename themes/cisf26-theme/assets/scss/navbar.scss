@@ -7,15 +7,10 @@
   top: 0;
   z-index: 100;
   width: 100%;
-
-  //.desktop-navbar-container {
-  //  display: flex;
-  //  justify-content: space-between;
-  //  align-items: center;
-  //  max-width: 1200px;
-  //  margin: 0 auto;
-  //  padding: 0 20px;
-  //}
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
 
   .site-logo {
     img {
@@ -24,7 +19,7 @@
     }
   }
 
-  .main-nav {
+  .desktop-navigation-items-container {
     display: flex;
     align-items: center;
 
@@ -37,7 +32,7 @@
       transition: background-color 1s ease-in-out;
 
       .nav-item {
-        position: relative;
+        //position: relative;
         .nav-link {
           color: $secondary-color;
           text-decoration: none;
