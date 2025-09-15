@@ -40,6 +40,36 @@
   overflow: hidden;
 }
 
+
+
+.map-popup {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+
+  h3 {
+    margin: .2rem;
+  }
+
+  span {
+    margin-bottom: .5rem;
+  }
+
+  .popup-navigate-btn {
+    background: $daje-roma-daje;
+    border: none;
+    cursor: pointer;
+    height: 30px;
+    width: 30px;
+    color: white;
+    border-radius: 50%;
+    text-align: center;
+    overflow: hidden;
+  }
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .structures-layout {
