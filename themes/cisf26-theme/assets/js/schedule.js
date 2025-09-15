@@ -21,41 +21,6 @@ export function initSchedulePage() {
         });
     });
 
-    // Modal life-cycle
-    document.addEventListener('click', (event) => {
-        const openTrigger = event.target.closest('[data-modal-target]');
-        if(openTrigger) {
-            event.preventDefault();
-            const modalId = openTrigger.dataset.modalTarget || '';
-            const selector = modalId.startsWith('#') ? modalId : `#${modalId}`;
-            const modal = document.querySelector(selector);
-            openModal(modal, openTrigger);
-            return;
-        }
-
-        /* Close button */
-        const closeTrigger = event.target.closest('.close-modal');
-        if(closeTrigger) {
-            const modalToClose = closeTrigger.closest('.base-modal');
-            closeModal(modalToClose);
-            return;
-        }
-
-        /* Outside click closes the modal */
-        const overlay = event.target.closest('.base-modal');
-        if(overlay && event.target === overlay) {
-            closeModal(overlay);
-            return;
-        }
-    });
-
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' || e.key === 'Esc') {
-            const openModalEl = document.querySelector('.base-modal.open');
-            if (openModalEl) closeModal(openModalEl);
-        }
-    });
-
     /**
      * Show/Hide cards based on selected filter.
      * @param {string} activeFilter - Filter to apply (e.g. "all", "workshop", ecc.).
@@ -77,14 +42,22 @@ export function initSchedulePage() {
         });
     };
 
-    /**
-     * Opens the modal
-     * @param modal {Object} - The modal
-     * @param trigger
-     */
+    document.addEventListener('click', (event) => {
+        const openTrigger = event.target.closest('[data-modal-target]');
+        console.log('open trigger', openTrigger);
+        if (openTrigger) {
+            event.preventDefault();
+            const modalId = openTrigger.dataset.modalTarget || '';
+            const selector = modalId.startsWith('#') ? modalId : `#${modalId}`;
+            const modal = document.querySelector(selector);
+            openModal(modal, openTrigger);
+            return;
+        }
+    });
+
     const openModal = (modal, trigger) => {
-        if (!modal) return;
-        if (modal && trigger) {
+        if(!modal) return;
+        if(modal && trigger) {
             const speakerData = trigger.dataset;
             console.log('speaker data', speakerData);
             modal.querySelector('.modal-speaker.image').src = speakerData.speakerImage || '';
@@ -97,34 +70,6 @@ export function initSchedulePage() {
         }
     }
 
-    const closeModal = (modal) => {
-        if (!modal) return;
-
-        // start closing
-        modal.classList.remove('open');
-        modal.classList.add('closing');
-
-        let finished = false;
-        const cleanup = () => {
-            if (finished) return;
-            finished = true;
-            modal.classList.remove('closing');
-            // keep the modal in DOM; CSS hides it when neither .open nor .closing
-            document.body.classList.remove('modal-open');
-            modal.removeEventListener('transitionend', onTransitionEnd);
-        };
-
-        const onTransitionEnd = (ev) => {
-            // ensure the event is coming from the modal (not child)
-            if (ev.target === modal) cleanup();
-        };
-
-        // listen transitionend (or animationend if you use animations)
-        modal.addEventListener('transitionend', onTransitionEnd, { once: true });
-
-        // Fallback: after 400ms (slightly longer than the CSS transition)
-        setTimeout(cleanup, 450);
-    }
 
     applyFilter('all');
 }

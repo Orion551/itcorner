@@ -36,7 +36,10 @@
 >
     <div style="display: flex; flex-direction: row; justify-content: space-between">
         <h3>{{ .Title }}</h3>
-        <button id="location-card-info-btn">
+        <button id="location-card-info-btn"
+            data-modal-target="#location-modal"
+                data-location-title="{{ .Title }}"
+        >
             <i class="fa-solid fa-info"></i>
         </button>
     </div>
