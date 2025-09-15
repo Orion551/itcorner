@@ -17,7 +17,7 @@
     {{/* Get the main JS file, build it if needed, minify, and fingerprint */}}
     {{ $jsMain := resources.Get "js/main.js" }}
     {{ if $jsMain }}
-    {{ $bundle := $jsMain | js.Build | minify | fingerprint }}
+    {{ $bundle := $jsMain | js.Build | fingerprint }}
     <script src="{{ $bundle.Permalink }}" defer></script>
     {{ else }}
     {{ errorf "Could not find main JavaScript file at %s" "js/main.js" }}
