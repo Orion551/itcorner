@@ -1,10 +1,13 @@
 {{ define "main" }}
-<section class="schedule-grid">
+<div class="page-content schedule-grid">
+
+    <!-- Introduction -->
     <section class="schedule-intro">
         {{ .Content }}
     </section>
+
+    <!-- Filters -->
     <div class="filters-container">
-<!--        <button class="filter-button active" data-filter="all">Tutto</button>-->
         {{ $contextPages := site.GetPage "section" "contexts" }}
         {{ range $contextPages.RegularPages }}
         <button class="filter-button" data-filter="{{ .Params.name | urlize }}">
@@ -12,6 +15,8 @@
         </button>
         {{ end }}
     </div>
+
+    <!-- DAys -->
     {{ $events := (where (site.GetPage "section" "scheduled-event").RegularPages "Draft" false) }}
     {{ $byDay := dict }}
     {{ range $events }}
@@ -20,17 +25,21 @@
     {{ $byDay = merge $byDay (dict $day $list) }}
     {{ end }}
 
-    {{ range $day := slice "monday" "tuesday" "wednesday" "thursday" "friday" "saturday" "sunday" }}
-    {{ with index $byDay $day }}
-    <div class="day-column">
-        <h2>{{ $day }}</h2>
-        {{ range sort . "Params.weight" }}
+    <div class="days-scroll">
+        {{ range $day := slice "monday" "tuesday" "wednesday" "thursday" "friday" "saturday" "sunday" }}
+        {{ with index $byDay $day }}
+        <div class="day-column">
+            <h2 class="day-title">{{ $day }}</h2>
+            {{ range sort . "Params.weight" }}
             {{ partial "event-card.html" . }}
+            {{ end }}
+        </div>
+        {{ end }}
         {{ end }}
     </div>
-    {{ end }}
-    {{ end }}
-</section>
+
+</div>
+
 <script>
     document.addEventListener("DOMContentLoaded", () => {
         const filterButtons = document.querySelectorAll(".filter-button");
