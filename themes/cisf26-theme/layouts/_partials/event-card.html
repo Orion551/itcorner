@@ -1,7 +1,6 @@
 {{ $hasCover := and .Params.coverImage (ne .Params.coverImage "") }}
-
-<div class="scheduled-event-card" data-context="{{ .Params.context }}">
-    <div class="card-content">
+<div class="base-card" data-context="{{ .Params.context }}">
+    <div class="base-card-content">
         <div class="event-time {{ if not $hasCover }}no-cover{{ end }}">
             <span>
                 {{ with .Params.start_time }}{{ . }}{{ end }}
@@ -10,7 +9,7 @@
         </div>
 
         {{ with .Params.coverImage }}
-        <img class="card-image-container" src="{{ . | relURL }}" alt="{{ $.Params.title }}">
+        <img class="base-card-image-container" src="{{ . | relURL }}" alt="{{ $.Params.title }}">
         {{ end }}
     </div>
 
@@ -39,7 +38,7 @@
         {{ end }}
 
         {{ with .Params.address }}
-        <div class="card-address-container">
+        <div class="base-card-address-container">
             <a href="{{ .location_url }}"
                target="_blank"
                rel="noopener noreferrer"

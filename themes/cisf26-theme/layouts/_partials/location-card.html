@@ -1,31 +1,8 @@
-<style>
-    .structure-card {
-        padding: 1rem;
-        background: #fff;
-        border: 1px solid #ddd;
-        border-radius: 10px;
-        cursor: pointer;
-        transition: box-shadow 0.2s;
-    }
-
-    .structure-card:hover {
-        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
-
-    .navigate-btn {
-        margin-top: 0.5rem;
-        padding: 0.4rem 0.8rem;
-        border: none;
-        border-radius: 6px;
-        background: #007bff;
-        color: #fff;
-        cursor: pointer;
-    }
-</style>
 {{ $type := .Params.type }}
 {{ $typePage := index (where (where .Site.RegularPages "Section" "location-types") "Title" $type) 0 }}
-<div class="structure-card"
-    data-type="{{ .Params.type }}"
+
+<div class="base-card"
+     data-type="{{ .Params.type }}"
      data-title="{{ .Title }}"
      data-address="{{ .Params.address }}"
      data-description="{{ .Params.description }}"
@@ -33,17 +10,31 @@
      data-lat="{{ .Params.lat }}"
      data-lng="{{ .Params.lng }}"
      data-color="{{ $typePage.Params.color }}"
+
+     style="cursor: pointer;"
 >
-    <div style="display: flex; flex-direction: row; justify-content: space-between">
-        <h3>{{ .Title }}</h3>
-        <button id="location-card-info-btn"
-            data-modal-target="#location-modal"
-                data-location-title="{{ .Title }}"
-        >
+    <div class="base-card-content">
+        <button class="location-card-fab-info-btn">
             <i class="fa-solid fa-info"></i>
         </button>
+        {{ with .Params.image }}
+            <img class="base-card-image-container" src="{{ . | relURL }}" alt="Img {{ $.Title }}">
+        {{ end }}
     </div>
 
-    <p>{{ .Params.address }}</p>
-    <button class="navigate-btn">Indicazioni</button>
+
+    <div class="scheduled-event-card-body">
+        <h3>{{ .Title }}</h3>
+
+        <div class="base-card-address-container">
+            <a class="card-location"
+               href="{{ .Params.location_url }}"
+               target="_blank"
+               rel="noopener noreferrer"
+            >
+                <i class="fa-solid fa-location-dot"></i>
+                <span>Naviga</span>
+            </a>
+        </div>
+    </div>
 </div>

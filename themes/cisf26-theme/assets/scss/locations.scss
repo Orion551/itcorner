@@ -1,36 +1,36 @@
-.structures-page {
-  padding: 2rem;
-}
-
-.filters {
-  margin-bottom: 1rem;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-
-.filter-btn {
-  padding: 0.5rem 1rem;
-  border: none;
-  background: #e0e0e0;
-  cursor: pointer;
-  border-radius: 6px;
-}
-
-.filter-btn.active {
-  background: #007bff;
-  color: #fff;
-}
-
 .structures-layout {
   display: flex;
   gap: 1rem;
 }
 
 .structures-grid {
-  flex: 1;
   display: grid;
-  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  justify-content: center;
+}
+
+.location-card-fab-info-btn {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  background: $light-grey;
+  color: $accent-color-1;
+  user-select: none;
+  transition: font-size 0.25s ease, padding 0.25s ease;
+  border: none;
+  cursor: pointer;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  text-align: center;
+  overflow: hidden;
+}
+
+// Contenitore per il pulsante di navigazione
+.card-nav-container {
+  margin-top: 0.5rem;
 }
 
 #map {
@@ -39,8 +39,6 @@
   border-radius: 10px;
   overflow: hidden;
 }
-
-
 
 .map-popup {
   display: flex;

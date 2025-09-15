@@ -18,10 +18,10 @@
         <h1>Strutture</h1>
     </section>
     <!-- Filters -->
-    <div class="filters">
-        <button class="filter-btn active" data-filter="all">Tutte</button>
+    <div class="filters-container">
+        <button class="filter-button active" data-filter="all">Tutte</button>
         {{ range where .Site.RegularPages "Section" "location-types" }}
-        <button class="filter-btn"
+        <button class="filter-button"
                 data-filter="{{ .Title }}"
                 data-color="{{ .Params.color }}">
             {{ .Title }}
@@ -30,15 +30,25 @@
     </div>
 
     <div class="structures-layout">
-        <!-- Cards -->
         <div class="structures-grid">
             {{ range where .Site.RegularPages "Section" "locations" }}
             {{ partial "location-card.html" . }}
             {{ end }}
         </div>
 
-        <!-- Map -->
         <div id="map"></div>
     </div>
+
+<!--    <div class="structures-layout">-->
+<!--        &lt;!&ndash; Cards &ndash;&gt;-->
+<!--        <div class="structures-grid">-->
+<!--            {{ range where .Site.RegularPages "Section" "locations" }}-->
+<!--            {{ partial "location-card.html" . }}-->
+<!--            {{ end }}-->
+<!--        </div>-->
+
+<!--        &lt;!&ndash; Map &ndash;&gt;-->
+<!--        <div id="map"></div>-->
+<!--    </div>-->
 </div>
 {{ end }}

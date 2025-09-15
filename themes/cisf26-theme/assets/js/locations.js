@@ -1,7 +1,7 @@
 import { closeModal } from "./main.js"; // Già corretto
 
 export function initLocationsPage() {
-    const cards = document.querySelectorAll(".structure-card");
+    const cards = document.querySelectorAll(".base-card");
 
     const youAreHereIcon = L.divIcon({
         html: '<i class="fa-solid fa-circle fa-lg" style="color: #007aff; filter: drop-shadow(0px 0px 5px #2b2b2b); -webkit-text-stroke: 2px white;"></i>',
@@ -91,6 +91,8 @@ export function initLocationsPage() {
         if (navBtn) {
             navBtn.addEventListener("click", (e) => {
                 const { lat, lng } = e.target.dataset;
+                console.log('lat', lat);
+                console.log('lng', lng);
                 const url = `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`;
                 window.open(url, "_blank");
             });

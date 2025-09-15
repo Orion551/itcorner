@@ -6,7 +6,7 @@ export function initSchedulePage() {
 
     /* Filters */
     const filterButtons = filtersContainer.querySelectorAll(".filter-button");
-    const eventCards = document.querySelectorAll(".scheduled-event-card");
+    const eventCards = document.querySelectorAll(".base-card");
     const dayColumns = document.querySelectorAll(".day-column");
 
     // Attach an event listener to each filter button
@@ -36,7 +36,7 @@ export function initSchedulePage() {
 
         // Checks day cols and hides them if empty
         dayColumns.forEach(column => {
-            const cards = Array.from(column.querySelectorAll(".scheduled-event-card"));
+            const cards = Array.from(column.querySelectorAll(".base-card"));
             const visibleCount = cards.filter(c => window.getComputedStyle(c).display !== "none").length;
             column.style.display = visibleCount > 0 ? "" : "none";
         });
