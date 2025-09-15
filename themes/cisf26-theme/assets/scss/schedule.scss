@@ -93,7 +93,7 @@
       color: $light-grey;
       top: 0;
       font-size: 1.2rem;
-      font-weight: bold;
+      font-weight: 600;
       text-align: center;
       margin: 0;
     }
@@ -187,12 +187,13 @@
   position: relative;
   background: $light-grey;
   border-radius: 20px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  //box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  box-shadow: 0 0 10px 2px rgba(0, 0, 0, .1);
   overflow: hidden;
   flex: 1;
 
   background: #f7f7f7;
-  margin: 0.5rem;
+  margin: 0.5rem 0.5rem 1rem;
 }
 
 .card-content {

@@ -40,7 +40,7 @@
         {{ with index $byDay $day }}
         <div class="day-column">
             <div class="day-title-container">
-                <h2 class="day-title">{{ $day }}</h2>
+                <h2 class="day-title">{{ i18n (printf "days.%s" (lower $day)) }}</h2>
             </div>
 
             {{ range sort . "Params.weight" }}
