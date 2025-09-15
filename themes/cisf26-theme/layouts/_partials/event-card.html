@@ -1,20 +1,3 @@
-<script>
-    document.addEventListener("DOMContentLoaded", () => {
-        document.querySelectorAll(".speaker-avatar").forEach(btn => {
-            btn.addEventListener("click", () => {
-                const id = "modal-" + btn.dataset.speaker;
-                const modal = document.getElementById(id);
-                if (modal) modal.classList.remove("hidden");
-            });
-        });
-
-        document.querySelectorAll(".close-modal").forEach(btn => {
-            btn.addEventListener("click", () => {
-                btn.closest(".speaker-modal").classList.add("hidden");
-            });
-        });
-    });
-</script>
 <div class="scheduled-event-card" data-context="{{ .Params.context }}">
     <div class="card-content">
         <div class="event-time">
@@ -36,20 +19,14 @@
                     {{ range . }}
                     {{ $speaker := site.GetPage (printf "/guests/%s" .) }}
                     {{ with $speaker }}
-                    <button class="speaker-avatar" data-speaker="{{ .File.BaseFileName }}">
+                    <button class="speaker-avatar"
+                            data-modal-target="#speaker-modal"
+                            data-speaker-name="{{ .Title }}"
+                            data-speaker-role="{{ .Params.role }}"
+                            data-speaker-image="{{ .Params.image | relURL }}"
+                            data-speaker-bio="{{ .Content | safeHTML }}">
                         <img src="{{ .Params.image | relURL }}" alt="{{ .Title }}">
                     </button>
-                    <div id="modal-{{ .File.BaseFileName }}" class="speaker-modal hidden">
-                        <div class="modal-content">
-                            <img src="{{ .Params.image | relURL }}" alt="{{ .Title }}">
-                            <h3>{{ .Title }}</h3>
-                            <p><strong>{{ .Params.role }}</strong></p>
-                            <div class="bio">{{ .Params.bio | markdownify }}</div>
-                            <button class="close-modal">
-                                <i class="fa-solid fa-circle-xmark"></i>
-                            </button>
-                        </div>
-                    </div>
                     {{ end }}
                     {{ end }}
                 </div>
