@@ -1,7 +1,44 @@
-import { closeModal } from "./main.js"; // Già corretto
+// locations.js
+import { closeModal } from "./main.js";
 
 export function initLocationsPage() {
-    const cards = document.querySelectorAll(".base-card");
+    const filtersContainer = document.querySelector('#location-filter-container');
+
+
+    if (!filtersContainer) return;
+
+
+    const filterButtons = filtersContainer.querySelectorAll(".filter-button");
+    const cards = document.querySelectorAll("#location-card");
+
+    if(!cards.length) return;
+
+    const applyLocationFilter = (activeFilter) => {
+        console.log('applying filter');
+        cards.forEach(card => {
+            const locationType = card.dataset.type;
+            const shouldShow = activeFilter ===  "all" || locationType === activeFilter;
+            console.log("Card:", card.dataset.title,
+                "| type:", `"${locationType}"`,
+                "| shouldShow:", shouldShow);
+            card.style.display = shouldShow ? "block" : "none";
+        });
+
+        // markers.forEach(obj => {
+        //     if (activeFilter === "all" || obj.type === activeFilter) {
+        //         obj.marker.addTo(map);
+        //     } else {
+        //         map.removeLayer(obj.marker);
+        //     }
+        // });
+    }
+
+
+    // LeafLet map init
+    const map = L.map("map").setView([41.8648, 12.4813], 6); // Italy
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        attribution: "© OpenStreetMap contributors"
+    }).addTo(map);
 
     const youAreHereIcon = L.divIcon({
         html: '<i class="fa-solid fa-circle fa-lg" style="color: #007aff; filter: drop-shadow(0px 0px 5px #2b2b2b); -webkit-text-stroke: 2px white;"></i>',
@@ -12,45 +49,17 @@ export function initLocationsPage() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(pos => {
             const userMarker = L.marker([pos.coords.latitude, pos.coords.longitude], {
-                icon: youAreHereIcon }).addTo(map).bindPopup("Tu sei qui");
+                icon: youAreHereIcon
+            }).addTo(map).bindPopup("Tu sei qui");
             map.setView([pos.coords.latitude, pos.coords.longitude], 12);
+        }, (err) => {
+            console.warn("Geolocation error:", err && err.message);
         });
     }
 
-    document.addEventListener('click', (event) => {
-        const openTrigger = event.target.closest('[data-modal-target]');
-        console.log('open trigger', openTrigger);
-        if (openTrigger) {
-            event.preventDefault();
-            const modalId = openTrigger.dataset.modalTarget || '';
-            const selector = modalId.startsWith('#') ? modalId : `#${modalId}`;
-            const modal = document.querySelector(selector);
-            openModal(modal, openTrigger);
-            return;
-        }
-    });
-
-    const openModal = (modal, trigger) => {
-        if(!modal) return;
-        if(modal && trigger) {
-            const locationData = trigger.dataset;
-            console.log('locationData', locationData);
-            console.log('modal', modal);
-            modal.querySelector('.modal-location-title.title').textContent = locationData.locationTitle || '';
-            modal.classList.add('open');
-            document.body.classList.add('modal-open');
-        }
-    }
-
-    // LeafLet Map init
-    const map = L.map("map").setView([41.8648, 12.4813], 6); // Italy
-    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-        attribution: "© OpenStreetMap contributors"
-    }).addTo(map);
-
-
     const markerMap = new Map();
 
+    // Adds markers and click to show popup
     cards.forEach(card => {
         const { lat, lng, color, title, type, address } = card.dataset;
 
@@ -64,20 +73,16 @@ export function initLocationsPage() {
 
             marker.bindPopup(`
                 <div class="map-popup">
-                    <h3>
-                        <strong>${title}</strong>
-                    </h3>
-                    <span>${address}</span>
+                    <h3><strong>${title || ''}</strong></h3>
+                    <div class="map-popup-address">${address || ''}</div>
                     <button class="popup-navigate-btn" data-lat="${lat}" data-lng="${lng}">
                         <i class="fa-solid fa-location-arrow"></i>
                     </button>
                 </div>
-                
             `);
 
             markerMap.set(card, marker);
 
-            // Listener per il click sulla card
             card.addEventListener("click", () => {
                 map.setView([parseFloat(lat), parseFloat(lng)], 15);
                 marker.openPopup();
@@ -85,30 +90,88 @@ export function initLocationsPage() {
         }
     });
 
-    // Click handler on navigation button (popup)
     map.on('popupopen', (e) => {
-        const navBtn = e.popup.getElement().querySelector('.popup-navigate-btn');
+        const popupEl = e.popup.getElement();
+        const navBtn = popupEl.querySelector('.popup-navigate-btn');
+        if (navBtn) {
+            navBtn.removeEventListener('click', onPopupNavigateClick);
+            navBtn.addEventListener('click', onPopupNavigateClick);
+        }
+    });
+
+    function onPopupNavigateClick(ev) {
+        ev.stopPropagation();
+        const { lat, lng } = ev.currentTarget.dataset;
+        if (lat && lng) {
+            const url = `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`;
+            window.open(url, "_blank");
+        }
+    }
+
+    // Directins btn within card
+    cards.forEach(card => {
+        const navBtn = card.querySelector(".navigate-btn");
         if (navBtn) {
             navBtn.addEventListener("click", (e) => {
-                const { lat, lng } = e.target.dataset;
-                console.log('lat', lat);
-                console.log('lng', lng);
-                const url = `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`;
-                window.open(url, "_blank");
+                e.stopPropagation();
+                const { lat, lng } = card.dataset;
+                if (lat && lng) {
+                    const url = `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`;
+                    window.open(url, "_blank");
+                }
             });
         }
     });
 
-    // Direct navigation (click on button 'directions')
-    cards.forEach(card => {
-        const navBtn = card.querySelector(".navigate-btn");
-        if(navBtn) {
-            navBtn.addEventListener("click", (e) => {
-                e.stopPropagation(); // Previene il click sull'intera card
-                const { lat, lng } = card.dataset;
-                const url = `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`;
-                window.open(url, "_blank");
-            });
-        }
+    const locationModal = document.getElementById('location-modal');
+    const infoButtons = document.querySelectorAll('.location-card-fab-info-btn');
+
+    infoButtons.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.stopPropagation(); // evita che il click sulla card venga triggerato
+            const card = btn.closest('.base-card');
+            if (!card || !locationModal) return;
+
+            // Data reading
+            const ds = card.dataset;
+            const title = ds.title || '';
+            const address = ds.address || '';
+            const description = ds.description || '';
+            const website = ds.website || '';
+
+            const titleEl = locationModal.querySelector('.modal-location-title');
+            const addressEl = locationModal.querySelector('#modal-address');
+            const descEl = locationModal.querySelector('#modal-description');
+            const webEl = locationModal.querySelector('#modal-website');
+
+            if (titleEl) titleEl.textContent = title;
+            if (addressEl) addressEl.textContent = address;
+            if (descEl) descEl.textContent = description;
+            if (webEl) {
+                if (website) {
+                    webEl.href = website;
+                    webEl.style.display = '';
+                } else
+                    webEl.style.display = 'none';
+            }
+
+            locationModal.classList.remove('closing');
+            locationModal.offsetHeight;
+            locationModal.classList.add('open');
+            document.body.classList.add('modal-open');
+        });
     });
+
+    filterButtons.forEach(btn => {
+        btn.addEventListener("click", () => {
+            // reset attivi
+            // filterButtons.forEach(b => b.classList.remove("active"));
+            // btn.classList.add("active");
+
+            const filter = btn.dataset.filter;
+            applyLocationFilter(filter);
+        });
+    });
+
+
 }

@@ -2,6 +2,8 @@
 {{ $typePage := index (where (where .Site.RegularPages "Section" "location-types") "Title" $type) 0 }}
 
 <div class="base-card"
+     id="location-card"
+
      data-type="{{ .Params.type }}"
      data-title="{{ .Title }}"
      data-address="{{ .Params.address }}"

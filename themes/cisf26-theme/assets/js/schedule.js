@@ -1,6 +1,4 @@
 export function initSchedulePage() {
-    console.log("🚀 Schedule");
-
     const filtersContainer = document.querySelector('.filters-container');
     if (!filtersContainer) return;
 

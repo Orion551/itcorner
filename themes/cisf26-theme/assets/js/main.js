@@ -1,5 +1,5 @@
 import { initSchedulePage } from './schedule.js';
-import { initLocationsPage} from "./locations.js";
+import { initLocationsPage } from "./locations.js";
 
 /**
  * Logics & Styling to close the Modal
@@ -24,7 +24,7 @@ export const closeModal = (modal) => {
     setTimeout(cleanup, 450);
 };
 
-// ESC btn that closes MOdal
+// --- ESC key closes Modal ---
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' || e.key === 'Esc') {
         const openModalEl = document.querySelector('.base-modal.open');
@@ -32,9 +32,8 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
-// Modal's lifecycle
+// --- Modal lifecycle (close btn + overlay) ---
 document.addEventListener('click', (event) => {
-    // --- Btn to close Modal ---
     const closeTrigger = event.target.closest('.close-modal');
     if (closeTrigger) {
         const modalToClose = closeTrigger.closest('.base-modal');
@@ -42,20 +41,20 @@ document.addEventListener('click', (event) => {
         return;
     }
 
-    // --- External click to close Modal ---
     const overlay = event.target.closest('.base-modal.open');
     if (overlay && event.target === overlay) {
         closeModal(overlay);
     }
 });
 
-
-
+// --- Page initializers ---
 document.addEventListener('DOMContentLoaded', () => {
-    console.log("🚀 Cool functions are ready to go");
-
-    initSchedulePage();
-    initLocationsPage();
-
-
+    // Init schedule page if schedule container exists
+    if (document.querySelector('.schedule-grid')) {
+        initSchedulePage();
+    }
+    // Init locations page if map exists
+    if (document.querySelector('#map')) {
+        initLocationsPage();
+    }
 });

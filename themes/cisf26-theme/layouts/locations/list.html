@@ -18,7 +18,7 @@
         <h1>Strutture</h1>
     </section>
     <!-- Filters -->
-    <div class="filters-container">
+    <div class="filters-container" id="location-filter-container">
         <button class="filter-button active" data-filter="all">Tutte</button>
         {{ range where .Site.RegularPages "Section" "location-types" }}
         <button class="filter-button"
@@ -38,17 +38,5 @@
 
         <div id="map"></div>
     </div>
-
-<!--    <div class="structures-layout">-->
-<!--        &lt;!&ndash; Cards &ndash;&gt;-->
-<!--        <div class="structures-grid">-->
-<!--            {{ range where .Site.RegularPages "Section" "locations" }}-->
-<!--            {{ partial "location-card.html" . }}-->
-<!--            {{ end }}-->
-<!--        </div>-->
-
-<!--        &lt;!&ndash; Map &ndash;&gt;-->
-<!--        <div id="map"></div>-->
-<!--    </div>-->
 </div>
 {{ end }}
