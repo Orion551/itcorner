@@ -192,7 +192,7 @@
   overflow: hidden;
   flex: 1;
 
-  background: #f7f7f7;
+  //background: #f7f7f7;
   margin: 0.5rem 0.5rem 1rem;
 }
 
@@ -211,7 +211,6 @@
   object-fit: cover;
   border-radius: 20px;
   margin-bottom: 0;
-  //margin-bottom: 0.8rem;
 }
 
 .event-time {
@@ -229,6 +228,17 @@
   width: fit-content;
   user-select: none;
   transition: font-size 0.25s ease, padding 0.25s ease;
+}
+
+.event-time.no-cover {
+  position: static;
+  background: $light-grey;
+  box-shadow: none;
+  top: auto;
+  left: auto;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  padding: 0;
 }
 
 .event-title {

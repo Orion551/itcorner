@@ -1,50 +1,53 @@
+{{ $hasCover := and .Params.coverImage (ne .Params.coverImage "") }}
+
 <div class="scheduled-event-card" data-context="{{ .Params.context }}">
     <div class="card-content">
-        <div class="event-time">
-            <span>{{ with .Params.start_time }}{{ . }}{{ end }}
-            {{ if .Params.end_time }} - {{ .Params.end_time }}{{ end }}</span>
+        <div class="event-time {{ if not $hasCover }}no-cover{{ end }}">
+            <span>
+                {{ with .Params.start_time }}{{ . }}{{ end }}
+                {{ if .Params.end_time }} - {{ .Params.end_time }}{{ end }}
+            </span>
         </div>
 
         {{ with .Params.coverImage }}
         <img class="card-image-container" src="{{ . | relURL }}" alt="{{ $.Params.title }}">
         {{ end }}
+    </div>
 
-        <div class="scheduled-event-card-body">
-            <h3 class="event-title">{{ .Params.name }}</h3>
+    <div class="scheduled-event-card-body">
+        <h3 class="event-title">{{ .Params.name }}</h3>
 
-            {{ with .Params.speakers }}
-            <div class="speakers-list">
-                <i class="fa-solid fa-microphone mic"></i>
-                <div class="avatar-scroll">
-                    {{ range . }}
-                    {{ $speaker := site.GetPage (printf "/guests/%s" .) }}
-                    {{ with $speaker }}
-                    <button class="speaker-avatar"
-                            data-modal-target="#speaker-modal"
-                            data-speaker-name="{{ .Title }}"
-                            data-speaker-role="{{ .Params.role }}"
-                            data-speaker-image="{{ .Params.image | relURL }}"
-                            data-speaker-bio="{{ .Params.bio | safeHTML }}">
-                        <img src="{{ .Params.image | relURL }}" alt="{{ .Title }}">
-                    </button>
-                    {{ end }}
-                    {{ end }}
-                </div>
+        {{ with .Params.speakers }}
+        <div class="speakers-list">
+            <i class="fa-solid fa-microphone mic"></i>
+            <div class="avatar-scroll">
+                {{ range . }}
+                {{ $speaker := site.GetPage (printf "/guests/%s" .) }}
+                {{ with $speaker }}
+                <button class="speaker-avatar"
+                        data-modal-target="#speaker-modal"
+                        data-speaker-name="{{ .Title }}"
+                        data-speaker-role="{{ .Params.role }}"
+                        data-speaker-image="{{ .Params.image | relURL }}"
+                        data-speaker-bio="{{ .Params.bio | safeHTML }}">
+                    <img src="{{ .Params.image | relURL }}" alt="{{ .Title }}">
+                </button>
+                {{ end }}
+                {{ end }}
             </div>
-            {{ end }}
-
-            {{ with .Params.address }}
-            <div class="card-address-container">
-                <a href="{{ .location_url }}"
-                   target="_blank"
-                   rel="noopener noreferrer"
-                   class="card-location">
-                    <i class="fa-solid fa-location-dot"></i>
-                    <span>{{ .display_name }}</span>
-                </a>
-            </div>
-
-            {{ end }}
         </div>
+        {{ end }}
+
+        {{ with .Params.address }}
+        <div class="card-address-container">
+            <a href="{{ .location_url }}"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="card-location">
+                <i class="fa-solid fa-location-dot"></i>
+                <span>{{ .display_name }}</span>
+            </a>
+        </div>
+        {{ end }}
     </div>
 </div>
