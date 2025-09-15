@@ -29,7 +29,10 @@
         {{ range $day := slice "monday" "tuesday" "wednesday" "thursday" "friday" "saturday" "sunday" }}
         {{ with index $byDay $day }}
         <div class="day-column">
-            <h2 class="day-title">{{ $day }}</h2>
+            <div class="day-title-container">
+                <h2 class="day-title">{{ $day }}</h2>
+            </div>
+
             {{ range sort . "Params.weight" }}
             {{ partial "event-card.html" . }}
             {{ end }}

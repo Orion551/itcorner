@@ -24,22 +24,22 @@
   margin: 0.5rem 0 1rem;
 
   .filter-button {
-    background: #f7f7f7;
-    border: 1px solid #ddd;
-    border-radius: 6px;
+    background: #fff;
+    border: 1px solid $secondary-color;
+    color: $secondary-color;
+    border-radius: 50px;
     padding: 0.5rem 1rem;
     font-size: 0.9rem;
     cursor: pointer;
     transition: background 0.2s;
 
     &:hover {
-      background: #eee;
+      background: rgba($secondary-color, 0.1);
     }
 
     &.active {
-      background: #ff8c00;
-      color: #fff;
-      border-color: #ff8c00;
+      color: $accent-color-1;
+      border-color: $accent-color-1;
     }
   }
 }
@@ -69,10 +69,10 @@
   flex: 0 0 320px;
   //display: flex;
   flex-direction: column;
-  background: #fff8f0;
-  padding: 1rem;
-  border-radius: 10px;
-  border: 1px solid #ddd;
+  //background: #fff8f0;
+  //padding: 1rem;
+  //border-radius: 10px;
+  //border: 1px solid #ddd;
   scroll-snap-align: start;
   overflow-y: auto;
 
@@ -84,23 +84,29 @@
     border-radius: 3px;
   }
 
-  .day-title {
+  .day-title-container {
+    padding: .3rem;
+    background: $secondary-color;
+    border-radius: 15px;
     position: sticky;
-    top: 0;
-    background: #fff8f0;
-    font-size: 1.2rem;
-    font-weight: bold;
-    padding: 0.5rem;
-    border-bottom: 1px solid #ddd;
-    //margin-bottom: 1rem;
-    text-align: center;
     z-index: 5;
+
+    .day-title {
+      color: $light-grey;
+      top: 0;
+      font-size: 1.2rem;
+      font-weight: bold;
+      text-align: center;
+      margin: 0;
+    }
   }
 }
 
 /* Desktop */
 @media (min-width: $breakpoint-lg) {
   .days-scroll {
+    justify-content: flex-start;
+    padding: 0 2rem;
     scroll-snap-type: none;
   }
 
@@ -227,6 +233,7 @@
   //border-color: #999;
 }
 
+// TODO: Move to modal base styles
 /* fade-in anim */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(-10px); }
