@@ -13,25 +13,14 @@
     <footer>
       {{ partial "footer.html" . }}
     </footer>
-    {{/* --- JS Scripts Load --- */}}
 
-    {{/* 1. JS-Array of scripts init */}}
-    {{ $scripts := slice (resources.Get "js/main.js") }}
-
-    {{/* 2. Check on pageScript prop existence (page-frontmatter) */}}
-    {{ with .Params.pageScript }}
-    {{ $pageScriptResource := resources.Get (printf "js/%s" .) }}
-    {{ if $pageScriptResource }}
-    {{ $scripts = $scripts | append $pageScriptResource }}
-    {{ else }}
-    {{ warnf "Script was not found: js/%s" . }}
-    {{ end }}
-    {{ end }}
-
-    {{/* 3. Scripts bundling */}}
-    {{ $bundle := $scripts | js.Build | minify | fingerprint }}
-
-    {{/* 4. Final bundle integration */}}
+    {{/* Get the main JS file, build it if needed, minify, and fingerprint */}}
+    {{ $jsMain := resources.Get "js/main.js" }}
+    {{ if $jsMain }}
+    {{ $bundle := $jsMain | js.Build | minify | fingerprint }}
     <script src="{{ $bundle.Permalink }}" defer></script>
+    {{ else }}
+    {{ errorf "Could not find main JavaScript file at %s" "js/main.js" }}
+    {{ end }}
   </body>
 </html>
