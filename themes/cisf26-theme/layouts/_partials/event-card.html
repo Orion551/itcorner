@@ -24,7 +24,7 @@
                             data-speaker-name="{{ .Title }}"
                             data-speaker-role="{{ .Params.role }}"
                             data-speaker-image="{{ .Params.image | relURL }}"
-                            data-speaker-bio="{{ .Content | safeHTML }}">
+                            data-speaker-bio="{{ .Params.bio | safeHTML }}">
                         <img src="{{ .Params.image | relURL }}" alt="{{ .Title }}">
                     </button>
                     {{ end }}
@@ -34,13 +34,16 @@
             {{ end }}
 
             {{ with .Params.address }}
-            <a href="{{ .location_url }}"
-               target="_blank"
-               rel="noopener noreferrer"
-               class="card-location">
-                <i class="fa-solid fa-location-dot"></i>
-                <span>{{ .display_name }}</span>
-            </a>
+            <div class="card-address-container">
+                <a href="{{ .location_url }}"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   class="card-location">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <span>{{ .display_name }}</span>
+                </a>
+            </div>
+
             {{ end }}
         </div>
     </div>

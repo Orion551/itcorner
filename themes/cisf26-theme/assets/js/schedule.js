@@ -86,10 +86,11 @@ export function initSchedulePage() {
         if (!modal) return;
         if (modal && trigger) {
             const speakerData = trigger.dataset;
-            modal.querySelector('.modal-speaker-image').src = speakerData.speakerImage || '';
-            modal.querySelector('.modal-speaker-name').textContent = speakerData.speakerName || '--';
-            modal.querySelector('.modal-speaker-role').textContent = speakerData.speakerRole || '';
-            modal.querySelector('.modal-speaker-bio').innerHTML = speakerData.speakerBio || '--';
+            console.log('speaker data', speakerData);
+            modal.querySelector('.modal-speaker.image').src = speakerData.speakerImage || '';
+            modal.querySelector('.modal-speaker.name').textContent = speakerData.speakerName || '--';
+            modal.querySelector('.modal-speaker.role').textContent = speakerData.speakerRole || '';
+            modal.querySelector('.modal-speaker.bio').innerHTML = speakerData.speakerBio || '--';
 
             modal.classList.add('open');
             document.body.classList.add('modal-open');
