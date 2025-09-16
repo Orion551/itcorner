@@ -1,9 +1,7 @@
 // locations.js
-import { closeModal } from "./main.js";
-
 export function initLocationsPage() {
     const filtersContainer = document.querySelector('#location-filter-container');
-
+    const markerMap = new Map();
 
     if (!filtersContainer) return;
 
@@ -14,7 +12,6 @@ export function initLocationsPage() {
     if(!cards.length) return;
 
     const applyLocationFilter = (activeFilter) => {
-        console.log('applying filter');
         cards.forEach(card => {
             const locationType = card.dataset.type;
             const shouldShow = activeFilter ===  "all" || locationType === activeFilter;
@@ -24,18 +21,17 @@ export function initLocationsPage() {
             card.style.display = shouldShow ? "block" : "none";
         });
 
-        // markers.forEach(obj => {
-        //     if (activeFilter === "all" || obj.type === activeFilter) {
-        //         obj.marker.addTo(map);
-        //     } else {
-        //         map.removeLayer(obj.marker);
-        //     }
-        // });
+        markerMap.forEach((v,k) => {
+            if(activeFilter === 'all' || k.dataset.type === activeFilter)
+                v.addTo(map);
+            else
+                map.removeLayer(v);
+        });
     }
-
 
     // LeafLet map init
     const map = L.map("map").setView([41.8648, 12.4813], 6); // Italy
+
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
         attribution: "© OpenStreetMap contributors"
     }).addTo(map);
@@ -57,7 +53,7 @@ export function initLocationsPage() {
         });
     }
 
-    const markerMap = new Map();
+
 
     // Adds markers and click to show popup
     cards.forEach(card => {
@@ -172,6 +168,4 @@ export function initLocationsPage() {
             applyLocationFilter(filter);
         });
     });
-
-
 }
