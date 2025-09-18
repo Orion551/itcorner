@@ -40,6 +40,7 @@ export function initSchedulePage() {
         });
     };
 
+    // TODO: Improve this and prevent from triggering every time something happens on document
     document.addEventListener('click', (event) => {
         const openTrigger = event.target.closest('[data-modal-target]');
         console.log('open trigger', openTrigger);

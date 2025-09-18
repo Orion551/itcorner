@@ -56,9 +56,11 @@
             body.classList.toggle('popup-open');
         });
 
-        closeBtn.addEventListener('click', () => {
-            body.classList.remove('popup-open');
-        });
+        if(closeBtn) {
+            closeBtn.addEventListener('click', () => {
+                body.classList.remove('popup-open');
+            });
+        }
 
         document.addEventListener('click', (event) => {
             if (!popupMenu.contains(event.target) && !toggleBtn.contains(event.target) && body.classList.contains('popup-open')) {
