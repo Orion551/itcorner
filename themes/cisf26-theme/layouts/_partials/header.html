@@ -45,27 +45,27 @@
         {{- end }}
     </ul>
 </aside>
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const toggleBtn = document.querySelector('.more-menu-toggle');
-        const popupMenu = document.querySelector('.mobile-popup-menu');
-        const closeBtn = document.querySelector('.popup-close-btn');
-        const body = document.body;
+<!--<script>-->
+<!--    document.addEventListener('DOMContentLoaded', () => {-->
+<!--        const toggleBtn = document.querySelector('.more-menu-toggle');-->
+<!--        const popupMenu = document.querySelector('.mobile-popup-menu');-->
+<!--        const closeBtn = document.querySelector('.popup-close-btn');-->
+<!--        const body = document.body;-->
 
-        toggleBtn.addEventListener('click', () => {
-            body.classList.toggle('popup-open');
-        });
+<!--        toggleBtn.addEventListener('click', () => {-->
+<!--            body.classList.toggle('popup-open');-->
+<!--        });-->
 
-        if(closeBtn) {
-            closeBtn.addEventListener('click', () => {
-                body.classList.remove('popup-open');
-            });
-        }
+<!--        if(closeBtn) {-->
+<!--            closeBtn.addEventListener('click', () => {-->
+<!--                body.classList.remove('popup-open');-->
+<!--            });-->
+<!--        }-->
 
-        document.addEventListener('click', (event) => {
-            if (!popupMenu.contains(event.target) && !toggleBtn.contains(event.target) && body.classList.contains('popup-open')) {
-                body.classList.remove('popup-open');
-            }
-        });
-    });
-</script>
+<!--        document.addEventListener('click', (event) => {-->
+<!--            if (!popupMenu.contains(event.target) && !toggleBtn.contains(event.target) && body.classList.contains('popup-open')) {-->
+<!--                body.classList.remove('popup-open');-->
+<!--            }-->
+<!--        });-->
+<!--    });-->
+<!--</script>-->
