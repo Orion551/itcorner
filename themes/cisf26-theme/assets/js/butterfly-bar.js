@@ -1,5 +1,5 @@
 export function initButterflyBar() {
-    const toggleBtn = document.querySelector(".more-menu-toggle");
+    const toggleBtn = document.querySelector("#butterfly-bar-more-btn");
     const popupMenu = document.querySelector(".mobile-popup-menu");
     const body = document.body;
 

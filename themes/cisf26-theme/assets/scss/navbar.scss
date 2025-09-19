@@ -59,6 +59,130 @@
   }
 }
 
+// --- Butterfly Bar ---
+.mobile-bottom-bar {
+  display: block;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: $light-grey;
+  box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+
+  .bottom-menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 65px;
+  }
+
+  .more-button {
+    border: none;
+  }
+
+  .bottom-item {
+    .bottom-link {
+      border: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-decoration: none;
+      color: $secondary-color;
+      fill: $secondary-color;
+      font-size: 0.8rem;
+      padding: 5px;
+      transition: color 0.2s;
+
+      svg {
+        width: 20px;
+        height: 20px;
+      }
+
+      &.active, &:hover {
+        color: $active-color;
+        //font-weight: bold;
+
+        svg {
+          fill: $active-color;
+        }
+      }
+    }
+    .bottom-icon {
+      font-size: 12px;
+      margin-bottom: 5px;
+    }
+  }
+}
+
+// --- Pop-up Menu ---
+.mobile-popup-menu {
+  display: block;
+  position: fixed;
+  bottom: -100vh;
+  right: 20px;
+  width: 200px;
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  z-index: 101;
+  transition: bottom 0.3s ease-in-out;
+}
+
+.popup-menu {
+  list-style: none;
+  padding: 10px 0;
+  margin: 0;
+}
+
+.popup-item {
+  display: flex;
+  flex-direction: row;
+  //align-items: center;
+  justify-content: flex-start;
+  padding: 8px 8px 8px 16px;
+
+  svg {
+    width: 20px;
+    height: 20px;
+    fill: $secondary-color;
+    margin-right: 16px;
+  }
+
+  a.popup-link {
+    display: block;
+    //padding: 12px 20px;
+    color: $secondary-color;
+    text-decoration: none;
+    &:hover {
+      background-color: #f0f0f0;
+    }
+  }
+}
+
+.popup-header {
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px;
+  .popup-close-btn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+}
+
+.more-menu-icon {
+  svg {
+    width: 20px;
+    height: 20px;
+    fill: $secondary-color;
+  }
+}
+
 // --- Mobile tweaks ---
 @media (max-width: 768px) {
   .desktop-navbar-container {
@@ -70,7 +194,7 @@
 
   .mobile-bottom-bar {
     height: 70px;
-    padding: 8px 0;
+    //padding: 8px 0;
 
     .bottom-menu {
       height: 100%;
@@ -82,21 +206,70 @@
       .more-menu-icon {
         flex: 1;
         text-align: center;
+        //height: 100%;
+        list-style: none;
 
         .bottom-link {
           display: flex;
           flex-direction: column;
           align-items: center;
+          justify-content: center;
+          width: 100%;
+          height: 100%;
           font-size: 0.85rem;
+          text-decoration: none;
+          color: inherit;
+          transition: background 0.2s ease, color 0.2s ease;
 
           i {
             font-size: 1.3rem;
             margin-bottom: 4px;
           }
+
+          &:hover {
+            background: rgba(0,0,0,0.05);  // colore leggero sullo sfondo
+            color: #007acc;                // esempio di colore per l’hover
+          }
+
+          &.active {
+            color: #007acc;
+            //font-weight: bold;
+          }
         }
       }
+
+      //.bottom-item,
+      //.more-menu-icon {
+      //  flex: 1;
+      //  text-align: center;
+      //
+      //  .bottom-link {
+      //    display: flex;
+      //    flex-direction: column;
+      //    align-items: center;
+      //    font-size: 0.85rem;
+      //
+      //    i {
+      //      font-size: 1.3rem;
+      //      margin-bottom: 4px;
+      //    }
+      //  }
+      //}
     }
   }
+}
+
+.test {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  font-size: 0.85rem;
+  text-decoration: none;
+  color: inherit;
+  transition: background 0.2s ease, color 0.2s ease;
 }
 
 // Popup menu
