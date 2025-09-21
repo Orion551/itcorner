@@ -26,6 +26,14 @@
     display: none;
   }
 
+  main {
+    padding-bottom: 80px
+  }
+
+  .footer {
+    display: none;
+  }
+
   .about-us-header {
     flex-direction: column; // Stack elements vertically
     gap: 30px;
@@ -57,28 +65,6 @@
 
   .organizers-grid {
     grid-template-columns: 1fr; // Stack organizers on mobile
-  }
-
-  // --- Navbar Top (Mobile) ---
-  .site-header {
-    //background-color: transparent;
-    //box-shadow: none;
-    //position: relative;
-    //padding: 10px 0;
-    //.top-nav-container {
-    //  display: flex;
-    //  justify-content: center;
-    //  padding: 10px;
-    //}
-    //.site-logo {
-    //  img {
-    //    height: 60px;
-    //    width: auto;
-    //  }
-    //}
-    //.main-nav-desktop {
-    //  display: none;
-    //}
   }
 
   .about-container {

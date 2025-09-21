@@ -8,14 +8,15 @@
       {{ partial "header.html" . }}
     </header>
     <main>
-      {{ block "main" . }}
-
-        {{ end }}
-        {{ partial "butterfly-bar.html" . }}
+      {{ block "main" . }} {{ end }}
     </main>
-    <footer>
+
+    <footer class="footer">
       {{ partial "footer.html" . }}
     </footer>
+    <nav>
+        {{ partial "butterfly-bar.html" . }}
+    </nav>
 
     {{/* Get the main JS file, build it if needed, minify, and fingerprint */}}
     {{ $jsMain := resources.Get "js/main.js" }}
