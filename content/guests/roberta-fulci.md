@@ -7,4 +7,5 @@ bio: Roberta Fulci, laureata in matematica alla Sapienza e dottore di ricerca in
   scrive per Il Tascabile. Ha collaborato con Zanichelli, Le Scienze e
   Bioversity International.
 image: /itcorner/images/uploads/no-photo-svgrepo-com.webp
+weight: 6
 ---

@@ -7,4 +7,5 @@ bio: Licia Troisi è una scrittrice italiana di libri fantasy, autrice di saghe
   indirizzo Astrofisico presso l'Università degli Studi di Tor Vergata e ha
   pubblicato libri di divulgazione scientifica.
 image: /itcorner/images/uploads/no-photo-svgrepo-com.webp
+weight: 3
 ---

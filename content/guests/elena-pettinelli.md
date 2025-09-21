@@ -13,4 +13,5 @@ bio: Elena Pettinelli è professoressa di Fisica Terrestre presso il Dipartiment
   tracce biologiche su Marte. Ha inoltre contribuito ai progetti ACQUA e MARSIS
   dell’ESA.
 image: /itcorner/images/uploads/no-photo-svgrepo-com.webp
+weight: 1
 ---
