@@ -21,6 +21,14 @@ body.modal-open {
   height: 100%;
 }
 
+body.popup-open {
+  overflow: hidden;
+  .mobile-popup-overlay {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
 .page-content {
   margin-top: $nav-height;
   padding: 1.5rem 1rem;

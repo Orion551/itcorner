@@ -1,5 +1,6 @@
 import { initSchedulePage } from './schedule.js';
 import { initLocationsPage } from "./locations.js";
+import { initButterflyBar} from "./butterfly-bar.js";
 
 /**
  * Logics & Styling to close the Modal
@@ -57,4 +58,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (document.querySelector('#map')) {
         initLocationsPage();
     }
+
+    initButterflyBar();
 });

@@ -7,15 +7,6 @@ theme = 'cisf26-theme'
     dir = ':cacheDir/images'
 
 [[menus.main]]
-  identifier = "home"
-  name = "Home"
-  pageRef = "/"
-  weight = 10
-  icon = ""
-  [menus.main.params]
-    show_desktop = false
-    bottombar = false
-[[menus.main]]
   identifier = "users-solid"
   name = "Chi Siamo"
   pageRef = "/about-us/"
