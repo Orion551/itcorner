@@ -8,7 +8,10 @@
       {{ partial "header.html" . }}
     </header>
     <main>
-      {{ block "main" . }}{{ end }}
+      {{ block "main" . }}
+
+        {{ end }}
+        {{ partial "butterfly-bar.html" . }}
     </main>
     <footer>
       {{ partial "footer.html" . }}
@@ -22,5 +25,6 @@
     {{ else }}
     {{ errorf "Could not find main JavaScript file at %s" "js/main.js" }}
     {{ end }}
+
   </body>
 </html>

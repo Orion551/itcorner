@@ -1,0 +1,36 @@
+<!-- Overlay -->
+<div class="mobile-popup-overlay"></div>
+
+<!-- Bottom sheet -->
+<nav class="mobile-bottom-bar" id="butterfly-bar">
+
+    <ul class="bottom-menu collapsed">
+        {{ $currentPage := . }}
+        {{ range sort (where .Site.Menus.main "Params.bottombar" true) "Params.mobile_sort" "asc" }}
+        <li>
+            <a href="{{ .URL }}" class="bottom-link {{ if $currentPage.IsMenuCurrent "main" . }}active{{ end }}">
+                <i class="fa-solid {{ .Params.icon }}"></i>
+                <span>{{ .Name }}</span>
+            </a>
+        </li>
+        {{ end }}
+
+        <!-- More button -->
+        <li id="butterfly-bar-more-btn" class="bottom-item toggle-icon">
+            <i class="fa-solid fa-chevron-up icon-up"></i>
+            <i class="fa-solid fa-chevron-down icon-down"></i>
+        </li>
+    </ul>
+
+    <!-- Extra actions -->
+    <ul class="bottom-extra">
+        {{- range (where .Site.Menus.main "Params.bottombar" false).ByWeight }}
+        <li class="">
+            <a href="{{ .URL }}" class="bottom-extra-item {{ if $currentPage.IsMenuCurrent "main" . }}active{{ end }}">
+                <i class="fa-solid {{ .Params.icon }}"></i>
+                <span>{{ .Name }}</span>
+            </a>
+        </li>
+        {{- end }}
+    </ul>
+</nav>

@@ -1,10 +1,27 @@
 export function initButterflyBar() {
     const toggleBtn = document.querySelector("#butterfly-bar-more-btn");
-    const popupMenu = document.querySelector(".mobile-popup-menu");
+    const overlay = document.querySelector(".mobile-popup-overlay");
+    const sheet = document.querySelector("#butterfly-bar");
     const body = document.body;
 
-    toggleBtn.addEventListener("click", () => {
-        console.log('clicked');
-        body.classList.toggle('popup-open');
-    });
+    let sheetIsOpen = false;
+
+    const toggleSheet = () => {
+        if (sheetIsOpen) {
+            body.classList.remove("popup-open");
+            sheet.classList.remove("expanded");
+            toggleBtn.classList.add("expanded");
+            sheetIsOpen = false;
+        }
+        else {
+            body.classList.add("popup-open");
+            sheet.classList.add("expanded");
+            toggleBtn.classList.remove("expanded");
+            sheetIsOpen = true;
+        }
+    }
+
+    toggleBtn.addEventListener("click", toggleSheet);
+    overlay.addEventListener("click", toggleSheet);
+
 }
