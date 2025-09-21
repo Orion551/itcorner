@@ -1,6 +1,7 @@
 import { initSchedulePage } from './schedule.js';
 import { initLocationsPage } from "./locations.js";
 import { initButterflyBar} from "./butterfly-bar.js";
+import {initGuestScroller} from "./guests";
 
 /**
  * Logics & Styling to close the Modal
@@ -60,4 +61,5 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     initButterflyBar();
+    initGuestScroller();
 });
