@@ -1,0 +1,45 @@
+{{ $guests := where site.RegularPages "Section" "guests" }}
+
+{{ with $guests }}
+{{ $firstGuest := first 1 . }}
+
+<section class="guest-showcase-container">
+    <div class="featured-guest">
+        {{ range $firstGuest }}
+        <div class="featured-guest-bio">
+            <h2 class="featured-guest-name">{{ .Title }}</h2>
+            <p class="featured-guest-role">{{ .Params.role }}</p>
+            <div class="featured-guest-content">
+                {{ .Params.bio | default .Content | markdownify }}
+            </div>
+        </div>
+        <div class="featured-guest-image-wrapper">
+            <img src="{{ .Params.image | relURL }}" alt="{{ .Title }}" class="featured-guest-image">
+        </div>
+        {{ end }}
+    </div>
+
+    <div class="guest-list">
+        <div class="guest-list-scroller">
+            {{ range $index, $guest := . }}
+            <div class="guest-list-item {{ if eq $index 0 }}active{{ end }}"
+                 data-name="{{ $guest.Title }}"
+                 data-role="{{ $guest.Params.role }}"
+                 data-image="{{ $guest.Params.image | relURL }}"
+                 data-bio="{{ $guest.Params.bio | default $guest.Content | markdownify | safeHTML }}">
+                <img src="{{ $guest.Params.image | relURL }}" alt="{{ $guest.Title }}">
+
+                <div class="guest-item-overlay">
+                    <h3>{{ $guest.Title }}</h3>
+                    <p>{{ $guest.Params.role }}</p>
+                </div>
+            </div>
+            {{ end }}
+        </div>
+        <div class="guest-list-nav">
+            <button class="arrow prev" aria-label="Previous Guest">&larr;</button>
+            <button class="arrow next" aria-label="Next Guest">&rarr;</button>
+        </div>
+    </div>
+</section>
+{{ end }}
