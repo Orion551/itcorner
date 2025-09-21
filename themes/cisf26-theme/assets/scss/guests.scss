@@ -1,5 +1,3 @@
-/* assets/scss/partials/_guest-scroller.scss */
-
 .guest-showcase-container {
   width: 100%;
   max-width: 1200px;
@@ -12,7 +10,7 @@
   grid-template-columns: 1fr 1fr;
   gap: 2rem;
   align-items: center;
-  min-height: 400px; /* Altezza minima per evitare "salti" */
+  min-height: 400px;
 }
 
 .featured-guest-bio {
@@ -45,7 +43,7 @@
     height: 400px;
     width: 400px;
     object-fit: cover;
-    border-radius: 50%;
+    border-radius: 20px;
     opacity: 1;
     transform: scale(1);
     transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
@@ -66,15 +64,15 @@
   display: flex;
   gap: 0.5rem;
   overflow-x: auto;
-  padding-bottom: 1rem; /* Spazio per la scrollbar se visibile */
+  padding-bottom: 1rem;
   scrollbar-width: none; /* Firefox */
-  &::-webkit-scrollbar { display: none; } /* Chrome, Safari */
+  &::-webkit-scrollbar { display: none; }
 }
 
 .guest-list-item {
-  flex: 0 0 80px; /* Non crescere, non restringere, base 80px */
+  flex: 0 0 80px;
   height: 250px;
-  border-radius: 40px;
+  border-radius: 20px;
   overflow: hidden;
   cursor: pointer;
   transition: flex-basis 0.4s ease;
@@ -95,11 +93,11 @@
   }
 
   &.active {
-    flex-basis: 100px; /* Leggermente più grande quando attivo */
+    flex-basis: 100px;
   }
 }
 
-.guest-item-overlay { display: none; } // Nascosto su desktop
+.guest-item-overlay { display: none; }
 
 .guest-list-nav {
   display: flex;
@@ -123,7 +121,7 @@
 /* === MOBILE STYLES === */
 @media (max-width: 768px) {
   .featured-guest, .guest-list-nav {
-    display: none; /* Nascondiamo la versione desktop */
+    display: none;
   }
 
   .guest-list-scroller {
@@ -148,13 +146,13 @@
       background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
       color: white;
       padding: 3rem 1rem 1rem;
-      display: block; /* Visibile su mobile */
-      opacity: 0; // Nascosto di default
+      display: block;
+      opacity: 0;
       transition: opacity 0.3s ease;
     }
 
     &.overlay-active .guest-item-overlay {
-      opacity: 1; // Visibile al click
+      opacity: 1;
     }
   }
 }

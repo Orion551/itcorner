@@ -1,6 +1,6 @@
 export function initGuestScroller() {
     const container = document.querySelector('.guest-showcase-container');
-    if (!container) return; // Esegui solo se il componente esiste
+    if (!container) return;
 
     const featuredBio = container.querySelector('.featured-guest-bio');
     const featuredImage = container.querySelector('.featured-guest-image');
@@ -11,19 +11,15 @@ export function initGuestScroller() {
 
     const isMobile = () => window.innerWidth <= 768;
 
-    // Funzione per aggiornare l'ospite in primo piano (Desktop)
     function updateFeaturedGuest(item) {
         if (isMobile()) return;
 
-        // Rimuovi la classe 'active' da tutti e aggiungila a quello cliccato
         scrollerItems.forEach(i => i.classList.remove('active'));
         item.classList.add('active');
 
-        // Aggiungi classi per l'animazione di fade-out
         featuredBio.classList.add('changing');
         featuredImage.classList.add('changing');
 
-        // Aspetta la fine dell'animazione per cambiare il contenuto
         setTimeout(() => {
             const data = item.dataset;
             featuredImage.src = data.image;
@@ -32,31 +28,25 @@ export function initGuestScroller() {
             featuredBio.querySelector('.featured-guest-role').textContent = data.role;
             featuredBio.querySelector('.featured-guest-content').innerHTML = data.bio;
 
-            // Rimuovi le classi per l'animazione di fade-in
             featuredBio.classList.remove('changing');
             featuredImage.classList.remove('changing');
-        }, 200); // Metà della durata della transizione CSS
+        }, 200);
     }
 
-    // Gestione del click sugli elementi
     scrollerItems.forEach(item => {
         item.addEventListener('click', () => {
             if (isMobile()) {
-                // Su mobile, gestisce solo l'overlay
-                // Chiudi gli altri overlay prima di aprire quello nuovo
                 const isActive = item.classList.contains('overlay-active');
                 scrollerItems.forEach(i => i.classList.remove('overlay-active'));
                 if (!isActive) {
                     item.classList.add('overlay-active');
                 }
             } else {
-                // Su desktop, aggiorna l'ospite in primo piano
                 updateFeaturedGuest(item);
             }
         });
     });
 
-    // Navigazione con le frecce (Desktop)
     navPrev.addEventListener('click', () => {
         scroller.scrollBy({ left: -200, behavior: 'smooth' });
     });
