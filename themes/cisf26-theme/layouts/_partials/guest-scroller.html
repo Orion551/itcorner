@@ -1,0 +1,55 @@
+{{ $guests := where site.RegularPages "Section" "guests" }}
+
+{{ with $guests }}
+{{ $firstGuest := first 1 . }}
+{{ $otherGuests := after 1 . }}
+
+<section class="guest-showcase-container">
+    <div class="featured-guest">
+        {{ range $firstGuest }}
+        <div class="featured-guest-bio">
+            <h2 class="featured-guest-name">{{ .Title }}</h2>
+            <p class="featured-guest-role">{{ .Params.role }}</p>
+            <div class="featured-guest-content">
+                {{ .Params.bio | default .Content | markdownify }}
+            </div>
+        </div>
+        <div class="featured-guest-image-wrapper">
+            <img src="{{ .Params.image | relURL }}" alt="{{ .Title }}" class="featured-guest-image">
+        </div>
+        {{ end }}
+    </div>
+
+    <div class="guest-list">
+        <div class="guest-list-scroller">
+            {{ range $otherGuests }}
+            <div class="guest-list-item"
+                 data-name="{{ .Title }}"
+                 data-role="{{ .Params.role }}"
+                 data-image="{{ .Params.image | relURL }}"
+                 data-bio="{{ .Params.bio | default .Content | markdownify | safeHTML }}">
+                <img src="{{ .Params.image | relURL }}" alt="{{ .Title }}">
+                <div class="guest-item-overlay">
+                    <h3>{{ .Title }}</h3>
+                    <p>{{ .Params.role }}</p>
+                </div>
+            </div>
+            {{ end }}
+        </div>
+    </div>
+    <div class="guest-list-scroll-controls">
+        <button class="scroll-button arrow-prev">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+
+        <button class="scroll-button arrow-next">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+    </div>
+
+
+
+
+
+</section>
+{{ end }}

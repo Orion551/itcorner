@@ -8,4 +8,5 @@ bio: Livia Giacomini è astrofisica di formazione, giornalista e comunicatrice
   di comunicazione della scienza in tutte le sue forme, con particolare
   attenzione ai nuovi media e al data journalism.
 image: /itcorner/images/uploads/no-photo-svgrepo-com.webp
+weight: 4
 ---
