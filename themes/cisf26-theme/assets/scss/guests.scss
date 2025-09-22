@@ -9,8 +9,9 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 2rem;
-  align-items: center;
+  //align-items: center;
   min-height: 400px;
+  margin-bottom: 3.5rem;
 }
 
 .featured-guest-bio {
@@ -26,12 +27,13 @@
   .featured-guest-name {
     font-size: 2.5rem;
     margin-bottom: 0.5rem;
+    margin-top: 0;
   }
 
   .featured-guest-role {
     font-size: 1.2rem;
     color: #888;
-    margin-bottom: 1.5rem;
+    margin-top: 0;
   }
 }
 
@@ -56,31 +58,37 @@
 }
 
 .guest-list {
-  margin-top: 2rem;
-  position: relative;
+  margin-top: 1.2rem;
+  //position: relative;
 }
 
 .guest-list-scroller {
+  padding-left: 1.2rem;
+  padding-right: 1.2rem;
   display: flex;
-  gap: 0.5rem;
+  flex-direction: row;
+  //justify-content: center;
+  gap: 0.8rem;
   overflow-x: auto;
   padding-bottom: 1rem;
   scrollbar-width: none; /* Firefox */
   &::-webkit-scrollbar { display: none; }
+
+  -ms-overflow-style: none; /* Per Internet Explorer e Edge */
+  &::-webkit-scrollbar {
+    display: none; /* Per Chrome, Safari e Opera */
+  }
 }
 
 .guest-list-item {
-  flex: 0 0 80px;
-  height: 250px;
-  border-radius: 20px;
-  overflow: hidden;
+  flex-shrink: 0;
   cursor: pointer;
   transition: flex-basis 0.4s ease;
-  position: relative;
 
   img {
-    width: 100%;
-    height: 100%;
+    width: 65px;
+    height: 90px;
+    border-radius: 15px;
     object-fit: cover;
     filter: grayscale(80%);
     transition: filter 0.3s ease;
@@ -98,6 +106,22 @@
 }
 
 .guest-item-overlay { display: none; }
+
+.guest-list-scroll-controls {
+  text-align: center;
+
+  .scroll-button {
+    border: none;
+    background: $secondary-color;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    color: $light-grey;
+    gap: .5rem;
+    margin: .2rem;
+  }
+}
 
 .guest-list-nav {
   display: flex;
