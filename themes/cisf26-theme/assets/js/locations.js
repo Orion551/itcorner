@@ -1,36 +1,49 @@
 // locations.js
 export function initLocationsPage() {
+    // --- SELETTORI DOM ---
     const filtersContainer = document.querySelector('#location-filter-container');
     const markerMap = new Map();
 
     if (!filtersContainer) return;
 
+    const sheet = document.querySelector('.locations-sheet');
+    const handle = document.querySelector('.sheet-handle');
 
     const filterButtons = filtersContainer.querySelectorAll(".filter-button");
-    const cards = document.querySelectorAll("#location-card");
+    const cards = document.querySelectorAll('#location-card');
 
-    if(!cards.length) return;
+    // MODIFICATO: Selezioniamo il wrapper che contiene i dati e la card
+    const cardWrappers = document.querySelectorAll(".location-card-wrapper");
+    if(!cardWrappers.length) return;
 
+    // --- Mobile -- Sheet ---
+    // sheet Toggler
+    if (sheet && handle) {
+        handle.addEventListener('click', () => {
+            sheet.classList.toggle('is-expanded');
+        });
+    }
+
+    // --- Filters ---
     const applyLocationFilter = (activeFilter) => {
-        cards.forEach(card => {
-            const locationType = card.dataset.type;
-            const shouldShow = activeFilter ===  "all" || locationType === activeFilter;
-            console.log("Card:", card.dataset.title,
-                "| type:", `"${locationType}"`,
-                "| shouldShow:", shouldShow);
-            card.style.display = shouldShow ? "block" : "none";
+        cardWrappers.forEach(wrapper => {
+            const locationType = wrapper.querySelector('.location-card').dataset.type;
+            const shouldShow = activeFilter === "all" || locationType === activeFilter;
+
+            wrapper.style.display = shouldShow ? "block" : "none";
         });
 
-        markerMap.forEach((v,k) => {
-            if(activeFilter === 'all' || k.dataset.type === activeFilter)
-                v.addTo(map);
+        markerMap.forEach((marker, wrapper) => {
+            const card = wrapper.querySelector('.location-card');
+            if(activeFilter === 'all' || card.dataset.type === activeFilter)
+                marker.addTo(map);
             else
-                map.removeLayer(v);
+                map.removeLayer(marker);
         });
     }
 
     // LeafLet map init
-    const map = L.map("map").setView([41.8648, 12.4813], 6); // Italy
+    const map = L.map("map").setView([41.8648, 12.4813], 6);
 
     L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
         attribution: "© OpenStreetMap contributors"
@@ -41,10 +54,9 @@ export function initLocationsPage() {
         className: 'myDivIcon'
     });
 
-    // Geolocation
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(pos => {
-            const userMarker = L.marker([pos.coords.latitude, pos.coords.longitude], {
+            L.marker([pos.coords.latitude, pos.coords.longitude], {
                 icon: youAreHereIcon
             }).addTo(map).bindPopup("Tu sei qui");
             map.setView([pos.coords.latitude, pos.coords.longitude], 12);
@@ -53,11 +65,15 @@ export function initLocationsPage() {
         });
     }
 
-
-
-    // Adds markers and click to show popup
-    cards.forEach(card => {
-        const { lat, lng, color, title, type, address } = card.dataset;
+    // --- GESTIONE MARKER, POPUP E INTERAZIONI CARD ---
+    // MODIFICATO: Iteriamo sui wrapper invece che direttamente sulle card
+    cardWrappers.forEach(wrapper => {
+        // I dati per la mappa li prendiamo dal wrapper
+        const { lat, lng } = wrapper.dataset;
+        // I dati per il contenuto li prendiamo dalla card interna
+        const card = wrapper.querySelector('.location-card');
+        if (!card) return;
+        const { color, title, type, address, description, website } = card.dataset;
 
         if (lat && lng) {
             const marker = L.marker([parseFloat(lat), parseFloat(lng)], {
@@ -77,15 +93,64 @@ export function initLocationsPage() {
                 </div>
             `);
 
-            markerMap.set(card, marker);
+            // Usiamo il wrapper come chiave della mappa
+            markerMap.set(wrapper, marker);
 
-            card.addEventListener("click", () => {
+            // MODIFICATO: Aggiunta logica per chiudere lo sheet su mobile
+            wrapper.addEventListener("click", () => {
                 map.setView([parseFloat(lat), parseFloat(lng)], 15);
                 marker.openPopup();
+
+                // AGGIUNTO: Se siamo su mobile, chiudi lo sheet per mostrare la mappa
+                if (window.innerWidth < 992 && sheet) {
+                    sheet.classList.remove('is-expanded');
+                }
+            });
+        }
+
+        const navBtn = card.querySelector(".navigate-btn");
+        if (navBtn) {
+            navBtn.addEventListener("click", (e) => {
+                e.stopPropagation();
+                if (lat && lng) {
+                    const url = `https://maps.google.com/?q=${lat},${lng}`;
+                    window.open(url, "_blank");
+                }
+            });
+        }
+
+        const infoBtn = card.querySelector('.location-card-fab-info-btn');
+        const locationModal = document.getElementById('location-modal');
+        if(infoBtn && locationModal) {
+            infoBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+
+                const titleEl = locationModal.querySelector('.modal-location-title');
+                const addressEl = locationModal.querySelector('#modal-address');
+                const descEl = locationModal.querySelector('#modal-description');
+                const webEl = locationModal.querySelector('#modal-website');
+
+                if (titleEl) titleEl.textContent = title;
+                if (addressEl) addressEl.textContent = address;
+                if (descEl) descEl.textContent = description;
+                if (webEl) {
+                    if (website) {
+                        webEl.href = website;
+                        webEl.style.display = '';
+                    } else {
+                        webEl.style.display = 'none';
+                    }
+                }
+
+                locationModal.classList.remove('closing');
+                locationModal.offsetHeight;
+                locationModal.classList.add('open');
+                document.body.classList.add('modal-open');
             });
         }
     });
 
+    // --- GESTIONE POPUP E FILTRI (invariata) ---
     map.on('popupopen', (e) => {
         const popupEl = e.popup.getElement();
         const navBtn = popupEl.querySelector('.popup-navigate-btn');
@@ -99,73 +164,20 @@ export function initLocationsPage() {
         ev.stopPropagation();
         const { lat, lng } = ev.currentTarget.dataset;
         if (lat && lng) {
-            const url = `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`;
+            const url = `https://maps.google.com/?q=${lat},${lng}`;
             window.open(url, "_blank");
         }
     }
 
-    // Directins btn within card
-    cards.forEach(card => {
-        const navBtn = card.querySelector(".navigate-btn");
-        if (navBtn) {
-            navBtn.addEventListener("click", (e) => {
-                e.stopPropagation();
-                const { lat, lng } = card.dataset;
-                if (lat && lng) {
-                    const url = `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`;
-                    window.open(url, "_blank");
-                }
-            });
-        }
-    });
-
-    const locationModal = document.getElementById('location-modal');
-    const infoButtons = document.querySelectorAll('.location-card-fab-info-btn');
-
-    infoButtons.forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            e.stopPropagation(); // evita che il click sulla card venga triggerato
-            const card = btn.closest('.base-card');
-            if (!card || !locationModal) return;
-
-            // Data reading
-            const ds = card.dataset;
-            const title = ds.title || '';
-            const address = ds.address || '';
-            const description = ds.description || '';
-            const website = ds.website || '';
-
-            const titleEl = locationModal.querySelector('.modal-location-title');
-            const addressEl = locationModal.querySelector('#modal-address');
-            const descEl = locationModal.querySelector('#modal-description');
-            const webEl = locationModal.querySelector('#modal-website');
-
-            if (titleEl) titleEl.textContent = title;
-            if (addressEl) addressEl.textContent = address;
-            if (descEl) descEl.textContent = description;
-            if (webEl) {
-                if (website) {
-                    webEl.href = website;
-                    webEl.style.display = '';
-                } else
-                    webEl.style.display = 'none';
-            }
-
-            locationModal.classList.remove('closing');
-            locationModal.offsetHeight;
-            locationModal.classList.add('open');
-            document.body.classList.add('modal-open');
-        });
-    });
-
     filterButtons.forEach(btn => {
         btn.addEventListener("click", () => {
-            // reset attivi
-            // filterButtons.forEach(b => b.classList.remove("active"));
-            // btn.classList.add("active");
-
+            filterButtons.forEach(b => b.classList.remove("active"));
+            btn.classList.add("active");
             const filter = btn.dataset.filter;
             applyLocationFilter(filter);
         });
     });
+
+
+    applyLocationFilter('all');
 }

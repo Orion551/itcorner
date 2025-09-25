@@ -1,43 +1,44 @@
 {{ define "main" }}
-<div class="page-content schedule-grid">
-    <!-- Modal -->
+<div class="page-content">
     <div id="location-modal" class="base-modal">
-        <div class="base-modal-content">
-            <h2 class="modal-location-title title"></h2>
-            <p id="modal-address"></p>
-            <p id="modal-description"></p>
-            <a id="modal-website" href="#" target="_blank">Visita sito</a>
-
-            <button class="close-modal">
-                <i class="fa-solid fa-circle-xmark"></i>
-            </button>
-        </div>
     </div>
-    
 
     <section class="locations-intro">
         <h1>Strutture</h1>
+        <p>Scopri le nostre strutture!</p>
     </section>
-    <!-- Filters -->
-    <div class="filters-container" id="location-filter-container">
-        <button class="filter-button active" data-filter="all">Tutte</button>
-        {{ range where .Site.RegularPages "Section" "location-types" }}
-        <button class="filter-button"
-                data-filter="{{ .Title }}"
-                data-color="{{ .Params.color }}">
-            {{ .Title }}
-        </button>
-        {{ end }}
-    </div>
 
-    <div class="structures-layout">
-        <div class="structures-grid">
-            {{ range where .Site.RegularPages "Section" "locations" }}
-            {{ partial "location-card.html" . }}
-            {{ end }}
-        </div>
+    <div class="locations-container">
 
         <div id="map"></div>
+
+        <div class="locations-sheet">
+            <div class="sheet-handle"></div>
+
+            <div class="sheet-content">
+                <div class="filters-container" id="location-filter-container">
+                    <button class="filter-button active" data-filter="all">Tutte</button>
+                    {{ range where .Site.RegularPages "Section" "location-types" }}
+                    <button class="filter-button"
+                            data-filter="{{ .Title }}"
+                            data-color="{{ .Params.color }}">
+                        {{ .Title }}
+                    </button>
+                    {{ end }}
+                </div>
+
+                <div class="structures-grid">
+                    {{ range where .Site.RegularPages "Section" "locations" }}
+                    <div class="location-card-wrapper"
+                         data-lat="{{ .Params.latitude }}"
+                         data-lng="{{ .Params.longitude }}">
+                        {{ partial "location-card.html" . }}
+                    </div>
+                    {{ end }}
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>
 {{ end }}
