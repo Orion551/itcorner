@@ -8,5 +8,5 @@ end_time: 20:30
 description: AGA, l'Assemblea Generale Annuale, in cui avverrà l’elezione del
   nuovo Comitato Esecutivo dell’ Associazione.
 draft: false
-context: ""
+context: institutional-moments
 ---

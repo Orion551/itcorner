@@ -1,4 +1,0 @@
----
-label: Panel
-name: panel
----

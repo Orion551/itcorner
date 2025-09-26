@@ -13,6 +13,6 @@ description: "**Accoglienza** e **registrazione** dei partecipanti, 9:00 -
   15:00. Parallelamente apertura **EXPO** e stand espositivi."
 draft: false
 speakers: []
-context: panel
+context: institutional-moments
 event_date: 2026-04-13T09:00:00
 ---
