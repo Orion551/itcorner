@@ -7,5 +7,5 @@ coverImage: /itcorner/images/uploads/cambiamento_climatico.webp
 start_time: 17:00
 end_time: 18:30
 draft: false
-context: " plenary-sessions"
+context: plenary-sessions
 ---

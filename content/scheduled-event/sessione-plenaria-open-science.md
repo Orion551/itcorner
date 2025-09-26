@@ -6,5 +6,5 @@ weight: 3
 start_time: 12:30
 end_time: 14:00
 draft: false
-context: " plenary-sessions"
+context: plenary-sessions
 ---

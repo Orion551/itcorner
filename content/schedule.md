@@ -8,4 +8,4 @@ pageScript: "schedule.js"
 
 # Programma
 
-Scopri gli eventi in programma dal 1 Aprile al 6 Aprile!
+Scopri gli eventi in programma dal 13 Aprile al 17 Aprile!

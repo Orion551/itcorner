@@ -12,6 +12,6 @@ end_time: 16:30
 draft: false
 speakers:
   - carlo-conti
-context: " Institutional-moments"
+context: institutional-moments
 event_date: 2026-04-07T11:21:00
 ---
