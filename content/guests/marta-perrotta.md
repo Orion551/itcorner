@@ -8,7 +8,7 @@ bio: Marta Perrotta è professoressa associata presso l’Università Roma Tre, 
   Istituzionale, coordina il gruppo internazionale Donne in onda e il progetto
   europeo WePod – We Produce Podcasts, dedicato alle coproduzioni
   transfrontaliere di podcast giornalistici.
-draft: false
-image: /itcorner/images/uploads/no-photo-svgrepo-com.webp
+draft: true
+image: images/guests/cristina_originale_compressed.webp
 weight: 5
 ---

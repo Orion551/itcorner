@@ -11,6 +11,6 @@ bio: Serena Giacomin, laureata in Fisica con specializzazione in Fisica
 
   Ha scritto vari libri di divulgazione climatica, tra cui Pinguini all’Equatore. Perché non tutto ciò che senti sul clima è vero (De Agostini, 2020), realizzato insieme a Luca Perri con illustrazioni di Caterina Fratalocchi, che smonta falsi miti sul clima con umorismo e rigore scientifico, rivolgendosi anche a un pubblico giovane
 draft: true
-image: /itcorner/images/uploads/no-photo-svgrepo-com.webp
+image: images/guests/cristina_originale_compressed.webp
 weight: 7
 ---
