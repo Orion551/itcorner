@@ -1,8 +1,8 @@
 ---
-title: "INFN"
+title: "Fondazione Roma"
 website: ""
 description: "Description"
 logo: "images/partners/infn.webp"
-category: "Main Official Sponsor"
+category: "Premium"
 #id: "partners"
 ---

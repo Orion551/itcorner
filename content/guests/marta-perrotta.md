@@ -9,6 +9,6 @@ bio: Marta Perrotta è professoressa associata presso l’Università Roma Tre, 
   europeo WePod – We Produce Podcasts, dedicato alle coproduzioni
   transfrontaliere di podcast giornalistici.
 draft: true
-image: images/guests/cristina_originale_compressed.webp
+image: images/guests/Portrait_placeholder.webp
 weight: 5
 ---

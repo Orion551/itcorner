@@ -9,6 +9,6 @@ bio: "Ilaria De Angelis ha conseguito un Dottorato in Fisica presso il
   scuola. Insegna inoltre il corso “Education & Outreach: la comunicazione della
   scienza” nella Laurea Magistrale in Fisica dello stesso ateneo."
 draft: true
-image: images/guests/cristina_originale_compressed.webp
+image: images/guests/Portrait_placeholder.webp
 weight: 2
 ---

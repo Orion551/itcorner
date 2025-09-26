@@ -6,6 +6,6 @@ bio: Roberta Fulci, laureata in matematica alla Sapienza e dottore di ricerca in
   SISSA di Trieste. È redattrice e conduttrice di Radio3Scienza (Rai Radio3) e
   scrive per Il Tascabile. Ha collaborato con Zanichelli, Le Scienze e
   Bioversity International.
-image: images/guests/cristina_originale_compressed.webp
+image: images/guests/Portrait_placeholder.webp
 weight: 6
 ---
