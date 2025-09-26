@@ -11,7 +11,7 @@
 
 
     {{ $categories := where .Site.RegularPages "Section" "partner-categories" }}
-    {{ range $categories }}
+    {{ range sort $categories "Params.order" }}
         <div class="partners-container">
             <div class="partner-container-header">
                 <h2>{{ .Title }}</h2>
