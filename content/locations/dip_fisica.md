@@ -1,5 +1,5 @@
 ---
-title: "Dipartimento di Matematica e Fisica - Facoltà di Fisica"
+title: "Dipartimento di Matematica e Fisica - Università degli Studi di Roma Tre"
 address: "Via della Vasca Navale, 84, Roma"
 type: "Universitá" 
 lat: "41.85674020629887"
