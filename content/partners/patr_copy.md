@@ -1,7 +1,7 @@
 ---
 title: "SIF"
 website: ""
-description: "Description"
+#description: "Description"
 logo: "images/partners/logo_SIF.webp"
 category: "Partner"
 draft: true
