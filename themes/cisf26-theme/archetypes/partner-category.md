@@ -5,4 +5,5 @@ order:
 #id: ""
 color: "#fff"
 bgColor: "#fff"
+layout: "grid" # grid | slider
 ---
