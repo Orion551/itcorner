@@ -5,6 +5,6 @@ description: "Description"
 logo: "images/partners/logo_CREF.webp"
 category: "Patrocinato da"
 draft: false
-order: 3
+order: 6
 #id: "partners"
 ---

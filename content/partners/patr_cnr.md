@@ -5,6 +5,6 @@ description: "Description"
 logo: "images/partners/logo_CNR.webp"
 category: "Patrocinato da"
 draft: false
-order: 5
+order: 3
 #id: "partners"
 ---
