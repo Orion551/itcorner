@@ -1,0 +1,15 @@
+<div class="partners-grid-wrapper">
+    {{ range .partners }}
+
+    <div class="partner-card">
+        <a href="{{ .Params.website | default "#" }}" target="_blank" rel="noopener">
+            {{ with .Params.logo }}
+            <img src="{{ . | relURL }}" class="partner-logo" />
+            {{ end }}
+        </a>
+
+    </div>
+
+    {{ end }}
+
+</div>
