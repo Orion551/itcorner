@@ -44,21 +44,41 @@
     </section>-->
 
     <section>
+<!--        {{ range sort $categories "Params.order" }}-->
+<!--            {{ $catPartners := where (where $.Site.RegularPages "Section" "partners") "Params.category" .Title }}-->
+<!--            {{ if gt (len $catPartners) 0 }}-->
+<!--            <div class="partner-container-header" style='background-color: {{ .Params.bgColor }}'>-->
+<!--                <h2 style='color: {{ .Params.Color }}'>{{ .Title }}</h2>-->
+<!--            </div>-->
+<!--            {{ range sort $catPartners "Params.order" }}-->
+<!--                {{ if eq .Params.layout "grid" }}-->
+<!--                    {{ partial "partners-grid.html" . }}-->
+<!--                {{ else if eq .Params.layout "slider" }}-->
+<!--                    {{ partial "partners-slider.html" . }}-->
+<!--                {{ else }}-->
+<!--                    {{/* Opzionale: Fallback nel caso la proprietà layout non sia definita o sia errata */}}-->
+<!--                {{ end }}-->
+<!--            {{ end }}-->
+<!--        {{ end }}-->
+<!--        {{ end }}-->
+
         {{ range sort $categories "Params.order" }}
-            {{ $catPartners := where (where $.Site.RegularPages "Section" "partners") "Params.category" .Title }}
-            {{ if gt (len $catPartners) 0 }}
-            <div class="partner-container-header" style='background-color: {{ .Params.bgColor }}'>
-                <h2 style='color: {{ .Params.Color }}'>{{ .Title }}</h2>
-            </div>
-            {{ range sort $catPartners "Params.order" }}
-            <div class="partners-slider">
-                <div class="partner-card">
-                    {{ with .Params.logo }}
-                        <img src="{{ . | relURL }}" alt="{{ $.Title }} logo" class="partner-logo" />
-                    {{ end }}
-                </div>
-            </div>
+
+        {{ $catPartners := where (where $.Site.RegularPages "Section" "partners") "Params.category" .Title }}
+        {{ if gt (len $catPartners) 0 }}
+
+        <div class="partner-container-header" style='background-color: {{ .Params.bgColor }}'>
+            <h2 style='color: {{ .Params.Color }}'>{{ .Title }}</h2>
+        </div>
+
+        {{ $sortedPartners := sort $catPartners "Params.order" }}
+
+            {{ if eq .Params.layout "grid" }}
+                {{ partial "partners-grid.html" (dict "partners" $sortedPartners "category" .) }}
+            {{ else if eq .Params.layout "slider" }}
+                {{ partial "partners-slider.html" (dict "partners" $sortedPartners "category" .) }}
             {{ end }}
+
         {{ end }}
         {{ end }}
     </section>
