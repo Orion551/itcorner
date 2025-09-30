@@ -12,7 +12,7 @@ bio: Elena Pettinelli è professoressa di Fisica Terrestre presso il Dipartiment
   strumento WISDOM a bordo del rover ESA ExoMars, dedicato alla ricerca di
   tracce biologiche su Marte. Ha inoltre contribuito ai progetti ACQUA e MARSIS
   dell’ESA.
-draft: false
+draft: true
 image: images/guests/Portrait_placeholder.webp
 weight: 1
 ---
