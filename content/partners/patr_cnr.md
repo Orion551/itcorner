@@ -4,6 +4,7 @@ website: "https://www.cnr.it//"
 description: "Description"
 logo: "images/partners/logo_CNR.webp"
 category: "Patrocinato da"
-draft: false 
+draft: false
+order: 5
 #id: "partners"
 ---

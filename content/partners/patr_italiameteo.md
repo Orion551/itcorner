@@ -4,6 +4,7 @@ website: ""
 description: "Description"
 logo: "images/partners/logo_ItaliaMeteo.webp"
 category: "Patrocinato da"
-draft: false 
+draft: false
+order: 2
 #id: "partners"
 ---

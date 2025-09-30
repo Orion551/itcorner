@@ -50,7 +50,7 @@
             <div class="partner-container-header" style='background-color: {{ .Params.bgColor }}'>
                 <h2 style='color: {{ .Params.Color }}'>{{ .Title }}</h2>
             </div>
-            {{ range $catPartners }}
+            {{ range sort $catPartners "Params.order" }}
             <div class="partners-slider">
                 <div class="partner-card">
                     {{ with .Params.logo }}
