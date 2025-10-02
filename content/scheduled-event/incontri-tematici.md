@@ -14,7 +14,7 @@ speakers:
   - domizia-orestano
   - laura-lupi
   - claudia-fasolato
-  - 
+  - giovanni-organtini
 coverImage: images/events/classroom-2093744_1280.webp
 draft: false
 context: thematic-sessions
