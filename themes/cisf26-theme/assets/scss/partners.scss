@@ -113,6 +113,13 @@
   color: #0066cc;
 }
 
+
+.partners-slider {
+  display: flex;
+  flex-direction: row;
+  overflow-x: auto;
+}
+
 // Custom btn
 
 @mixin btn-border-drawing(
