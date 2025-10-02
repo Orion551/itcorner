@@ -21,68 +21,24 @@
         </div>
     </div>
 
-
-   <!-- <section class="partners-container">
+    <section>
         {{ $categories := where .Site.RegularPages "Section" "partner-categories" }}
             {{ range sort $categories "Params.order" }}
-                <div class="partner-container-header" style='background-color: {{ .Params.bgColor }}'>
-                    <h2 style='color: {{ .Params.Color }}'>{{ .Title }}</h2>
-                </div>
-                &lt;!&ndash; Sponsors slider &ndash;&gt;
                 {{ $catPartners := where (where $.Site.RegularPages "Section" "partners") "Params.category" .Title }}
-                {{ range $catPartners }}
-                <div class="partners-slider">
-                    <div class="partner-card">
-                        {{ with .Params.logo }}
-                            <img src="{{ . | relURL }}" alt="{{ $.Title }} logo" class="partner-logo" />
-                        {{ end }}
+                {{ if gt (len $catPartners) 0 }}
+                    <div class="partner-container-header" style='background-color: {{ .Params.bgColor }}'>
+                        <h2 style='color: {{ .Params.Color }}'>{{ .Title }}</h2>
                     </div>
-                </div>
+                    {{ $sortedPartners := sort $catPartners "Params.order" }}
+
+                    {{ if eq .Params.layout "grid" }}
+                        {{ partial "partners-grid.html" (dict "partners" $sortedPartners "category" .) }}
+                    {{ else if eq .Params.layout "slider" }}
+                        {{ partial "partners-slider.html" (dict "partners" $sortedPartners "category" .) }}
+                {{ end }}
             {{ end }}
-        {{ end }}
-        <button class="btn draw-border">SUPPORTACI</button>
-    </section>-->
-
-    <section>
-<!--        {{ range sort $categories "Params.order" }}-->
-<!--            {{ $catPartners := where (where $.Site.RegularPages "Section" "partners") "Params.category" .Title }}-->
-<!--            {{ if gt (len $catPartners) 0 }}-->
-<!--            <div class="partner-container-header" style='background-color: {{ .Params.bgColor }}'>-->
-<!--                <h2 style='color: {{ .Params.Color }}'>{{ .Title }}</h2>-->
-<!--            </div>-->
-<!--            {{ range sort $catPartners "Params.order" }}-->
-<!--                {{ if eq .Params.layout "grid" }}-->
-<!--                    {{ partial "partners-grid.html" . }}-->
-<!--                {{ else if eq .Params.layout "slider" }}-->
-<!--                    {{ partial "partners-slider.html" . }}-->
-<!--                {{ else }}-->
-<!--                    {{/* Opzionale: Fallback nel caso la proprietà layout non sia definita o sia errata */}}-->
-<!--                {{ end }}-->
-<!--            {{ end }}-->
-<!--        {{ end }}-->
-<!--        {{ end }}-->
-
-        {{ range sort $categories "Params.order" }}
-
-        {{ $catPartners := where (where $.Site.RegularPages "Section" "partners") "Params.category" .Title }}
-        {{ if gt (len $catPartners) 0 }}
-
-        <div class="partner-container-header" style='background-color: {{ .Params.bgColor }}'>
-            <h2 style='color: {{ .Params.Color }}'>{{ .Title }}</h2>
-        </div>
-
-        {{ $sortedPartners := sort $catPartners "Params.order" }}
-
-            {{ if eq .Params.layout "grid" }}
-                {{ partial "partners-grid.html" (dict "partners" $sortedPartners "category" .) }}
-            {{ else if eq .Params.layout "slider" }}
-                {{ partial "partners-slider.html" (dict "partners" $sortedPartners "category" .) }}
-            {{ end }}
-
-        {{ end }}
         {{ end }}
     </section>
-
-
 </section>
+
 {{ end }}
