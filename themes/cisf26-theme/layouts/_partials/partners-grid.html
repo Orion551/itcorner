@@ -1,11 +1,13 @@
-<div class="partners-grid-wrapper">
+<div
+    class="partners-grid"
+    data-columns="{{ .category.Params.columns }}"
+    data-category="{{ .category.Params.css | urlize }}"
+>
     {{ range .partners }}
-        <div class="partner-card">
-            <a href="{{ .Params.website | default "#" }}" target="_blank" rel="noopener">
-                {{ with .Params.logo }}
+        <a class="partner-card" href="{{ .Params.website | default "#" }}" target="_blank" rel="noopener">
+            {{ with .Params.logo }}
                 <img src="{{ . | relURL }}" class="partner-logo" />
-                {{ end }}
-            </a>
-        </div>
+            {{ end }}
+        </a>
     {{ end }}
 </div>
