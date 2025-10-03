@@ -6,4 +6,5 @@ order:
 color: "#fff"
 bgColor: "#fff"
 layout: "grid" # grid | slider
+css: "" #
 ---
