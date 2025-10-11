@@ -36,4 +36,48 @@ export function initHomePage() {
         opacity: 0,
         duration: 0.8
     }, "-=0.3");
+
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.utils.toArray("[data-animate]").forEach((section) => {
+        gsap.fromTo(
+            section,
+            { opacity: 0, y: 60 },
+            {
+                opacity: 1,
+                y: 0,
+                duration: 0.5,
+                ease: "power3.out",
+                scrollTrigger: {
+                    trigger: section,
+                    start: "top 85%",
+                    toggleActions: "play none none none",
+                },
+            }
+        );
+    });
+
+    const counter = document.getElementById("guests-counter");
+    if (counter) {
+        const finalValue = parseInt(counter.textContent, 10);
+        counter.textContent = "0";
+
+        ScrollTrigger.create({
+            trigger: counter,
+            start: "top 90%",
+            once: true,
+            onEnter: () => {
+                gsap.to(counter, {
+                    innerText: finalValue,
+                    duration: 1.5,
+                    snap: { innerText: 1 },
+                    ease: "power1.out",
+                    onUpdate: () => {
+                        counter.textContent = Math.floor(counter.textContent);
+                    },
+                });
+            },
+        });
+    }
 }

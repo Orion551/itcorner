@@ -1,6 +1,7 @@
 {{ define "main" }}
 {{ $home := .Site.GetPage "page" "home" }}
-<div class="page-content" style="padding-top: 0 !important; padding-left: 0 !important; padding-right: 0 !important;">
+<div class="page-content" style="padding: 0 !important;">
+    <!-- HERO SECTION -->
     <section class="homepage-hero">
         <div class="hero-video-container">
             <video
@@ -25,24 +26,106 @@
         </div>
     </section>
 
-    <section style="padding: 1rem;">
-        <!-- Description -->
-        <div>
-            <div>
-                <h2>CISF</h2>
+    <!-- ABOUT / DESCRIPTION -->
+    {{ $guests := where .Site.RegularPages "Section" "guests" }}
+    {{ $numGuests := len $guests }}
+    <section class="about-section" data-animate>
+        <div class="about-card">
+            <div class="about-card-text">
+                <h2 class="about-title">CISF</h2>
                 <p>
-                    La Conferenza Italiana Studenti di Fisica (CISF), organizzata da AISF, è
-                    l’appuntamento annuale dedicato a seminari con ricercatori di rilievo nazionale e
-                    internazionale, visite a laboratori e centri di ricerca del Lazio, e momenti di scoperta e
-                    socialità nella città di Roma.
+                    La <strong>Conferenza Italiana Studenti di Fisica (CISF)</strong>, organizzata da AISF, è l’appuntamento
+                    annuale dedicato a seminari con ricercatori di rilievo nazionale e internazionale, visite a laboratori e
+                    centri di ricerca del Lazio, e momenti di scoperta e socialità nella città di Roma.
                 </p>
             </div>
-            <div>
-                <img style="max-width: 250px" src="images/group-placeholder.png" alt="group people" />
+            <div class="about-card-image">
+                <img src="images/mot-students-germany2.jpg" alt="Partecipanti CISF" />
             </div>
         </div>
-        {{ $home.Params.attendees }} Partecipanti
 
+        <div class="about-stats">
+            <div class="stat-item">
+                <i class="fa-solid fa-users" style="color: #993701"></i>
+                <div>
+                    <span class="stat-value">{{ $home.Params.attendees }}</span>
+                    <span class="stat-label">Menti brillanti da tutta Italia</span>
+                </div>
+            </div>
+            <div class="stat-item">
+                <i class="fa-solid fa-microphone" style="color: #993701"></i>
+                <div>
+                    <span class="stat-value" id="guests-counter">{{ $numGuests }}</span>
+                    <span class="stat-label">Speaker di fama Internazionale</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SUBSCRIPTIONS -->
+    <section class="subscriptions-section" data-animate>
+        <h2 style="color: #ffffff; margin-top: 0">Iscriviti a CISF26</h2>
+        <p class="subscriptions-subtitle">
+            Per partecipare all'evento offriamo due possibilità.
+        </p>
+
+        <div class="fee-cards">
+            <div class="fee-card">
+                <div class="fee-price">
+                    <span class="fee-euro">€</span><span class="fee-amount">100</span>
+                </div>
+                <ul class="fee-details">
+                    <li>Pass 5 giorni</li>
+                    <li>Pass ATAC</li>
+                    <li>Alloggio</li>
+                </ul>
+            </div>
+
+            <div class="fee-card">
+                <div class="fee-price">
+                    <span class="fee-euro">€</span><span class="fee-amount">50</span>
+                </div>
+                <ul class="fee-details">
+                    <li>Pass 5 giorni</li>
+                    <li>Pass ATAC</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact-section" data-animate>
+        <h2>Domande? Contattaci!</h2>
+        <form class="base-form" id="qa-form" target="hidden_iframe" onsubmit="formSubmitted()">
+            <label class="base-field">
+                <input type="text" id="name" placeholder="&nbsp;" />
+                <span class="placeholder">Nome e Cognome*</span>
+                <span class="border"></span>
+            </label>
+
+            <label class="base-field">
+                <input type="text" id="email" placeholder="&nbsp;" />
+                <span class="placeholder">Email*</span>
+                <span class="border"></span>
+            </label>
+
+            <label class="base-field">
+                <textarea id="message" placeholder="&nbsp;" maxlength="1000"></textarea>
+                <span class="placeholder">Messaggio*</span>
+                <span class="border"></span>
+            </label>
+
+            <button type="submit" class="submit-button">
+                <span>Invia</span>
+                <i class="fa-solid fa-paper-plane"></i>
+            </button>
+
+            <iframe name="hidden_iframe" style="display:none;"></iframe>
+            <div id="gform-success" class="success-message">Messaggio inviato con successo!</div>
+        </form>
+    </section>
+
+    <section class="sponsors-section" data-animate>
         <!-- Sponsors -->
         {{ $targetCategoryName := $home.Params.category }}
         {{ if $targetCategoryName }}
@@ -58,63 +141,43 @@
         {{ end }}
         {{ end }}
         {{ end }}
-
-        <!-- Subscriptions -->
-        <h2>Iscrizioni a CISF26</h2>
-        Per partecipare all'evento è necessario versare una delle due quote. Di seguito i dettagli
-        <div style="display: flex; flex-wrap: wrap; flex-direction: row; justify-content: space-around;">
-            <!-- Alloggio -->
-            <div class="fee-card-container">
-                <i class="fa-solid fa-house fee-card-icon"></i>
-                <div class="fee-card-pricing">
-                    <span class="eur-sign">€</span>
-                    <span class="fee">100</span>
-                </div>
-                <span class="fee-card-text">Con alloggio</span>
-            </div>
-            <!-- Senza Alloggio -->
-            <div class="fee-card-container">
-                <i class="fa-solid fa-check fee-card-icon"></i>
-                <div class="fee-card-pricing">
-                    <span class="eur-sign">€</span>
-                    <span class="fee">50</span>
-                </div>
-                <span class="fee-card-text">Senza alloggio</span>
-            </div>
-        </div>
-
-        <!-- Q&A -->
-        <h2>Domande? Contattaci!</h2>
-        <div>
-            <form
-                    class="base-form"
-                    id="qa-form"
-
-            >
-                <label class="base-field">
-                    <input type="text" id="name" placeholder="&nbsp;"/>
-                    <span class="placeholder">Nome e Cognome*</span>
-                    <span class="border"></span>
-                </label>
-
-                <label class="base-field">
-                    <input type="text" id="email" placeholder="&nbsp;" />
-                    <span class="placeholder">Email*</span>
-                    <span class="border"></span>
-                </label>
-
-                <label class="base-field">
-                    <textarea id="message" placeholder="&nbsp;" maxlength="1000"></textarea>
-                    <span class="placeholder">Messaggio*</span>
-                    <span class="border"></span>
-                </label>
-
-            </form>
-            <button type="submit" class="submit-button">
-                <span>Invia</span>
-                <!--                    <i class="fa-solid fa-paper-plane"></i>-->
-            </button>
-        </div>
     </section>
 </div>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // FORM
+        const form = document.getElementById("qa-form");
+        const successMessage = document.getElementById("gform-success");
+        const iframe = document.querySelector('iframe[name="hidden_iframe"]');
+        const button = document.querySelector(".submit-button");
+        let formSubmitted = false;
+
+        form.addEventListener('submit', (e) => {
+            formSubmitted = true;
+        })
+
+        function handleSubmit(event) {
+            event.preventDefault(); // evita refresh
+            form.submit(); // invia comunque al target iframe
+            formSubmitted = true;
+        }
+
+        iframe.addEventListener("load", function () {
+            if (formSubmitted) {
+                // Mostra messaggio e animazione bottone
+                button.classList.add("success");
+                successMessage.style.display = "block";
+
+                // Dopo 3 secondi, resetta tutto
+                setTimeout(() => {
+                    button.classList.remove("success");
+                    form.reset();
+                    successMessage.style.display = "none";
+                }, 3000);
+
+                formSubmitted = false;
+            }
+        });
+    })
+</script>
 {{ end }}
