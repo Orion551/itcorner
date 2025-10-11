@@ -16,7 +16,7 @@ export function initHomePage() {
         ease: "back.out(2)"
     })
         .to([cisLetters, phi], {
-            filter: "drop-shadow(0 0 10px #ff8c00)",
+            filter: "drop-shadow(0 0 5px #ff8c00)",
             duration: 0.3,
             stagger: 0.2
         }, "<")
