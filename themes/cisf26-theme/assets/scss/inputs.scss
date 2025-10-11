@@ -1,0 +1,234 @@
+.base-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: fit-content;
+  margin: 0 auto
+}
+
+.base-field {
+  position: relative;
+  font-size: .9rem;
+  //border-top: 20px solid transparent;
+  margin-bottom: 5px;
+  display: inline-block;
+  --field-padding: 12px;
+
+  --draw-duration: 0.1s;
+  --draw-color: #DD9426;
+  --draw-line-width: 2px;
+  --draw-easing: linear;
+}
+
+.base-field input,
+.base-field textarea {
+  border: none;
+  -webkit-appearance: none;
+  -ms-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: #f2f2f2;
+  padding: var(--field-padding);
+  border-radius: 7px;
+  width: 250px;
+  outline: none;
+  font-size: .9rem;
+}
+
+.base-field textarea {
+  min-width: 350px;
+  max-width: 400px;
+  min-height: 250px;
+}
+
+.base-field .placeholder {
+  position: absolute;
+  left: var(--field-padding);
+  width: calc(100% - (var(--field-padding) * 2));
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  top: 22px;
+  line-height: 100%;
+  transform: translateY(-50%);
+  color: #aaa;
+  transition:
+          top 0.3s ease,
+          color 0.3s ease,
+          font-size 0.3s ease;
+}
+
+.base-field input.dirty + .placeholder,
+.base-field input:focus + .placeholder,
+.base-field input:not(:placeholder-shown) + .placeholder,
+.base-field textarea.dirty + .placeholder,
+.base-field textarea:focus + .placeholder,
+.base-field textarea:not(:placeholder-shown) + .placeholder {
+  top: -10px;
+  font-size: 10px;
+  color: #222;
+}
+
+.base-field .border {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform: none;
+  display: flex;
+  align-items: center;
+  padding-left: 12px;
+  border-radius: 7px;
+}
+
+.base-field .border::after,
+.base-field .border::before {
+  content: "";
+  width: 0;
+  height: 0;
+  display: inline-block;
+  position: absolute;
+  border-radius: 7px;
+}
+
+.base-field .border::before {
+  left: 0;
+  bottom: 0;
+  border-right: 0px solid var(--draw-color);
+  border-bottom: 0px solid var(--draw-color);
+  transition:
+          border 0s linear calc(var(--draw-duration) * 4),
+          height var(--draw-duration) var(--draw-easing) calc(var(--draw-duration) * 2),
+          width var(--draw-duration) var(--draw-easing) calc(var(--draw-duration) * 3);
+}
+
+.base-field .border::after {
+  right: 0;
+  top: 0;
+  border-left: 0px solid var(--draw-color);
+  border-top: 0px solid var(--draw-color);
+  transition:
+          border 0s linear calc(var(--draw-duration) * 2),
+          height var(--draw-duration) var(--draw-easing),
+          width var(--draw-duration) var(--draw-easing) var(--draw-duration);
+}
+
+.base-field input:focus ~ .border::before,
+.base-field input:not(:placeholder-shown) ~ .border::before,
+.base-field input.dirty ~ .border::before,
+.base-field textarea:focus ~ .border::before, /* AGGIUNTO */
+.base-field textarea:not(:placeholder-shown) ~ .border::before, /* AGGIUNTO */
+.base-field textarea.dirty ~ .border::before, /* AGGIUNTO */
+.base-field input:focus ~ .border::after,
+.base-field input:not(:placeholder-shown) ~ .border::after,
+.base-field input.dirty ~ .border::after,
+.base-field textarea:focus ~ .border::after, /* AGGIUNTO */
+.base-field textarea:not(:placeholder-shown) ~ .border::after, /* AGGIUNTO */
+.base-field textarea.dirty ~ .border::after { /* AGGIUNTO */
+  width: 100%;
+  height: 100%;
+  border-width: var(--draw-line-width);
+}
+
+.base-field input:not(:placeholder-shown) ~ .border::before,
+.base-field input.dirty ~ .border::before,
+.base-field input:focus ~ .border::before,
+.base-field textarea:not(:placeholder-shown) ~ .border::before,
+.base-field textarea.dirty ~ .border::before,
+.base-field textarea:focus ~ .border::before {
+  transition-delay: 0s, var(--draw-duration), 0s;
+}
+
+.base-field input:not(:placeholder-shown) ~ .border::after,
+.base-field input.dirty ~ .border::after,
+.base-field input:focus ~ .border::after,
+.base-field textarea:not(:placeholder-shown) ~ .border::after,
+.base-field textarea.dirty ~ .border::after,
+.base-field textarea:focus ~ .border::after {
+  transition-delay:
+          calc(var(--draw-duration) * 2),
+          calc(var(--draw-duration) * 3),
+          calc(var(--draw-duration) * 2);
+}
+
+.submit-button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  background: $secondary-color;
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+
+  width: 55px;
+  height: 55px;
+  font-size: 1rem;
+  overflow: hidden;
+
+  transition: all 0.4s cubic-bezier(0.565, -0.070, 0.140, 1.135);
+
+  span {
+    opacity: 0;
+    transform: translateX(-10px);
+    white-space: nowrap;
+    transition: all 0.3s ease;
+  }
+
+  i {
+    font-size: 1.2rem;
+    transition: transform 0.6s ease, color 0.3s ease;
+  }
+
+  &:hover {
+    width: 160px;
+    background: darken($secondary-color, 5%);
+  }
+
+  &:hover span {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  &:hover i {
+    transform: translateX(3px);
+  }
+
+  &.success {
+    background: #1a8a1a;
+  }
+
+  &.success i {
+    color: #fff;
+    animation: plane-takeoff 1s ease forwards;
+  }
+}
+
+@keyframes plane-takeoff {
+  0% {
+    transform: translate(0, 0) rotate(0);
+  }
+  40% {
+    transform: translate(10px, -5px) rotate(15deg);
+  }
+  70% {
+    transform: translate(25px, -20px) rotate(25deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(60px, -50px) rotate(35deg);
+    opacity: 0;
+  }
+}
+
+.success-message {
+  display: none;
+  color: #1a8a1a;
+  margin-top: 1rem;
+  font-weight: 500;
+  transition: opacity 0.4s ease;
+}
