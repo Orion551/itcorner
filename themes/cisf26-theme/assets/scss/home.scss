@@ -1,31 +1,90 @@
-/* Hero */
+/* === HERO SECTION === */
+
 .homepage-hero {
+  position: relative;
+  width: 100%;
+  // height: 100vh; /* full viewport height */
+  height: 100dvh;
+  overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 4rem 1rem;
-  text-align: center;
+  background: #000;
+}
+
+.hero-video-container {
+  // old
+  //position: absolute;
+  //inset: 0;
+  //overflow: hidden;
+  //z-index: 1;
+
+  // new
+  position: absolute;
+  inset: 0; /* top:0, right:0, bottom:0, left:0 */
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.hero-video-container::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.45));
+  z-index: 1;
+}
+
+.hero-video {
+
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
+  transform-origin: center;
+}
+
+.hero-overlay {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  //flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 75%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.hero-event-dates-overlay {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
   color: #fff;
 }
 
-.hero-content {
-  width: 100%;
-  max-width: 700px;
-  margin: 0 auto;
-}
-
-.hero-logo {
-  width: 100%;
-  max-width: 480px;
-  margin: 0 auto 1rem;
-}
-
-.hero-logo svg,
-.hero-logo img {
-  width: 100%;
+.hero-logo-svg {
+  width: clamp(160px, 25vw, 400px);
   height: auto;
-  display: block;
+  filter: drop-shadow(0 0 12px rgba(0, 0, 0, 0.5))
+  brightness(1.1)
+  contrast(1.1);
+  opacity: 0.95;
+  transition: transform 0.3s ease, opacity 0.3s ease;
 }
+
+.page-content > section:not(.homepage-hero) {
+  position: relative;
+  z-index: 3;
+  background: #fff;
+}
+
+// old
 
 .hero-subtitle {
   font-size: 1.2rem;
@@ -69,23 +128,16 @@
   max-height: 60px;
 }
 
-/* About */
-.homepage-about {
-  padding: 2rem 1rem;
-  background: #f9fafc;
-}
-
-.about-container {
-  max-width: 1100px;
-  margin: 0 auto;
-  display: grid;
-  gap: 1.5rem;
-}
-
 @media (min-width: 768px) {
-  .about-container {
-    grid-template-columns: 1fr 1fr;
-    align-items: center;
+  .homepage-hero {
+    height: 100dvh;
+  }
+
+  .hero-logo-svg {
+    width: clamp(140px, 45vw, 280px);
+    filter: drop-shadow(0 0 6px rgba(0,0,0,0.7))
+    brightness(1.2)
+    contrast(1.2);
   }
 }
 
@@ -103,4 +155,40 @@
   width: 100%;
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.fee-card-container {
+  background: rgba($secondary-color, 0.1);
+  border: 1px solid rgba($secondary-color, 0.1);
+  padding: 1.2rem;
+  width: 160px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: $secondary-color;
+  margin: 2rem;
+
+  .fee-card-icon {
+    font-size: 1.5rem;
+  }
+
+  &.fee-card-pricing {
+    display: flex;
+    flex-direction: row;
+
+  }
+
+  .eur-sign {
+    font-size: 1rem;
+    font-weight: bold;
+  }
+  .fee {
+    font-size: 2.2rem;
+    font-weight: bold;
+  }
+
+  .fee-card-text {
+    font-weight: 500;
+  }
 }
