@@ -1,38 +1,32 @@
 {{ define "main" }}
 {{ $home := .Site.GetPage "page" "home" }}
-<div class="page-content">
-    <!-- Hero -->
-<!--    <section class="homepage-hero" style="background: black">-->
-<!--        <div class="hero-content">-->
-<!--            {{ with $home.Params.hero_logo }}-->
-<!--            <img src="images/rome-sequence.gif" alt="rome sequence" />-->
-<!--            <div class="hero-logo">-->
-<!--                {{ partial "cisf-logo.svg" . }}-->
-<!--            </div>-->
-<!--            {{ end }}-->
-<!--            {{ with $home.Params.hero_subtitle }}-->
-<!--                <p class="hero-subtitle">{{ . }}</p>-->
-<!--            {{ end }}-->
-<!--            <p>{{ $home.Params.event_date }}</p>-->
-<!--        </div>-->
-<!--    </section>-->
-
+<div class="page-content" style="padding-top: 0 !important; padding-left: 0 !important; padding-right: 0 !important;">
     <section class="homepage-hero">
-        <div class="hero-content">
-            {{ with $home.Params.hero_logo }}
-<!--            <img src="images/rome-sequence.gif" alt="rome sequence" />-->
-<!--            <div class="hero-logo">-->
-<!--                {{ partial "cisf-logo.svg" . }}-->
-<!--            </div>-->
-            {{ end }}
-            {{ with $home.Params.hero_subtitle }}
-            <p class="hero-subtitle">{{ . }}</p>
-            {{ end }}
-            <p>{{ $home.Params.event_date }}</p>
+        <div class="hero-video-container">
+            <video
+                    playsinline
+                    autoplay
+                    muted
+                    loop
+                    preload="metadata"
+                    poster="images/rome-poster.jpg"
+                    class="hero-video"
+            >
+                <source src="images/rome-clip.webm" type="video/webm">
+                Il tuo browser non supporta il video.
+            </video>
+        </div>
+
+        <div class="hero-overlay">
+            {{ partial "cisf-logo.svg" . }}
+        </div>
+        <div class="hero-event-dates-overlay">
+            {{ $home.Params.event_date | safeHTML }}
         </div>
     </section>
 
-    <section>
+    <section style="padding: 1rem;">
+        <!-- Description -->
         <div>
             <div>
                 <h2>CISF</h2>
@@ -48,10 +42,8 @@
             </div>
         </div>
         {{ $home.Params.attendees }} Partecipanti
-    </section>
 
-    <!-- Sponsors -->
-    <section>
+        <!-- Sponsors -->
         {{ $targetCategoryName := $home.Params.category }}
         {{ if $targetCategoryName }}
         {{ $categoryPages := first 1 (where (where .Site.RegularPages "Section" "partner-categories") ".Title" "eq" $targetCategoryName) }}
@@ -66,9 +58,8 @@
         {{ end }}
         {{ end }}
         {{ end }}
-    </section>
 
-    <section>
+        <!-- Subscriptions -->
         <h2>Iscrizioni a CISF26</h2>
         Per partecipare all'evento è necessario versare una delle due quote. Di seguito i dettagli
         <div style="display: flex; flex-wrap: wrap; flex-direction: row; justify-content: space-around;">
@@ -92,9 +83,7 @@
             </div>
         </div>
 
-    </section>
-
-    <section>
+        <!-- Q&A -->
         <h2>Domande? Contattaci!</h2>
         <div>
             <form
@@ -103,41 +92,22 @@
 
             >
                 <label class="base-field">
-                    <input
-                            type="text"
-                            id="name"
-
-                            placeholder="&nbsp;"
-                    />
+                    <input type="text" id="name" placeholder="&nbsp;"/>
                     <span class="placeholder">Nome e Cognome*</span>
                     <span class="border"></span>
                 </label>
 
                 <label class="base-field">
-                    <input
-                            type="text"
-                            id="email"
-
-                            placeholder="&nbsp;"
-                    />
+                    <input type="text" id="email" placeholder="&nbsp;" />
                     <span class="placeholder">Email*</span>
                     <span class="border"></span>
                 </label>
 
                 <label class="base-field">
-                <textarea
-                        id="message"
-
-                        placeholder="&nbsp;"
-                        maxlength="1000"
-                ></textarea>
+                    <textarea id="message" placeholder="&nbsp;" maxlength="1000"></textarea>
                     <span class="placeholder">Messaggio*</span>
                     <span class="border"></span>
                 </label>
-
-
-
-
 
             </form>
             <button type="submit" class="submit-button">
@@ -145,7 +115,6 @@
                 <!--                    <i class="fa-solid fa-paper-plane"></i>-->
             </button>
         </div>
-
     </section>
 </div>
 {{ end }}
