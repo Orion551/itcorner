@@ -2,52 +2,150 @@
 {{ $home := .Site.GetPage "page" "home" }}
 <div class="page-content">
     <!-- Hero -->
+<!--    <section class="homepage-hero" style="background: black">-->
+<!--        <div class="hero-content">-->
+<!--            {{ with $home.Params.hero_logo }}-->
+<!--            <img src="images/rome-sequence.gif" alt="rome sequence" />-->
+<!--            <div class="hero-logo">-->
+<!--                {{ partial "cisf-logo.svg" . }}-->
+<!--            </div>-->
+<!--            {{ end }}-->
+<!--            {{ with $home.Params.hero_subtitle }}-->
+<!--                <p class="hero-subtitle">{{ . }}</p>-->
+<!--            {{ end }}-->
+<!--            <p>{{ $home.Params.event_date }}</p>-->
+<!--        </div>-->
+<!--    </section>-->
+
     <section class="homepage-hero">
         <div class="hero-content">
             {{ with $home.Params.hero_logo }}
-            <div class="hero-logo">
-                {{ partial "cisf-logo.svg" . }}
-            </div>
+<!--            <img src="images/rome-sequence.gif" alt="rome sequence" />-->
+<!--            <div class="hero-logo">-->
+<!--                {{ partial "cisf-logo.svg" . }}-->
+<!--            </div>-->
             {{ end }}
             {{ with $home.Params.hero_subtitle }}
-                <p class="hero-subtitle">{{ . }}</p>
+            <p class="hero-subtitle">{{ . }}</p>
             {{ end }}
             <p>{{ $home.Params.event_date }}</p>
         </div>
     </section>
 
-    <!-- Sponsors -->
-    {{ $cat := $home.Params.sponsor_category }}
-    {{ if $cat }}
-    <section class="homepage-sponsors">
-        <h2>I nostri partner</h2>
-        <div class="sponsor-scroll">
-            {{ $partners := where (where $.Site.RegularPages "Section" "partners") "Params.category" $cat }}
-            {{ range $partners }}
-            <div class="sponsor-card">
-                {{ $partner := . }}
-                {{ with .Params.logo }}
-                <img src="{{ . | relURL }}" alt="{{ $partner.Title }} logo" />
-                {{ end }}
+    <section>
+        <div>
+            <div>
+                <h2>CISF</h2>
+                <p>
+                    La Conferenza Italiana Studenti di Fisica (CISF), organizzata da AISF, è
+                    l’appuntamento annuale dedicato a seminari con ricercatori di rilievo nazionale e
+                    internazionale, visite a laboratori e centri di ricerca del Lazio, e momenti di scoperta e
+                    socialità nella città di Roma.
+                </p>
             </div>
-            {{ end }}
+            <div>
+                <img style="max-width: 250px" src="images/group-placeholder.png" alt="group people" />
+            </div>
         </div>
+        {{ $home.Params.attendees }} Partecipanti
     </section>
-    {{ end }}
 
-    <!-- About -->
-    <section id="about" class="homepage-about">
-        <div class="about-container">
-            <div class="about-text">
-                <h2>{{ $home.Params.about_title }}</h2>
-                {{ $home.Params.about_text | markdownify }}
-            </div>
-            {{ with $home.Params.about_image }}
-            <div class="about-image">
-                <img src="{{ . | relURL }}" alt="About image">
-            </div>
-            {{ end }}
+    <!-- Sponsors -->
+    <section>
+        {{ $targetCategoryName := $home.Params.category }}
+        {{ if $targetCategoryName }}
+        {{ $categoryPages := first 1 (where (where .Site.RegularPages "Section" "partner-categories") ".Title" "eq" $targetCategoryName) }}
+        {{ range $categoryPages }}
+        {{ $catPartners := where (where $.Site.RegularPages "Section" "partners") "Params.category" .Title }}
+        {{ if gt (len $catPartners) 0 }}
+        <div class="partner-container-header" style='background-color: {{ .Params.bgColor }}'>
+            <h2 style='color: {{ .Params.Color }}'>{{ .Title }}</h2>
         </div>
+        {{ $sortedPartners := sort $catPartners "Params.order" }}
+        {{ partial "partners-grid.html" (dict "partners" $sortedPartners "category" .) }}
+        {{ end }}
+        {{ end }}
+        {{ end }}
+    </section>
+
+    <section>
+        <h2>Iscrizioni a CISF26</h2>
+        Per partecipare all'evento è necessario versare una delle due quote. Di seguito i dettagli
+        <div style="display: flex; flex-wrap: wrap; flex-direction: row; justify-content: space-around;">
+            <!-- Alloggio -->
+            <div class="fee-card-container">
+                <i class="fa-solid fa-house fee-card-icon"></i>
+                <div class="fee-card-pricing">
+                    <span class="eur-sign">€</span>
+                    <span class="fee">100</span>
+                </div>
+                <span class="fee-card-text">Con alloggio</span>
+            </div>
+            <!-- Senza Alloggio -->
+            <div class="fee-card-container">
+                <i class="fa-solid fa-check fee-card-icon"></i>
+                <div class="fee-card-pricing">
+                    <span class="eur-sign">€</span>
+                    <span class="fee">50</span>
+                </div>
+                <span class="fee-card-text">Senza alloggio</span>
+            </div>
+        </div>
+
+    </section>
+
+    <section>
+        <h2>Domande? Contattaci!</h2>
+        <div>
+            <form
+                    class="base-form"
+                    id="qa-form"
+
+            >
+                <label class="base-field">
+                    <input
+                            type="text"
+                            id="name"
+
+                            placeholder="&nbsp;"
+                    />
+                    <span class="placeholder">Nome e Cognome*</span>
+                    <span class="border"></span>
+                </label>
+
+                <label class="base-field">
+                    <input
+                            type="text"
+                            id="email"
+
+                            placeholder="&nbsp;"
+                    />
+                    <span class="placeholder">Email*</span>
+                    <span class="border"></span>
+                </label>
+
+                <label class="base-field">
+                <textarea
+                        id="message"
+
+                        placeholder="&nbsp;"
+                        maxlength="1000"
+                ></textarea>
+                    <span class="placeholder">Messaggio*</span>
+                    <span class="border"></span>
+                </label>
+
+
+
+
+
+            </form>
+            <button type="submit" class="submit-button">
+                <span>Invia</span>
+                <!--                    <i class="fa-solid fa-paper-plane"></i>-->
+            </button>
+        </div>
+
     </section>
 </div>
 {{ end }}

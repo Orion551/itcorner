@@ -1,8 +1,9 @@
 ---
 hero_logo: "images/cisf-logo.svg"
-hero_subtitle: "Conferenza Italiana Studenti di Fisica 2026"
-sponsor_category: "Premium" 
+hero_subtitle: "Conferenza Italiana Studenti di Fisica"
+event_date: "13 - 17 Aprile"
+category: "Sponsor Premium" # Temporary -> Will be main official sponsor
 about_title: "Chi siamo"
-about_text: "Associazione culturale dedicata alla fisica"
 about_image: "/images/about.jpg"
+attendees: 100
 ---
