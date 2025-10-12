@@ -1,0 +1,17 @@
+<div
+    class="partners-slider"
+    data-category="{{ .category.Params.css | urlize }}"
+>
+    {{ range .partners }}
+        <a
+            class="partner-card"
+            href="{{ .Params.website | default " #" }}"
+            target="_blank"
+            rel="noopener"
+        >
+            {{ with .Params.logo }}
+                <img src="{{ . | relURL }}" alt="sponsor-logo" class="partner-logo"/>
+            {{ end }}
+        </a>
+    {{ end }}
+</div>

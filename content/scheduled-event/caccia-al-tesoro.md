@@ -10,5 +10,6 @@ description: |-
 
   sulle tracce della Fisica
 draft: false
+coverImage: images/events/treasure-map-1850653_1280.webp
 context: social-events
 ---

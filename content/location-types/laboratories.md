@@ -1,4 +1,4 @@
 ---
-title: "Laboratorio"
-color: "#1d3e70"
+title: "Laboratori"
+color: "#2272eaff"
 ---

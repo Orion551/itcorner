@@ -1,4 +1,4 @@
 ---
 label: Sessioni Plenarie
-name: " plenary-sessions"
+name: plenary-sessions
 ---

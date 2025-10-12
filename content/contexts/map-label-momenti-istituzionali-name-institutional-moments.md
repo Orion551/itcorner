@@ -1,4 +1,4 @@
 ---
 label: Momenti istituzionali
-name: " Institutional-moments"
+name: institutional-moments
 ---
