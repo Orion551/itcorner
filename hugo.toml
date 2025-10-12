@@ -82,6 +82,6 @@ theme = 'cisf26-theme'
     mobile_sort = 4
 
 [params]
-  siteTitle = "CISF26"
-  image = "images/cisf.svg"
-  alt = 'CISF26 Logo'
+    siteTitle = "CISF26"
+    image = "images/cisf.svg"
+    alt = 'CISF26 Logo'
