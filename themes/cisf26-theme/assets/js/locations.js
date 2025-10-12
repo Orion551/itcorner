@@ -27,7 +27,8 @@ export function initLocationsPage() {
     // --- Filters ---
     const applyLocationFilter = (activeFilter) => {
         cardWrappers.forEach(wrapper => {
-            const locationType = wrapper.querySelector('.location-card').dataset.type;
+            console.log('+++', wrapper.querySelector('#location-card'));
+            const locationType = wrapper.querySelector('#location-card').dataset.type;
             const shouldShow = activeFilter === "all" || locationType === activeFilter;
 
             wrapper.style.display = shouldShow ? "block" : "none";
