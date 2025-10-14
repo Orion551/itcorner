@@ -3,6 +3,7 @@ import { initLocationsPage } from "./locations.js";
 import { initButterflyBar} from "./butterfly-bar.js";
 import { initGuestScroller } from "./guests";
 import { initHomePage } from "./home";
+import { initAboutUs } from "./about-us";
 
 /**
  * Logics & Styling to close the Modal
@@ -65,4 +66,5 @@ document.addEventListener('DOMContentLoaded', () => {
     initHomePage();
     initButterflyBar();
     initGuestScroller();
+    initAboutUs();
 });
