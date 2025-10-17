@@ -1,6 +1,6 @@
 ---
 title: Elena Pettinelli
-role: "Università degli Studi di Roma Tre. "
+role: "Professoressa Ordinaria, Università degli Studi di Roma Tre. "
 bio: Elena Pettinelli è professoressa di Fisica Terrestre presso il Dipartimento
   di Matematica e Fisica dell’Università degli Studi Roma Tre, dove dirige il
   Laboratorio di Fisica della Terra e dei Pianeti. È direttrice del Master di II
